@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Playfair+Display:ital@0;1&family=Sono:wght@300;400;500&family=Source+Code+Pro:ital,wght@1,200;1,400&display=swap");
+* {
+  font-family: "Inter";
+  margin: 0;
+  padding: 0;
+}
+.navbar {
+  margin-bottom: 0;
+  background-color: rgb(28, 29, 38);
+  border: 0;
+  letter-spacing: 2px;
+  border-radius: 0;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.navbar li {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Register-Container {
+  position: relative;
+  left: 50rem;
+  text-decoration: none;
+  color: white;
+  background-color: rgb(228, 76, 101);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 3px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Items-Container {
+  position: relative;
+  left: 25rem;
+}
+.navbar li a,
+.navbar .navbar-brand {
+  color: #fff !important;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.navbar-nav li a:hover,
+.navbar-nav li.active a {
+  /* color: black !important; */
+  color: rgb(47, 157, 201) !important;
+  border-radius: 5px !important;
+  padding: 5px;
+}
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+  color: #fff !important;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  background-color: red;
+  color: white;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.Hero img {
+  height: 41.5rem;
+}
+.logo-container {
+  position: relative;
+  left: 1rem;
+}
+.carousel-inner {
+  position: relative;
+  display: flex;
+}
+.line-1 hr {
+  height: 10px;
+  border: 0;
+  width: 100%;
+}
+.line-1 {
+  height: 10px;
+  width: 62.5rem;
+  position: absolute;
+  z-index: 999;
+  background: white;
+  left: 15rem;
+  top: 20rem;
+}
+.hero-article-1,
+.hero-article-2,
+.hero-article-3 {
+  position: absolute;
+  width: 20rem;
+  height: 24rem;
+  background-color: rgba(128, 128, 128, 0.593);
+  color: white;
+  left: 15rem;
+  top: 10rem;
+  padding: 10px;
+  font-size: 30px;
+  backdrop-filter: blur(2px);
+}
+.hero-article-2 {
+  left: 37rem;
+}
+.hero-article-3 {
+  left: 57.5rem;
+}
+
+.welcome-paragraph {
+  padding-left: 4rem;
+  padding-top: 4rem;
+  width: 80rem;
+  font-size: 30px;
+}
+.company-name {
+  font-size: 35px;
+  font-weight: bold;
+  font-family: "Quando";
+}
+.welcome-image {
+  display: flex;
+  justify-content: end;
+}
+.home-title {
+  font-family: "Prociono";
+  text-align: center;
+}
+.line-2 {
+  border: 2px solid black;
+  width: 100%;
+}
+.cards-container {
+  padding-left: 4rem;
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 100px;
+}
+.card-container {
+  width: 522px;
+  height: 425px;
+  border: 2px solid;
+}
+.card-contaier img {
+  width: 520px;
+  height: 257px;
+}
+.company-description {
+  padding: 10px;
+  margin: 0;
+}
+.rating-category {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+.rating-category p {
+  font-weight: bold;
+}
+.second-row {
+  height: 400px;
+}
+.last-row {
+  height: 450px;
+}
+.importance-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 80rem;
+  position: relative;
+  left: 10rem;
+  top: 2rem;
+  gap: 1.4rem;
+}
+.importance-first {
+  width: 90%;
+  background-color: rgb(82, 75, 75);
+  padding: 9px;
+  border-radius: 20px;
+  color: white;
+}
+.importance-second {
+  width: 80%;
+  background-color: rgb(166, 118, 0);
+  padding: 9px;
+  border-radius: 20px;
+  color: white;
+}
+.importance-third {
+  width: 70%;
+  background-color: rgb(128, 139, 100);
+  padding: 9px;
+  border-radius: 20px;
+  color: white;
+}
+.importance-fourth {
+  width: 60%;
+  background-color: rgb(134, 74, 5);
+  padding: 9px;
+  border-radius: 20px;
+  color: white;
+}
+.importance-fifth {
+  width: 50%;
+  background-color: rgb(13, 107, 145);
+  padding: 9px;
+  border-radius: 20px;
+  color: white;
+}
