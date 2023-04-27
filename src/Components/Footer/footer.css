@@ -42,7 +42,7 @@ footer {
 .support {
   display: flex;
   flex-direction: column;
-  margin-bottom: 45px;
+  /* margin-bottom: 45px; */
 }
 .about span,
 .partnership span,

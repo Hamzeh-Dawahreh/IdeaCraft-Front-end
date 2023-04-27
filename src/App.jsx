@@ -9,9 +9,10 @@ export default function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Navbar />}>
-            <Route path="/home" element={<HomePage />} />
+          <Route element={<Navbar />}>
+            <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<Login />} />
+            {/* <Route path="*" element={<PageNotFound />} /> */}
           </Route>
         </Routes>
         {/* <Routes>
