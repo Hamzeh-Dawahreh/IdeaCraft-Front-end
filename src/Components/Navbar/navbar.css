@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Playfair+Display:ital@0;1&family=Sono:wght@300;400;500&family=Source+Code+Pro:ital,wght@1,200;1,400&display=swap");
+* {
+  font-family: "Inter";
+  margin: 0;
+  padding: 0;
+}
+.link {
+  text-decoration: none;
+}
+.navbar {
+  margin-bottom: 0;
+  background-color: rgb(28, 29, 38);
+  border: 0;
+  letter-spacing: 2px;
+  border-radius: 0;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 4rem;
+}
+.navbar li {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Register-Container {
+  position: relative;
+  left: 50rem;
+  text-decoration: none;
+  color: white;
+  background-color: rgb(228, 76, 101);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 3px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Items-Container {
+  position: relative;
+  left: 25rem;
+}
+.navbar li a,
+.navbar .navbar-brand {
+  color: #fff !important;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.navbar-nav li a:hover,
+.navbar-nav li.active a {
+  /* color: black !important; */
+  color: rgb(47, 157, 201) !important;
+  border-radius: 5px !important;
+  padding: 5px;
+}
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+  color: #fff !important;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  opacity: 0;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  background-color: white;
+  color: black;
+  transition-property: opacity;
+
+  transition-duration: 0.5s;
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  border-radius: 20px;
+}
