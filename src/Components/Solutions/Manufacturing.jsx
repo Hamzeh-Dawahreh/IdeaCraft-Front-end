@@ -22,7 +22,7 @@ export default function Manufacturing() {
               costs, market demand, supply chain logistics, and potential
               profitability.
             </h4>
-            <button>Book now</button>
+            <button className="book-now">Book now</button>
           </div>
           <img src="./src/Images/bg3.png" width="693" height="414" />
         </div>

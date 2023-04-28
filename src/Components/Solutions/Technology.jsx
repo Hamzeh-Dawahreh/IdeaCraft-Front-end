@@ -22,7 +22,7 @@ export default function Technology() {
               development costs, intellectual property protection, potential
               markets, and projected revenue.
             </h4>
-            <button>Book now</button>
+            <button className="book-now"> Book now</button>
           </div>
           <img src="./src/Images/Technology-cover.png" />
         </div>

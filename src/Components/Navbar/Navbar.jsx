@@ -42,9 +42,16 @@ export default function Navbar() {
                     <div className="dropdown">
                       <span>Solutions⮛</span>
                       <div className="dropdown-content">
-                        <p>Real-estate</p>
-                        <p>Technology</p>
-                        <p>Manufacturing</p>
+                        <Link className="link" to="/realestate">
+                          <p className="nav-solution">Real-estate</p>
+                        </Link>
+                        <Link className="link" to="/technology">
+                          <p className="nav-solution">Technology</p>
+                        </Link>
+
+                        <Link className="link" to="/manufacturing">
+                          <p className="nav-solution">Manufacturing</p>
+                        </Link>
                       </div>
                     </div>
                   </a>

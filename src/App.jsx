@@ -4,7 +4,7 @@ import Footer from "./Components/Footer/Footer";
 
 import HomePage from "./Components/HomePage/HomePage";
 import Login from "./Components/Register/Login";
-import Signup from "./Components/Register/Signup-user";
+import Signup from "./Components/Register/Signup";
 import RealEstate from "./Components/Solutions/Real-estate";
 import Technology from "./Components/Solutions/Technology";
 import Manufacturing from "./Components/Solutions/Manufacturing";

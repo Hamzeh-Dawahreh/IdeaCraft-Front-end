@@ -45,3 +45,13 @@
   padding: 5px 30px;
   border-radius: 20px;
 }
+.intro .book-now:hover {
+  background-color: rgb(185, 171, 171);
+  color: black;
+  transition-duration: 0.7s;
+}
+.company-book:hover {
+  background-color: rgb(185, 171, 171);
+  color: black;
+  transition-duration: 0.7s;
+}

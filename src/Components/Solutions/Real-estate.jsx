@@ -21,7 +21,7 @@ export default function RealEstate() {
               assessing factors such as location, market demand, construction
               costs, and projected revenue.
             </h4>
-            <button>Book now</button>
+            <button className="book-now">Book now</button>
           </div>
           <img src="./src/Images/real-estatePage.png" />
         </div>
