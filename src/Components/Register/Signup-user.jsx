@@ -18,16 +18,14 @@ export default function Signup() {
             </div>
           </div>
           <div className="userInfo-register">
-            <div className="switch-container">
-              <label className="switch">
-                <input
-                  type="checkbox"
-                  className="hide-checkbox"
-                  onChange={handleToggle}
-                />
-                <span className="slider"></span>
-              </label>
-            </div>
+            <label className="switch">
+              <input
+                type="checkbox"
+                className="hide-checkbox"
+                onChange={handleToggle}
+              />
+              <span className="slider"></span>
+            </label>
             {checked === "off" ? (
               <>
                 <div className="first-last">

@@ -106,9 +106,7 @@
 .first-input {
   width: 8rem;
 }
-.switch-container {
-  /* position: absolute; */
-}
+
 .switch {
   position: relative;
   display: inline-block;
