@@ -63,7 +63,7 @@ export default function Navbar() {
             </div>
             <div className="nav-item Register-Container">
               <li>
-                <Link className="link" to="login">
+                <Link className="link" to="/login">
                   {" "}
                   Join us
                 </Link>

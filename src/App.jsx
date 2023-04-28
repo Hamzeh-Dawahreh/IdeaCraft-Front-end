@@ -1,10 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
+import Footer from "./Components/Footer/Footer";
+
 import HomePage from "./Components/HomePage/HomePage";
 import Login from "./Components/Register/Login";
 import Signup from "./Components/Register/Signup-user";
-import Footer from "./Components/Footer/Footer";
-
+import RealEstate from "./Components/Solutions/Real-estate";
+import Technology from "./Components/Solutions/Technology";
+import Manufacturing from "./Components/Solutions/Manufacturing";
 export default function App() {
   return (
     <>
@@ -16,6 +19,9 @@ export default function App() {
           </Route>
           <Route path="/signup" element={<Signup />} />
           {/* <Route path="*" element={<PageNotFound />} /> */}
+          <Route path="/realestate" element={<RealEstate />} />
+          <Route path="/technology" element={<Technology />} />
+          <Route path="/manufacturing" element={<Manufacturing />} />
         </Routes>
       </Router>
     </>

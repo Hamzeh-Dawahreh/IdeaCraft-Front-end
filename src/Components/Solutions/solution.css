@@ -1,0 +1,47 @@
+.hero-solution {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.hero-solution .intro {
+  width: 30rem;
+}
+.our-companies img {
+  width: 509px;
+  height: 433;
+  border-radius: 30px;
+}
+.hero-solution .intro h6 {
+  color: grey;
+}
+.hero-solution .intro button {
+  background-color: rgb(28, 29, 38);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+.line-2 {
+  border: 2px solid black;
+  width: 100%;
+}
+.our-companies h1 {
+  text-align: center;
+}
+.company-card {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: space-around;
+}
+.info {
+  width: 35rem;
+}
+.company-rating {
+  display: flex;
+  justify-content: space-between;
+}
+.company-book {
+  background-color: #144734;
+  color: white;
+  padding: 5px 30px;
+  border-radius: 20px;
+}
