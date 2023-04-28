@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Playfair+Display:ital@0;1&family=Sono:wght@300;400;500&family=Source+Code+Pro:ital,wght@1,200;1,400&display=swap");
+* {
+  font-family: "Quando";
+  margin: 0;
+  padding: 0;
+}
+.register-body {
+  background-color: rgb(28, 29, 38);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.login-container {
+  width: 1100px;
+  height: 600px;
+  background-color: white;
+  border-radius: 20px;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.left-side {
+  width: 500px;
+  height: 600px;
+  position: relative;
+}
+.left-side img {
+  position: absolute;
+  top: 10rem;
+}
+.circle {
+  width: 100%;
+  background-color: rgb(51, 52, 60);
+  height: 100%;
+  border-start-end-radius: 100%;
+  border-bottom-right-radius: 100%;
+}
+.userInfo-register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50rem;
+  gap: 1rem;
+}
+.input-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.input-icon input {
+  padding-left: 30px;
+}
+
+.input-icon i svg {
+  position: absolute;
+  top: 1px;
+  left: 5px;
+}
+
+input {
+  border: none;
+  border-bottom: 2px solid black;
+}
+.login-with {
+  width: 10rem;
+  display: flex;
+  justify-content: space-between;
+}
+.login-button {
+  width: 15rem;
+  height: 2rem;
+  border-radius: 20px;
+  background-color: rgb(28, 29, 38);
+  color: white;
+}
