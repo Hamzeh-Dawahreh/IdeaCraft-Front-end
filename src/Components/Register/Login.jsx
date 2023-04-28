@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, Outlet } from "react-router-dom";
 
 import "./register.css";
 export default function Login() {
@@ -15,7 +16,11 @@ export default function Login() {
             <img src="./src/Images/login-user.png" />
             <h1>WELCOME</h1>
             <div className="input-icon">
-              <input type="text" placeholder="Username" />
+              <input
+                className="login-input"
+                type="text"
+                placeholder="Username"
+              />
               <i className="bi bi-person-fill">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +36,11 @@ export default function Login() {
             </div>
             <div>
               <div className="input-icon">
-                <input type="password" placeholder="Password" />
+                <input
+                  className="login-input"
+                  type="password"
+                  placeholder="Password"
+                />
                 <i className="bi bi-lock-fill">
                   {" "}
                   <svg
@@ -48,10 +57,13 @@ export default function Login() {
               </div>
             </div>
             <div>
-              <a>
-                Don't have an account?
+              <div>
+                <Link className="link" to="/signup">
+                  {" "}
+                  Don't have an account?
+                </Link>
                 <br /> Forgot password?
-              </a>
+              </div>
             </div>
             <div className="login-with">
               <svg

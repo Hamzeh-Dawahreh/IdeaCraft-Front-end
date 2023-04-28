@@ -9,6 +9,7 @@ export default function HomePage() {
 
   return (
     <div>
+      <Navbar />
       <Hero />
       <Second />
       <Footer />

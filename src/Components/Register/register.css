@@ -43,6 +43,7 @@
   align-items: center;
   width: 50rem;
   gap: 1rem;
+  height: 30rem;
 }
 .input-icon {
   position: relative;
@@ -59,7 +60,7 @@
   left: 5px;
 }
 
-input {
+.login-input {
   border: none;
   border-bottom: 2px solid black;
 }
@@ -74,4 +75,90 @@ input {
   border-radius: 20px;
   background-color: rgb(28, 29, 38);
   color: white;
+}
+.square {
+  width: 32rem;
+  background-color: rgb(28, 29, 38);
+  height: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+.square h3 {
+  position: relative;
+  top: 5rem;
+}
+.signup-label {
+  display: flex;
+  flex-direction: column;
+  color: grey;
+}
+.first-last {
+  display: flex;
+  gap: 4.1rem;
+}
+.signup-input::placeholder {
+  padding-left: 7px;
+}
+.signup-input {
+  width: 20rem;
+}
+.first-input {
+  width: 8rem;
+}
+.switch-container {
+  /* position: absolute; */
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 8rem;
+  height: 34px;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  color: white;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 2.2rem;
+  width: 5rem;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+  transition: 0.4s;
+  content: "user";
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgb(228, 76, 101);
+  border-radius: 20px;
+}
+
+input:checked + .slider:before {
+  content: "company";
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(3rem);
+}
+.hide-checkbox {
+  visibility: hidden;
 }
