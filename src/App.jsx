@@ -8,6 +8,7 @@ import Signup from "./Components/Register/Signup";
 import RealEstate from "./Components/Solutions/Real-estate";
 import Technology from "./Components/Solutions/Technology";
 import Manufacturing from "./Components/Solutions/Manufacturing";
+import CompanyProfile from "./Components/Profile/CompanyProfile";
 export default function App() {
   return (
     <>
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/realestate" element={<RealEstate />} />
           <Route path="/technology" element={<Technology />} />
           <Route path="/manufacturing" element={<Manufacturing />} />
+          <Route path="/profile" element={<CompanyProfile />} />
         </Routes>
       </Router>
     </>

@@ -10,12 +10,14 @@ export default function Navbar() {
         <nav className="navbar navbar-expand-lg navbar-dark custom-nav pe-3">
           <a className="navbar-brand" href="index.html">
             <div className="logo-container">
-              <img
-                src="./src/Images/logo.png"
-                alt="logo"
-                width="80"
-                height="58"
-              />
+              <Link to="/" className="link">
+                <img
+                  src="./src/Images/logo.png"
+                  alt="logo"
+                  width="80"
+                  height="58"
+                />
+              </Link>
             </div>
           </a>
           <button
@@ -70,7 +72,7 @@ export default function Navbar() {
             </div>
             <div className="nav-item Register-Container">
               <li>
-                <Link className="link" to="/login">
+                <Link className="link" target="_blank" to="/login">
                   {" "}
                   Join us
                 </Link>
