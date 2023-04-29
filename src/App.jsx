@@ -9,6 +9,9 @@ import RealEstate from "./Components/Solutions/Real-estate";
 import Technology from "./Components/Solutions/Technology";
 import Manufacturing from "./Components/Solutions/Manufacturing";
 import CompanyProfile from "./Components/Profile/CompanyProfile";
+import UserProfile from "./Components/Profile/UserProfile";
+import Pricing from "./Components/Pricing/Pricing";
+import Payment from "./Components/Payment/Payment";
 export default function App() {
   return (
     <>
@@ -23,7 +26,10 @@ export default function App() {
           <Route path="/realestate" element={<RealEstate />} />
           <Route path="/technology" element={<Technology />} />
           <Route path="/manufacturing" element={<Manufacturing />} />
-          <Route path="/profile" element={<CompanyProfile />} />
+          <Route path="/companyprofile" element={<CompanyProfile />} />
+          <Route path="/userprofile" element={<UserProfile />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/payment" element={<Payment />} />
         </Routes>
       </Router>
     </>

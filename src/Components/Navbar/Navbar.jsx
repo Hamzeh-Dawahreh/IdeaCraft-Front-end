@@ -59,9 +59,9 @@ export default function Navbar() {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link me-3" href="about.html">
+                  <Link className="link" to="/pricing">
                     Pricing
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link me-3" href="Contact us.html">

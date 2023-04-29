@@ -22,14 +22,16 @@ export default function Manufacturing() {
               costs, market demand, supply chain logistics, and potential
               profitability.
             </h4>
-            <button className="book-now">Book now</button>
+            <button className="book-now first animate__animated animate__pulse animate__infinite">
+              <a href="#booking"> Book now</a>
+            </button>
           </div>
           <img src="./src/Images/bg3.png" width="693" height="414" />
         </div>
         <br />
         <br />
         <div className="our-companies">
-          <h1>Our Companies</h1>
+          <h1 id="booking">Our Companies</h1>
           <div className="line-2"></div>
 
           <div className="company-card">

@@ -21,14 +21,16 @@ export default function RealEstate() {
               assessing factors such as location, market demand, construction
               costs, and projected revenue.
             </h4>
-            <button className="book-now">Book now</button>
+            <button className="book-now first animate__animated animate__pulse animate__infinite">
+              <a href="#booking"> Book now</a>
+            </button>
           </div>
           <img src="./src/Images/real-estatePage.png" />
         </div>
         <br />
         <br />
         <div className="our-companies">
-          <h1>Our Companies</h1>
+          <h1 id="booking">Our Companies</h1>
           <div className="line-2"></div>
 
           <div className="company-card">

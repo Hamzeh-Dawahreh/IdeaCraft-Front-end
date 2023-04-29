@@ -22,14 +22,17 @@ export default function Technology() {
               development costs, intellectual property protection, potential
               markets, and projected revenue.
             </h4>
-            <button className="book-now"> Book now</button>
+            <button className="book-now first animate__animated animate__pulse animate__infinite">
+              {" "}
+              <a href="#booking"> Book now</a>
+            </button>
           </div>
           <img src="./src/Images/Technology-cover.png" />
         </div>
         <br />
         <br />
         <div className="our-companies">
-          <h1>Our Companies</h1>
+          <h1 id="booking">Our Companies</h1>
           <div className="line-2"></div>
 
           <div className="company-card">

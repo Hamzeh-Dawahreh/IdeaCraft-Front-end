@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Playfair+Display:ital@0;1&family=Sono:wght@300;400;500&family=Source+Code+Pro:ital,wght@1,200;1,400&display=swap");
+h1,
+h3 {
+  text-align: center;
+}
+.pricing-card-company,
+.pricing-card-user {
+  background-color: black;
+  color: white;
+  width: 25rem;
+  height: 36.25rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.pricing-card-user {
+  width: 18.75rem;
+  height: 28.75rem;
+}
+.start-button {
+  background-color: #2266fd;
+  color: white;
+  padding: 5px 25px;
+  border-radius: 20px;
+}
+.cards-container {
+  display: flex;
+  justify-content: center;
+  margin: 10rem 0;
+}
+.pricing-card-company ul li {
+  margin: 20px auto;
+}
+.discount {
+  position: absolute;
+  height: 20px;
+  width: 100%;
+  background-image: linear-gradient(rgb(255, 215, 0), black);
+  display: flex;
+  justify-content: center;
+  top: 0;
+  font-family: "Inter", sans-serif;
+  font-family: "Playfair Display", serif;
+}
+.pricing-card h3,
+h4 {
+  margin-top: 30px;
+}
+.card-description {
+  width: 80%;
+  text-align: center;
+}

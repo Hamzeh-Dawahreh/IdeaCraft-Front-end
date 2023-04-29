@@ -50,6 +50,10 @@
   color: black;
   transition-duration: 0.7s;
 }
+.book-now a {
+  text-decoration: none;
+  color: white;
+}
 .company-book:hover {
   background-color: rgb(185, 171, 171);
   color: black;

@@ -77,7 +77,15 @@ td,
 tr {
   padding: 20px;
   text-align: center;
+  color: grey;
+}
+.current-clients table th,
+.previous-clients table th {
+  color: black;
 }
 .previous-clients {
   margin-bottom: 10rem;
+}
+.clients h3 {
+  color: black;
 }
