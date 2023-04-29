@@ -42,3 +42,38 @@ h6 {
   width: 17rem;
   height: 4.125;
 }
+.submit-payment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2266fd;
+  color: white;
+  padding: 10px;
+  width: 14rem;
+  height: 3rem;
+  border-radius: 20px;
+  font-size: 20px;
+}
+.payment-button-container {
+  margin-top: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.input-icon i img {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 3px;
+  right: 5px;
+}
+.submit-payment:hover {
+  background-color: white;
+  color: black;
+  transition-duration: 1s;
+}

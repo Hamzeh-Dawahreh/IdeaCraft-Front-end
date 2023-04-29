@@ -16,16 +16,42 @@ export default function Payment() {
         <hr />
 
         <div className="info-container">
-          <input type="text" placeholder="First Name" />
-          <input type="text" placeholder="Last Name" />
-          <input type="text" placeholder="Card Number" />
-          <input type="text" placeholder="CVV" />
+          <div className="input-icon">
+            <input type="text" placeholder="First Name" />
+            <i className="bi bi-check-square">
+              <img src="./src/Images/check.png" />
+            </i>
+          </div>
+          <div className="input-icon">
+            <input type="text" placeholder="Last Name" />
+            <i className="bi bi-check-square">
+              <img src="./src/Images/check.png" />
+            </i>
+          </div>
+          <div className="input-icon">
+            <input type="text" placeholder="Card Number" />
+            <i className="bi bi-check-square">
+              <img src="./src/Images/check.png" />
+            </i>
+          </div>
+          <div className="input-icon">
+            <input type="text" placeholder="CVV" />
+            <i className="bi bi-check-square">
+              <img src="./src/Images/check.png" />
+            </i>
+          </div>
+
           <img src="./src/Images/payment-methods.png" />
 
-          <input type="text" placeholder="MM/YY" />
+          <div className="input-icon">
+            <input type="text" placeholder="MM/YY" />
+            <i className="bi bi-check-square">
+              <img src="./src/Images/check.png" />
+            </i>
+          </div>
         </div>
-        <div>
-          <button>Submit Paymen</button>
+        <div className="payment-button-container">
+          <button className="submit-payment">Submit payment</button>
         </div>
       </div>
       <Footer />
