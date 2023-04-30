@@ -1,10 +1,26 @@
 import React from "react";
 import "./register.css";
 import { useState } from "react";
+import Validation from "./Validation";
 export default function Signup() {
   const [checked, setChecked] = useState("off");
+  const [formValues, setFormValues] = useState("");
+  const [isSubmit, setIsSubmit] = React.useState(false);
+
+  const [formErrors, setFormErrors] = useState();
+
   function handleToggle() {
     checked === "off" ? setChecked("on") : setChecked("off");
+  }
+  function handleChange(e) {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    setFormErrors;
+    setFormErrors(Validation(formValues));
+    setIsSubmit(true);
+    console.log(formValues);
   }
   return (
     <>
@@ -23,6 +39,7 @@ export default function Signup() {
                 type="checkbox"
                 className="hide-checkbox"
                 onChange={handleToggle}
+                required
               />
               <span className="slider"></span>
             </label>
@@ -35,6 +52,9 @@ export default function Signup() {
                       type="text"
                       placeholder="Hamzeh"
                       className="signup-input first-input"
+                      name="FirstName"
+                      onChange={handleChange}
+                      required
                     />
                   </label>
                   <label htmlFor="LAST NAME" className="signup-label">
@@ -43,6 +63,9 @@ export default function Signup() {
                       type="text"
                       placeholder="Dawahreh"
                       className="signup-input first-input"
+                      name="LastName"
+                      onChange={handleChange}
+                      required
                     />
                   </label>
                 </div>
@@ -52,6 +75,9 @@ export default function Signup() {
                     type="text"
                     placeholder="Hamzeh_Da"
                     className="signup-input"
+                    name="Username"
+                    onChange={handleChange}
+                    required
                   />
                 </label>
                 <label htmlFor="EMAIL ADDRESS" className="signup-label">
@@ -60,6 +86,9 @@ export default function Signup() {
                     type="text"
                     placeholder="hmzhdawahreh@gmail.com"
                     className="signup-input"
+                    name="email"
+                    onChange={handleChange}
+                    required
                   />
                 </label>
                 <label htmlFor="PASSWORD" className="signup-label">
@@ -68,6 +97,9 @@ export default function Signup() {
                     type="password"
                     placeholder="*******"
                     className="signup-input"
+                    name="password"
+                    onChange={handleChange}
+                    required
                   />
                 </label>
               </>
@@ -148,7 +180,9 @@ export default function Signup() {
               </svg>
             </div>
 
-            <button className="login-button">Sign up</button>
+            <button className="login-button" onClick={handleSubmit}>
+              Sign up
+            </button>
           </div>
         </div>
       </div>

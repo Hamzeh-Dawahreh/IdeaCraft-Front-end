@@ -1,30 +1,20 @@
-export default function Validation() {
-  if (validateUsername && validatePassword && validateEmail && validatePhone) {
-    return;
-  } else {
-  }
-}
-
-// Validate username without spaces
-function validateUsername(username) {
-  return !/\s/.test(username);
-}
-
-// Validate password more than 8 characters, with at least 1 number, uppercase, and special characters
-function validatePassword(password) {
-  const hasNumber = /[0-9]/.test(password);
-  const hasUpperCase = /[A-Z]/.test(password);
-  const hasSpecial = /[^A-Za-z0-9]/.test(password);
-  return password.length >= 8 && hasNumber && hasUpperCase && hasSpecial;
-}
-
-// Validate email format
-function validateEmail(email) {
+export default function Validation(data) {
+  const errors = {};
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
-// Validate phone number 10 digits starts with 07
-function validatePhone(phone) {
-  const phoneRegex = /^07\d{8}$/;
-  return phoneRegex.test(phone);
+  const passwordRegex = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/;
+
+  if (!data.password) {
+    errors.password = "Password Field is required";
+    console.log("Password is required");
+  } else if (!passwordRegex.test(data.password)) {
+    errors.password =
+      "Password Field must  contain more than 8 characters, with at least 1 number, uppercase, and special characters ";
+  }
+
+  if (!data.email) {
+    errors.email = "Country email Field is required";
+  } else if (!emailRegex.test(data.email)) {
+    errors.email = "Country email Field must contains only 2 Capital letters ";
+  }
+  return errors;
 }
