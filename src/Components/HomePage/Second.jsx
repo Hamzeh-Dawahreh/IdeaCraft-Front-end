@@ -102,7 +102,7 @@ export default function Second() {
           </div>
         </div>
       </div>
-      <h2 className="home-title mt-5">
+      <h2 className="home-title mt-5 " id="importance">
         How Feasibility Studies Can Help Your Project Succeed
       </h2>
       <div className="line-2"></div>

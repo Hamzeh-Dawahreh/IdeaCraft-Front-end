@@ -7,7 +7,7 @@ export default function Hero() {
         className="carousel slide carousel-fade"
         data-bs-ride="carousel"
       >
-        {/* <div className="carousel-indicators">
+        <div className="carousel-indicators">
           <button
             type="button"
             data-bs-target="#carouselExampleIndicators"
@@ -28,7 +28,7 @@ export default function Hero() {
             data-bs-slide-to="2"
             aria-label="Slide 3"
           ></button>
-        </div> */}
+        </div>
         <div className="carousel-inner">
           <div className="line-1">
             <hr />
@@ -40,11 +40,16 @@ export default function Hero() {
               alt="Image"
             />
             <div className="hero-article-1 ">
-              <p className="first-p">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              </p>
+              <p className="first-p"> DID YOU KNOW ? </p>
               <p className="second-p">
-                Omnis repudiandae necessitatibus impedit deleniti. Learn more →
+                Feasibility studies are crucial to determining the success of a
+                project, according to 58% of real estate professionals.
+                <div className=" first animate__animated animate__headShake animate__infinite">
+                  <a href="#importance">
+                    {" "}
+                    Read more <span className="arrow-green ">→ </span>
+                  </a>
+                </div>
               </p>
             </div>
           </div>
@@ -55,10 +60,17 @@ export default function Hero() {
               alt="Image"
             />
             <div className="hero-article-2">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              <br />
-              <br />
-              Omnis repudiandae necessitatibus impedit deleniti. Learn more →
+              <p className="first-p">DID YOU KNOW ? </p>{" "}
+              <p className="second-p">
+                Feasibility studies increase success rates by 60% in technology.{" "}
+                <br />{" "}
+                <div className=" first animate__animated animate__headShake animate__infinite">
+                  <a href="#importance">
+                    {" "}
+                    Read more <span className="arrow-green ">→ </span>
+                  </a>
+                </div>
+              </p>{" "}
             </div>
           </div>
           <div className="carousel-item" data-bs-interval="3000">
@@ -68,10 +80,17 @@ export default function Hero() {
               alt="Image"
             />
             <div className="hero-article-3">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              <br />
-              <br />
-              Omnis repudiandae necessitatibus impedit deleniti. Learn more →
+              <p className="first-p">DID YOU KNOW ? </p>{" "}
+              <p className="second-p">
+                75% of manufacturers believe that conducting a feasibility study
+                is essential to project success. <br />{" "}
+                <div className=" first animate__animated animate__headShake animate__infinite">
+                  <a href="#importance">
+                    {" "}
+                    Read more <span className="arrow-green ">→ </span>
+                  </a>
+                </div>
+              </p>{" "}
             </div>
           </div>
         </div>

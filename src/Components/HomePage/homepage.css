@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Playfair+Display:ital@0;1&family=Sono:wght@300;400;500&family=Source+Code+Pro:ital,wght@1,200;1,400&display=swap");
 .Hero img {
   height: 41.5rem;
 }
@@ -29,15 +30,36 @@
 .hero-article-3 {
   position: absolute;
   width: 20rem;
-  height: 24rem;
+  height: 22rem;
   background-color: rgba(79, 76, 76, 0.593);
   color: white;
   left: 15rem;
   top: 10rem;
   padding: 10px;
-  font-size: 30px;
   backdrop-filter: blur(4px);
 }
+.hero-article-2 {
+  height: 18rem;
+}
+.hero-article-3 {
+  height: 20rem;
+}
+.first-p {
+  font-size: 50px;
+}
+.second-p {
+  font-size: 20px;
+  margin-top: 1.8rem;
+}
+.arrow-green {
+  color: #17e58d;
+  cursor: pointer;
+}
+.second-p a {
+  text-decoration: none;
+  color: white;
+}
+
 .hero-article-2 {
   left: 37rem;
 }
