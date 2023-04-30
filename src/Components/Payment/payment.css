@@ -9,10 +9,10 @@
   flex-direction: column;
   justify-items: center;
 }
-h5 {
+.total-payment h5 {
   text-align: start;
 }
-h6 {
+.total-payment h6 {
   text-align: end;
 }
 .total-payment {

@@ -19,7 +19,7 @@ export default function Pricing() {
         <br />
         <h3>For Companies</h3>
         <hr />
-        <div className="cards-container">
+        <div className="pricing-cards-container">
           <div className="pricing-card-company">
             <div>
               <h3>1 Month</h3>
@@ -104,7 +104,7 @@ export default function Pricing() {
         <h3>For Users</h3>
 
         <hr />
-        <div className="cards-container">
+        <div className="pricing-cards-container">
           <div className="pricing-card-user">
             <div>
               <h3>1 Month</h3>

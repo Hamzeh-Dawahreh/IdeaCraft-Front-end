@@ -12,6 +12,7 @@ import CompanyProfile from "./Components/Profile/CompanyProfile";
 import UserProfile from "./Components/Profile/UserProfile";
 import Pricing from "./Components/Pricing/Pricing";
 import Payment from "./Components/Payment/Payment";
+import ContactUs from "./Components/Contact Us/ContactUs";
 export default function App() {
   return (
     <>
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/contactus" element={<ContactUs />} />
         </Routes>
       </Router>
     </>

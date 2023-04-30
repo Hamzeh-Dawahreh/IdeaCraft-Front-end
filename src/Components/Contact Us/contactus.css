@@ -1,0 +1,65 @@
+.contact-us-body .get-in-touch {
+  height: 31.25rem;
+  width: 100%;
+  background-color: #005051;
+  color: white;
+  margin-top: 5rem;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+.get-in-touch h1 {
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+.get-in-touch-info {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.location,
+.email,
+.phone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.message-form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 40rem;
+}
+.message-us {
+  width: 40rem;
+  align-self: flex-start;
+  margin-top: 5rem;
+}
+.leave-a-message {
+  width: 40rem;
+}
+.message-us h1 {
+  color: #003164;
+}
+.message-lable {
+  display: flex;
+  flex-direction: column;
+  color: grey;
+}
+
+.leave-a-message input {
+  width: 15em;
+}
+.submit-message {
+  margin-top: 2rem;
+  background-color: #e44c65;
+  color: white;
+  padding: 5px 13px;
+  border: none;
+}

@@ -31,7 +31,7 @@
 
 .Register-Container {
   position: relative;
-  left: 50rem;
+  left: 57rem;
   text-decoration: none;
   color: white;
   background-color: rgb(228, 76, 101);
@@ -45,7 +45,7 @@
 }
 .Items-Container {
   position: relative;
-  left: 25rem;
+  left: 29rem;
 }
 .navbar li a,
 .navbar .navbar-brand {

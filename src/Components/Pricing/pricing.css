@@ -26,10 +26,11 @@ h3 {
   padding: 5px 25px;
   border-radius: 20px;
 }
-.cards-container {
+.pricing-cards-container {
   display: flex;
   justify-content: center;
   margin: 10rem 0;
+  gap: 100px;
 }
 .pricing-card-company ul li {
   margin: 20px auto;

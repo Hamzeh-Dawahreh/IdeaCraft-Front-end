@@ -2,9 +2,9 @@ import React from "react";
 import "./register.css";
 import { useState } from "react";
 export default function Signup() {
-  const [checked, toggle] = useState("off");
+  const [checked, setChecked] = useState("off");
   function handleToggle() {
-    checked === "off" ? toggle("on") : toggle("off");
+    checked === "off" ? setChecked("on") : setChecked("off");
   }
   return (
     <>
@@ -155,3 +155,45 @@ export default function Signup() {
     </>
   );
 }
+// // Validate username without spaces
+// function validateUsername(username)
+//  {
+//   return !/\s/.test(username);
+// }
+
+// // Validate password more than 8 characters, with at least 1 number, uppercase, and special characters
+// function validatePassword(password)
+//  {
+//   const hasNumber = /[0-9]/.test(password);
+//   const hasUpperCase = /[A-Z]/.test(password);
+//   const hasSpecial = /[^A-Za-z0-9]/.test(password);
+//   return password.length >= 8 && hasNumber && hasUpperCase && hasSpecial;
+// }
+
+// // Validate email format
+// function validateEmail(email)
+// {
+//   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//   return emailRegex.test(email);
+// }
+
+// function isEmailTaken(email)
+// {
+//   // Replace with your own code to search for email in database or storage
+//   const users = JSON.parse(localStorage.getItem("users") || "[]");
+//   return users.some((user) => user.email === email);
+// }
+
+// // Validate phone number 10 digits starts with 07
+// function validatePhone(phone)
+// {
+//   const phoneRegex = /^07\d{8}$/;
+//   return phoneRegex.test(phone);
+// }
+
+// // Check if username exists in local storage
+// function isUsernameTaken(username)
+//  {
+//   const users = JSON.parse(localStorage.getItem("users") || "[]");
+//   return users.some((user) => user.username === username);
+// }
