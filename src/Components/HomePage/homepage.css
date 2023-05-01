@@ -91,22 +91,15 @@
   width: 100%;
 }
 .cards-container {
-  padding-left: 4rem;
   margin-top: 5rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 100px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  justify-items: center;
+  gap: 100px 0px;
 }
-.card-container {
-  width: 522px;
-  height: 425px;
-  border: 2px solid;
-}
-.card-contaier img {
-  width: 520px;
-  height: 257px;
-}
+
 .company-description {
   padding: 10px;
   margin: 0;
@@ -114,7 +107,8 @@
 .rating-category {
   display: flex;
   justify-content: space-between;
-  padding: 5px;
+  padding: 8px;
+  margin-top: 1rem;
 }
 .rating-category p {
   font-weight: bold;
@@ -124,6 +118,11 @@
 }
 .last-row {
   height: 450px;
+}
+.card-container {
+  width: 350px;
+  height: 400px;
+  border: 2px solid;
 }
 .importance-container {
   display: flex;

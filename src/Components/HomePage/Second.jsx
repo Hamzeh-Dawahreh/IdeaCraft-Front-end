@@ -22,7 +22,12 @@ export default function Second() {
       <div className="line-2"></div>
       <div className="cards-container">
         <div className="card-container">
-          <img src="/src/Images/CBRE.png" alt="image" />
+          <img
+            src="/src/Images/CBRE.png"
+            alt="image"
+            width={350}
+            className="mt-4"
+          />
           <p className="company-description">
             CBRE Group, Inc. is an American commercial real estate services and
             investment firm. The abbreviation CBRE stands for Coldwell Banker
@@ -38,7 +43,12 @@ export default function Second() {
 
         <div className="card-container">
           {" "}
-          <img src="/src/Images/BDO.png" alt="image" />
+          <img
+            src="/src/Images/BDO.png"
+            alt="image"
+            width={350}
+            className="mt-4"
+          />
           <p className="company-description">
             BDO USA, LLP is the United States member firm of BDO International,
             a global accounting network. The firm adopted its current moniker in
@@ -52,11 +62,12 @@ export default function Second() {
         </div>
         <div className="card-container second-row">
           {" "}
-          <img src="/src/Images/Deloitte.png" alt="image" />
+          <img src="/src/Images/Deloitte.png" alt="image" width={350} />
           <p className="company-description">
             Deloitte Touche Tohmatsu Limited, commonly referred to as Deloitte,
             is an international professional services network headquartered in
-            London England.
+            London England.international professional services network
+            headquartered in London England.
           </p>
           <div className="rating-category">
             <Rating name="read-only" value="5" readOnly />
@@ -65,9 +76,11 @@ export default function Second() {
         </div>
         <div className="card-container second-row">
           {" "}
-          <img src="/src/Images/KPMG.png" alt="image" />
+          <img src="/src/Images/KPMG.png" alt="image" width={350} />
           <p className="company-description">
             KPMG International Limited is a multinational professional services
+            network, and one of the Big Four accounting organizations. KPMG
+            International Limited is a multinational professional services
             network, and one of the Big Four accounting organizations.
           </p>
           <div className="rating-category">
@@ -76,12 +89,12 @@ export default function Second() {
           </div>
         </div>
         <div className="card-container last-row">
-          <img src="/src/Images/LEK.png" alt="image" />
+          <img src="/src/Images/LEK.png" alt="image" width={350} />
           <p className="company-description">
             L.E.K. Consulting is a global strategy consulting firm based in
             London and Boston. Founded in 1983 by three partners from Bain &
             Company, L.E.K. focuses on corporate strategy, marketing and sales,
-            mergers and acquisitions, and operations.
+            mergers and acquisitions.
           </p>
           <div className="rating-category">
             <Rating name="read-only" value="5" readOnly />
@@ -90,7 +103,12 @@ export default function Second() {
         </div>
         <div className="card-container last-row">
           {" "}
-          <img src="/src/Images/Navigant.png" alt="image" />
+          <img
+            src="/src/Images/Navigant.png"
+            alt="image"
+            width={350}
+            className="mt-3"
+          />
           <p className="company-description">
             Navigant Consulting, Inc. was an American management consultancy
             firm. It had offices in Asia, Europe and North America. The stock
@@ -102,6 +120,10 @@ export default function Second() {
           </div>
         </div>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
       <h2 className="home-title mt-5 " id="importance">
         How Feasibility Studies Can Help Your Project Succeed
       </h2>

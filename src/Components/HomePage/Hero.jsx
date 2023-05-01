@@ -22,6 +22,7 @@ export default function Hero() {
             data-bs-slide-to="1"
             aria-label="Slide 2"
           ></button>
+
           <button
             type="button"
             data-bs-target="#carouselExampleIndicators"
@@ -94,7 +95,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        {/* <button
+        <button
           className="carousel-control-prev"
           type="button"
           data-bs-target="#carouselExampleIndicators"
@@ -112,12 +113,12 @@ export default function Hero() {
           data-bs-target="#carouselExampleIndicators"
           data-bs-slide="next"
         >
-          <span
+          {/* <span
             className="carousel-control-next-icon"
             aria-hidden="true"
-          ></span>
+          ></span> */}
           <span className="visually-hidden">Next</span>
-        </button> */}
+        </button>
       </div>
     </div>
   );

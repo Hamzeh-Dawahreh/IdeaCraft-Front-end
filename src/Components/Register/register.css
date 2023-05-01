@@ -31,7 +31,7 @@
   top: 10rem;
 }
 .circle {
-  width: 100%;
+  width: 90%;
   background-color: rgb(51, 52, 60);
   height: 100%;
   border-start-end-radius: 100%;
@@ -62,7 +62,16 @@
 
 .login-input {
   border: none;
+  /* border-bottom: 2px solid red; */
+}
+.input-icon input {
   border-bottom: 2px solid black;
+}
+
+.input-icon input:focus {
+  outline: none !important;
+
+  border-bottom: 2px solid rgb(56, 158, 170);
 }
 .login-with {
   width: 10rem;
@@ -159,4 +168,12 @@ input:checked + .slider:before {
 }
 .hide-checkbox {
   visibility: hidden;
+}
+.invalid {
+  font-size: 10px;
+  color: red;
+  width: 9rem;
+}
+.invalid-1 {
+  width: 20rem;
 }

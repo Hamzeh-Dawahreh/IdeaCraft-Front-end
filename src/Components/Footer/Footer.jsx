@@ -32,7 +32,7 @@ export default function Footer() {
             <li>Branding</li>
           </ul>
         </div>
-        <div className="support">
+        <div className="support mb-5">
           <span>Support</span>
           <ul>
             <li>Support Request</li>

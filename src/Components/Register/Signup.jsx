@@ -5,7 +5,6 @@ import Validation from "./Validation";
 export default function Signup() {
   const [checked, setChecked] = useState("off");
   const [formValues, setFormValues] = useState("");
-  const [isSubmit, setIsSubmit] = React.useState(false);
 
   const [formErrors, setFormErrors] = useState();
 
@@ -15,13 +14,14 @@ export default function Signup() {
   function handleChange(e) {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   }
-  function handleSubmit(e) {
+  function handleClick(e) {
     e.preventDefault();
-    setFormErrors;
     setFormErrors(Validation(formValues));
-    setIsSubmit(true);
     console.log(formValues);
   }
+  // const wrongStyle = {
+  //   borderColor: "red",
+  // };
   return (
     <>
       <div className="register-body">
@@ -55,7 +55,13 @@ export default function Signup() {
                       name="FirstName"
                       onChange={handleChange}
                       required
+                      // style={wrongStyle}
                     />
+                    {formErrors && (
+                      <>
+                        <p className="invalid">{formErrors.FirstName}</p>
+                      </>
+                    )}
                   </label>
                   <label htmlFor="LAST NAME" className="signup-label">
                     LAST NAME
@@ -67,6 +73,9 @@ export default function Signup() {
                       onChange={handleChange}
                       required
                     />
+                    {formErrors && (
+                      <p className="invalid">{formErrors.LastName}</p>
+                    )}
                   </label>
                 </div>
                 <label htmlFor="USERNAME" className="signup-label">
@@ -79,6 +88,9 @@ export default function Signup() {
                     onChange={handleChange}
                     required
                   />
+                  {formErrors && (
+                    <p className="invalid invalid-1">{formErrors.Username}</p>
+                  )}
                 </label>
                 <label htmlFor="EMAIL ADDRESS" className="signup-label">
                   EMAIL ADDRESS
@@ -90,6 +102,9 @@ export default function Signup() {
                     onChange={handleChange}
                     required
                   />
+                  {formErrors && (
+                    <p className="invalid invalid-1">{formErrors.email}</p>
+                  )}
                 </label>
                 <label htmlFor="PASSWORD" className="signup-label">
                   PASSWORD
@@ -101,6 +116,9 @@ export default function Signup() {
                     onChange={handleChange}
                     required
                   />
+                  {formErrors && (
+                    <p className="invalid invalid-1">{formErrors.password}</p>
+                  )}
                 </label>
               </>
             ) : (
@@ -110,8 +128,16 @@ export default function Signup() {
                   <input
                     type="text"
                     placeholder="Example co."
+                    name="CompanyName"
                     className="signup-input "
+                    onChange={handleChange}
+                    required
                   />
+                  {formErrors && (
+                    <>
+                      <p className="invalid">{formErrors.CompanyName}</p>
+                    </>
+                  )}
                 </label>
                 <label htmlFor="LAST NAME" className="signup-label">
                   Industry/Category{" "}
@@ -119,7 +145,15 @@ export default function Signup() {
                     type="text"
                     placeholder="Technology.."
                     className="signup-input "
+                    name="Industry"
+                    onChange={handleChange}
+                    required
                   />
+                  {formErrors && (
+                    <>
+                      <p className="invalid">{formErrors.Industry}</p>
+                    </>
+                  )}
                 </label>
                 <label htmlFor="USERNAME" className="signup-label">
                   USERNAME
@@ -127,7 +161,15 @@ export default function Signup() {
                     type="text"
                     placeholder="Example-co."
                     className="signup-input"
+                    name="Username"
+                    onChange={handleChange}
+                    required
                   />
+                  {formErrors && (
+                    <>
+                      <p className="invalid">{formErrors.Username}</p>
+                    </>
+                  )}
                 </label>
                 <label htmlFor="EMAIL ADDRESS" className="signup-label">
                   EMAIL ADDRESS
@@ -135,7 +177,15 @@ export default function Signup() {
                     type="text"
                     placeholder="Example-co.@gmail.com"
                     className="signup-input"
+                    name="email"
+                    onChange={handleChange}
+                    required
                   />
+                  {formErrors && (
+                    <>
+                      <p className="invalid">{formErrors.email}</p>
+                    </>
+                  )}
                 </label>
                 <label htmlFor="PASSWORD" className="signup-label">
                   PASSWORD
@@ -143,7 +193,15 @@ export default function Signup() {
                     type="password"
                     placeholder="*******"
                     className="signup-input"
+                    name="password"
+                    onChange={handleChange}
+                    required
                   />
+                  {formErrors && (
+                    <>
+                      <p className="invalid">{formErrors.password}</p>
+                    </>
+                  )}
                 </label>
               </>
             )}
@@ -180,7 +238,7 @@ export default function Signup() {
               </svg>
             </div>
 
-            <button className="login-button" onClick={handleSubmit}>
+            <button className="login-button" onClick={handleClick}>
               Sign up
             </button>
           </div>
@@ -189,45 +247,3 @@ export default function Signup() {
     </>
   );
 }
-// // Validate username without spaces
-// function validateUsername(username)
-//  {
-//   return !/\s/.test(username);
-// }
-
-// // Validate password more than 8 characters, with at least 1 number, uppercase, and special characters
-// function validatePassword(password)
-//  {
-//   const hasNumber = /[0-9]/.test(password);
-//   const hasUpperCase = /[A-Z]/.test(password);
-//   const hasSpecial = /[^A-Za-z0-9]/.test(password);
-//   return password.length >= 8 && hasNumber && hasUpperCase && hasSpecial;
-// }
-
-// // Validate email format
-// function validateEmail(email)
-// {
-//   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//   return emailRegex.test(email);
-// }
-
-// function isEmailTaken(email)
-// {
-//   // Replace with your own code to search for email in database or storage
-//   const users = JSON.parse(localStorage.getItem("users") || "[]");
-//   return users.some((user) => user.email === email);
-// }
-
-// // Validate phone number 10 digits starts with 07
-// function validatePhone(phone)
-// {
-//   const phoneRegex = /^07\d{8}$/;
-//   return phoneRegex.test(phone);
-// }
-
-// // Check if username exists in local storage
-// function isUsernameTaken(username)
-//  {
-//   const users = JSON.parse(localStorage.getItem("users") || "[]");
-//   return users.some((user) => user.username === username);
-// }
