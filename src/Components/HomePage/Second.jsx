@@ -22,19 +22,14 @@ export default function Second() {
       <div className="line-2"></div>
       <div className="cards-container">
         <div className="card-container">
-          <img
-            src="/src/Images/CBRE.png"
-            alt="image"
-            width={350}
-            className="mt-4"
-          />
-          <p className="company-description">
+          <img src="/src/Images/CBRE.png" alt="image" width={350} />
+          <p className="company-description mt-2">
             CBRE Group, Inc. is an American commercial real estate services and
             investment firm. The abbreviation CBRE stands for Coldwell Banker
             Richard Ellis. It is the world's largest commercial real estate
             services and investment firm.
           </p>
-          <div className="rating-category">
+          <div className="rating-category mt-4">
             <Rating name="read-only" value="3" readOnly />
 
             <p>Category - Real Estate</p>
@@ -43,19 +38,14 @@ export default function Second() {
 
         <div className="card-container">
           {" "}
-          <img
-            src="/src/Images/BDO.png"
-            alt="image"
-            width={350}
-            className="mt-4"
-          />
-          <p className="company-description">
+          <img src="/src/Images/BDO.png" alt="image" width={350} />
+          <p className="company-description mt-2">
             BDO USA, LLP is the United States member firm of BDO International,
             a global accounting network. The firm adopted its current moniker in
             1973, each letter corresponding to a surname of an original founder
             of the corporation: Binder, Dijker.
           </p>
-          <div className="rating-category">
+          <div className="rating-category mt-4">
             <Rating name="read-only" value="3" readOnly />
             <p>Category - Real Estate</p>
           </div>
@@ -103,13 +93,8 @@ export default function Second() {
         </div>
         <div className="card-container last-row">
           {" "}
-          <img
-            src="/src/Images/Navigant.png"
-            alt="image"
-            width={350}
-            className="mt-3"
-          />
-          <p className="company-description">
+          <img src="/src/Images/Navigant.png" alt="image" width={350} />
+          <p className="company-description mt-2">
             Navigant Consulting, Inc. was an American management consultancy
             firm. It had offices in Asia, Europe and North America. The stock
             was a component of the S&P 600 index.
