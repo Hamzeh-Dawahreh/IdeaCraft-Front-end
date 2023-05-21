@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { Rating } from "@mui/material";
-
+import RequestDialog from "./Request-Dialog";
 import "./Profile.css";
 export default function CompanyProfile() {
   return (
@@ -42,29 +42,38 @@ export default function CompanyProfile() {
         <hr />
         <div className="clients">
           <div className="current-clients">
-            <h3>CURRENT CLIENTS</h3>
-
+            <h3 className="text-2xl">CURRENT CLIENTS</h3>
+            <br />
             <table>
               <tr>
                 <th>User</th>
                 <th>Email</th>
                 <th>Project</th>
                 <th>Price</th>
-                <th>Deadline</th>
+                <th>Status</th>
               </tr>
-              <tr>
+              <tr className="text-gray-500">
                 <td>Elon</td>
                 <td>..@gmail.com</td>
                 <td>Alpha</td>
                 <td>350JD</td>
-                <td>may-2023</td>
+                <td>
+                  <RequestDialog />
+                </td>
               </tr>
-              <tr>
+              <tr className="text-emerald-700	">
                 <td>Ali</td>
                 <td>..@gmail.com</td>
                 <td>DBS</td>
                 <td>200JD</td>
-                <td>april-2023</td>
+                <RequestDialog />
+              </tr>
+              <tr className="text-rose-700">
+                <td>Hamzeh</td>
+                <td>..@gmail.com</td>
+                <td>ABC</td>
+                <td>200JD</td>
+                <RequestDialog />
               </tr>
             </table>
           </div>
@@ -76,8 +85,8 @@ export default function CompanyProfile() {
             <br />
             <br />
             <br />
-            <h3>PREVIOUS CLIENTS </h3>
-
+            <h3 className="text-2xl">PREVIOUS CLIENTS </h3>
+            <br />
             <table>
               <tr>
                 <th>User</th>

@@ -1,6 +1,18 @@
 import React from "react";
 import { Rating } from "@mui/material";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+// Default theme
+import "@splidejs/splide/css";
+
+// or other themes
+import "@splidejs/splide/css/skyblue";
+import "@splidejs/splide/css/sea-green";
+
+// or only core styles
+import "@splidejs/splide/css/core";
 export default function Second() {
+  // new Splide(".splide").mount();
+
   return (
     <div className="welcome-section">
       <div className="welcome-paragraph">
@@ -20,91 +32,147 @@ export default function Second() {
       </div>
       <h2 className="home-title">MOST RATED COMPANIES</h2>
       <div className="line-2"></div>
-      <div className="cards-container">
-        <div className="card-container">
-          <img src="/src/Images/CBRE.png" alt="image" width={350} />
-          <p className="company-description mt-2">
-            CBRE Group, Inc. is an American commercial real estate services and
-            investment firm. The abbreviation CBRE stands for Coldwell Banker
-            Richard Ellis. It is the world's largest commercial real estate
-            services and investment firm.
-          </p>
-          <div className="rating-category mt-4">
-            <Rating name="read-only" value="3" readOnly />
+      <Splide aria-label="My Favorite Images" className="asdsad">
+        <SplideSlide>
+          <div className="cards">
+            <div className="card-container">
+              <img src="/src/Images/CBRE.png" alt="image" width={350} />
+              <p className="company-description mt-2">
+                CBRE Group, Inc. is an American commercial real estate services
+                and investment firm. The abbreviation CBRE stands for Coldwell
+                Banker Richard Ellis. It is the world's largest commercial real
+                estate services and investment firm.
+              </p>
+              <div className="rating-category mt-4">
+                <Rating name="read-only" value="3" readOnly />
 
-            <p>Category - Real Estate</p>
-          </div>
-        </div>
+                <p>Category - Real Estate</p>
+              </div>
+            </div>{" "}
+            <div className="card-container">
+              <img src="/src/Images/CBRE.png" alt="image" width={350} />
+              <p className="company-description mt-2">
+                CBRE Group, Inc. is an American commercial real estate services
+                and investment firm. The abbreviation CBRE stands for Coldwell
+                Banker Richard Ellis. It is the world's largest commercial real
+                estate services and investment firm.
+              </p>
+              <div className="rating-category mt-4">
+                <Rating name="read-only" value="3" readOnly />
 
-        <div className="card-container">
-          {" "}
-          <img src="/src/Images/BDO.png" alt="image" width={350} />
-          <p className="company-description mt-2">
-            BDO USA, LLP is the United States member firm of BDO International,
-            a global accounting network. The firm adopted its current moniker in
-            1973, each letter corresponding to a surname of an original founder
-            of the corporation: Binder, Dijker.
-          </p>
-          <div className="rating-category mt-4">
-            <Rating name="read-only" value="3" readOnly />
-            <p>Category - Real Estate</p>
+                <p>Category - Real Estate</p>
+              </div>
+            </div>{" "}
+            <div className="card-container">
+              <img src="/src/Images/CBRE.png" alt="image" width={350} />
+              <p className="company-description mt-2">
+                CBRE Group, Inc. is an American commercial real estate services
+                and investment firm. The abbreviation CBRE stands for Coldwell
+                Banker Richard Ellis. It is the world's largest commercial real
+                estate services and investment firm.
+              </p>
+              <div className="rating-category mt-4">
+                <Rating name="read-only" value="3" readOnly />
+
+                <p>Category - Real Estate</p>
+              </div>
+            </div>{" "}
           </div>
-        </div>
-        <div className="card-container second-row">
-          {" "}
-          <img src="/src/Images/Deloitte.png" alt="image" width={350} />
-          <p className="company-description">
-            Deloitte Touche Tohmatsu Limited, commonly referred to as Deloitte,
-            is an international professional services network headquartered in
-            London England.international professional services network
-            headquartered in London England.
-          </p>
-          <div className="rating-category">
-            <Rating name="read-only" value="5" readOnly />
-            <p>Category - Technology</p>
+        </SplideSlide>
+        <SplideSlide>
+          <div className="cards">
+            <div className="card-container">
+              <img src="/src/Images/CBRE.png" alt="image" width={350} />
+              <p className="company-description mt-2">
+                CBRE Group, Inc. is an American commercial real estate services
+                and investment firm. The abbreviation CBRE stands for Coldwell
+                Banker Richard Ellis. It is the world's largest commercial real
+                estate services and investment firm.
+              </p>
+              <div className="rating-category mt-4">
+                <Rating name="read-only" value="3" readOnly />
+
+                <p>Category - Real Estate</p>
+              </div>
+            </div>{" "}
+            <div className="card-container">
+              <img src="/src/Images/CBRE.png" alt="image" width={350} />
+              <p className="company-description mt-2">
+                CBRE Group, Inc. is an American commercial real estate services
+                and investment firm. The abbreviation CBRE stands for Coldwell
+                Banker Richard Ellis. It is the world's largest commercial real
+                estate services and investment firm.
+              </p>
+              <div className="rating-category mt-4">
+                <Rating name="read-only" value="3" readOnly />
+
+                <p>Category - Real Estate</p>
+              </div>
+            </div>{" "}
+            <div className="card-container">
+              <img src="/src/Images/CBRE.png" alt="image" width={350} />
+              <p className="company-description mt-2">
+                CBRE Group, Inc. is an American commercial real estate services
+                and investment firm. The abbreviation CBRE stands for Coldwell
+                Banker Richard Ellis. It is the world's largest commercial real
+                estate services and investment firm.
+              </p>
+              <div className="rating-category mt-4">
+                <Rating name="read-only" value="3" readOnly />
+
+                <p>Category - Real Estate</p>
+              </div>
+            </div>{" "}
           </div>
-        </div>
-        <div className="card-container second-row">
-          {" "}
-          <img src="/src/Images/KPMG.png" alt="image" width={350} />
-          <p className="company-description">
-            KPMG International Limited is a multinational professional services
-            network, and one of the Big Four accounting organizations. KPMG
-            International Limited is a multinational professional services
-            network, and one of the Big Four accounting organizations.
-          </p>
-          <div className="rating-category">
-            <Rating name="read-only" value="4" readOnly />
-            <p>Category - Technology</p>
+        </SplideSlide>
+        <SplideSlide>
+          <div className="cards">
+            <div className="card-container">
+              <img src="/src/Images/CBRE.png" alt="image" width={350} />
+              <p className="company-description mt-2">
+                CBRE Group, Inc. is an American commercial real estate services
+                and investment firm. The abbreviation CBRE stands for Coldwell
+                Banker Richard Ellis. It is the world's largest commercial real
+                estate services and investment firm.
+              </p>
+              <div className="rating-category mt-4">
+                <Rating name="read-only" value="3" readOnly />
+
+                <p>Category - Real Estate</p>
+              </div>
+            </div>{" "}
+            <div className="card-container">
+              <img src="/src/Images/CBRE.png" alt="image" width={350} />
+              <p className="company-description mt-2">
+                CBRE Group, Inc. is an American commercial real estate services
+                and investment firm. The abbreviation CBRE stands for Coldwell
+                Banker Richard Ellis. It is the world's largest commercial real
+                estate services and investment firm.
+              </p>
+              <div className="rating-category mt-4">
+                <Rating name="read-only" value="3" readOnly />
+
+                <p>Category - Real Estate</p>
+              </div>
+            </div>{" "}
+            <div className="card-container">
+              <img src="/src/Images/CBRE.png" alt="image" width={350} />
+              <p className="company-description mt-2">
+                CBRE Group, Inc. is an American commercial real estate services
+                and investment firm. The abbreviation CBRE stands for Coldwell
+                Banker Richard Ellis. It is the world's largest commercial real
+                estate services and investment firm.
+              </p>
+              <div className="rating-category mt-4">
+                <Rating name="read-only" value="3" readOnly />
+
+                <p>Category - Real Estate</p>
+              </div>
+            </div>{" "}
           </div>
-        </div>
-        <div className="card-container last-row">
-          <img src="/src/Images/LEK.png" alt="image" width={350} />
-          <p className="company-description">
-            L.E.K. Consulting is a global strategy consulting firm based in
-            London and Boston. Founded in 1983 by three partners from Bain &
-            Company, L.E.K. focuses on corporate strategy, marketing and sales,
-            mergers and acquisitions.
-          </p>
-          <div className="rating-category">
-            <Rating name="read-only" value="5" readOnly />
-            <p>Category - Manufacturing</p>
-          </div>
-        </div>
-        <div className="card-container last-row">
-          {" "}
-          <img src="/src/Images/Navigant.png" alt="image" width={350} />
-          <p className="company-description mt-2">
-            Navigant Consulting, Inc. was an American management consultancy
-            firm. It had offices in Asia, Europe and North America. The stock
-            was a component of the S&P 600 index.
-          </p>
-          <div className="rating-category">
-            <Rating name="read-only" value="4" readOnly />
-            <p>Category - Manufacturing</p>
-          </div>
-        </div>
-      </div>
+        </SplideSlide>
+      </Splide>
+
       <br />
       <br />
       <br />

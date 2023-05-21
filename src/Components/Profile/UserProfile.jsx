@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { Rating } from "@mui/material";
+import RequestDialog from "./Request-Dialog";
 
 import "./Profile.css";
 export default function UserProfile() {
@@ -39,29 +40,33 @@ export default function UserProfile() {
         <hr />
         <div className="clients">
           <div className="current-clients">
-            <h3>REQUESTED SERVICES</h3>
-
+            <h3 className="text-2xl">REQUESTED SERVICES</h3>
+            <br />
             <table>
               <tr>
                 <th>Company</th>
                 <th>Email</th>
                 <th>Project</th>
                 <th>Price</th>
-                <th>Deadline</th>
+                <th>Status</th>
               </tr>
               <tr>
                 <td>CBRE inc.</td>
                 <td>..@gmail.com</td>
                 <td>Technology</td>
                 <td>350JD</td>
-                <td>may-2023</td>
+                <br />
+                <br />
+                <RequestDialog />
               </tr>
               <tr>
                 <td>KPMG</td>
                 <td>..@gmail.com</td>
                 <td>Real Estate</td>
                 <td>200JD</td>
-                <td>april-2023</td>
+                <br />
+                <br />
+                <RequestDialog />
               </tr>
             </table>
           </div>

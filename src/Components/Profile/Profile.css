@@ -67,8 +67,8 @@
 .current-clients table,
 .previous-clients table {
   background-color: rgb(249, 249, 255);
-  width: 75.188rem;
-  height: 17.438rem;
+  width: 65rem;
+  height: 20rem;
   margin-top: 2rem;
 }
 .current-clients,
@@ -77,7 +77,6 @@ td,
 tr {
   padding: 20px;
   text-align: center;
-  color: grey;
 }
 .current-clients table th,
 .previous-clients table th {

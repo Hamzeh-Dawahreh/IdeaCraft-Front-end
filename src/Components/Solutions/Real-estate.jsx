@@ -1,7 +1,7 @@
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import { Rating } from "@mui/material";
-
+import Dialog from "./Book-Dialog";
 import "./solution.css";
 export default function RealEstate() {
   return (
@@ -14,6 +14,8 @@ export default function RealEstate() {
         <div className="hero-solution">
           <div className="intro">
             <h6>For Real estates</h6>
+            <br />
+
             <h4>
               {" "}
               Feasibility studies for real estate projects involve analyzing the
@@ -21,6 +23,8 @@ export default function RealEstate() {
               assessing factors such as location, market demand, construction
               costs, and projected revenue.
             </h4>
+            <br />
+
             <button className="book-now first animate__animated animate__pulse animate__infinite">
               <a href="#booking"> Book now</a>
             </button>
@@ -30,9 +34,10 @@ export default function RealEstate() {
         <br />
         <br />
         <div className="our-companies">
-          <h1 id="booking">Our Companies</h1>
-          <div className="line-2"></div>
-
+          <h1 id="booking" className="text-3xl	">
+            Our Companies
+          </h1>
+          <br /> <div className="line-2"></div>
           <div className="company-card">
             <img src="./src/Images/CBRE.png" />
             <div className="info">
@@ -52,7 +57,8 @@ export default function RealEstate() {
               </h6>
               <div className="company-rating">
                 <Rating name="read-only" value="3" readOnly />
-                <button className="company-book">Book</button>
+                {/* <button className="company-book">Book</button> */}
+                <Dialog />
               </div>
             </div>
           </div>
@@ -74,7 +80,7 @@ export default function RealEstate() {
               <h6>*BDO USA has made 20 feasibility study on the website.* </h6>
               <div className="company-rating">
                 <Rating name="read-only" value="3" readOnly />
-                <button className="company-book">Book</button>
+                <Dialog />
               </div>
             </div>
           </div>
@@ -97,7 +103,7 @@ export default function RealEstate() {
               </h6>
               <div className="company-rating">
                 <Rating name="read-only" value="3" readOnly />
-                <button className="company-book">Book</button>
+                <Dialog />
               </div>
             </div>
           </div>

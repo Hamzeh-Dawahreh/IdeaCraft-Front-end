@@ -1,6 +1,7 @@
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import { Rating } from "@mui/material";
+import Dialog from "./Book-Dialog";
 
 import "./solution.css";
 export default function Technology() {
@@ -14,6 +15,7 @@ export default function Technology() {
         <div className="hero-solution">
           <div className="intro">
             <h6>For Technology</h6>
+            <br />
             <h4>
               {" "}
               Feasibility studies for technology projects involve analyzing the
@@ -22,6 +24,8 @@ export default function Technology() {
               development costs, intellectual property protection, potential
               markets, and projected revenue.
             </h4>
+            <br />
+
             <button className="book-now first animate__animated animate__pulse animate__infinite">
               {" "}
               <a href="#booking"> Book now</a>
@@ -32,9 +36,10 @@ export default function Technology() {
         <br />
         <br />
         <div className="our-companies">
-          <h1 id="booking">Our Companies</h1>
-          <div className="line-2"></div>
-
+          <h1 id="booking" className="text-3xl	">
+            Our Companies
+          </h1>
+          <br /> <div className="line-2"></div>
           <div className="company-card">
             <img src="./src/Images/Deloitte.png" />
             <div className="info">
@@ -52,7 +57,7 @@ export default function Technology() {
               <h6>*Deloitte has made 9 feasibility study on the website.* </h6>
               <div className="company-rating">
                 <Rating name="read-only" value="3" readOnly />
-                <button className="company-book">Book</button>
+                <Dialog />
               </div>
             </div>
           </div>
@@ -72,7 +77,7 @@ export default function Technology() {
               <h6>*KPMG has made 13 feasibility study on the website.* </h6>
               <div className="company-rating">
                 <Rating name="read-only" value="3" readOnly />
-                <button className="company-book">Book</button>
+                <Dialog />
               </div>
             </div>
           </div>
@@ -92,7 +97,7 @@ export default function Technology() {
               <h6>*Deloitte has made 9 feasibility study on the website.* </h6>
               <div className="company-rating">
                 <Rating name="read-only" value="3" readOnly />
-                <button className="company-book">Book</button>
+                <Dialog />
               </div>
             </div>
           </div>

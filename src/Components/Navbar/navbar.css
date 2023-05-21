@@ -10,14 +10,9 @@
 .navbar {
   margin-bottom: 0;
   background-color: rgb(28, 29, 38);
-  border: 0;
   letter-spacing: 2px;
-  border-radius: 0;
-  position: sticky;
-  top: 0;
-  width: 100%;
   z-index: 1000;
-  height: 4rem;
+  height: 4.5rem;
 }
 .nav-solution {
   color: black;
@@ -30,28 +25,19 @@
 }
 
 .Register-Container {
-  position: relative;
-  left: 57rem;
   text-decoration: none;
   color: white;
   background-color: rgb(228, 76, 101);
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 3px;
+  padding: 3px 0;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.Items-Container {
-  position: relative;
-  left: 29rem;
-}
+
 .navbar li a,
 .navbar .navbar-brand {
   color: #fff !important;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 .navbar-nav li a:hover,
 .navbar-nav li.active a {
@@ -74,7 +60,6 @@
   flex-direction: column;
   opacity: 0;
   position: absolute;
-  background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
@@ -89,4 +74,18 @@
 .dropdown:hover .dropdown-content {
   opacity: 1;
   border-radius: 20px;
+}
+.navbar-nav {
+  gap: 1rem;
+}
+.dropdown {
+  color: white;
+}
+.dropdown-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+}
+.dropdown-content a:hover {
+  color: rgb(29 78 216);
 }
