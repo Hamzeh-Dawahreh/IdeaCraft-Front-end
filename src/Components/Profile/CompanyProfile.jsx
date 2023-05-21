@@ -8,6 +8,10 @@ export default function CompanyProfile() {
   return (
     <>
       <Navbar />
+      <br />
+      <br />
+      <br />
+      <br />
       <div className="profile-container">
         <div className="user-image">
           <img src="./src/Images/profile.png" />

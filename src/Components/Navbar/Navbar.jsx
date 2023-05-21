@@ -94,7 +94,7 @@ export default function Navbar() {
                 </li>
                 <li>
                   <NavLink
-                    to="aboutusPage"
+                    to="/aboutus"
                     className={({ isActive }) =>
                       isActive ? activeLink : normalLink
                     }

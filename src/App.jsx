@@ -7,6 +7,7 @@ import {
 import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
 import { createContext, useState, useEffect } from "react";
+// import Layout from "./components/Layout/Layout";
 
 import HomePage from "./Components/HomePage/HomePage";
 import Login from "./Components/Register/Login";
@@ -19,6 +20,7 @@ import UserProfile from "./Components/Profile/UserProfile";
 import Pricing from "./Components/Pricing/Pricing";
 import Payment from "./Components/Payment/Payment";
 import ContactUs from "./Components/Contact Us/ContactUs";
+import AboutUs from "./Components/About Us/Aboutus";
 export default function App() {
   const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -33,13 +35,14 @@ export default function App() {
   return (
     <>
       <Router>
-        <ScrollToTop />{" "}
+        <ScrollToTop /> <Routes></Routes>
         <Routes>
-          <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />}>
             {" "}
           </Route>
           <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={<HomePage />} />
+
           {/* <Route path="*" element={<PageNotFound />} /> */}
           <Route path="/realestate" element={<RealEstate />} />
           <Route path="/technology" element={<Technology />} />
@@ -49,6 +52,7 @@ export default function App() {
           <Route path="/subscription" element={<Pricing />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/aboutus" element={<AboutUs />} />
         </Routes>
       </Router>
     </>
