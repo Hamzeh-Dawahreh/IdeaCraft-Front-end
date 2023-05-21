@@ -3,19 +3,14 @@ import { useContext } from "react";
 import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-// const Swal = require("sweetalert2");
+import Swal from "sweetalert2";
 
 const Checkout = () => {
-  //   function handleMessage() {
-  //     Swal.fire("Thank you!", "Your order has been completed!", "success");
+  function handleMessage() {
+    Swal.fire("Thank you!", "Your payment has been completed!", "success");
 
-  //     navigate("/");
-
-  //     localStorage.removeItem("newItem");
-  //     sessionStorage.removeItem("totalPrice");
-  //     setCounter(0);
-  //   }
-
+    navigate("/");
+  }
   const navigate = useNavigate();
 
   return (
@@ -207,10 +202,10 @@ const Checkout = () => {
               </div>
             </div>
             <button
-              // onClick={handleMessage}
+              onClick={handleMessage}
               class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white"
             >
-              Place Order
+              Submit Payment
             </button>
           </div>
         </div>

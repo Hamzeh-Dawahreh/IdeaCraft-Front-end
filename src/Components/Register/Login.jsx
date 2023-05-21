@@ -3,7 +3,10 @@ import { Link, Outlet } from "react-router-dom";
 
 import "./register.css";
 export default function Login() {
-  const [formValues, setFormValues] = useState();
+  const [formValues, setFormValues] = useState({
+    username: "",
+    password: "",
+  });
   function handleChange(event) {
     const { name, value } = event.target;
     setFormValues((prevValues) => {
@@ -13,7 +16,7 @@ export default function Login() {
       };
     });
   }
-  function handleSubmit() {
+  function handleClick() {
     //fdsokfopdsf
     event.preventDefault();
     localStorage.setItem("email", JSON.stringify(email));
@@ -34,9 +37,10 @@ export default function Login() {
               <input
                 className="login-input"
                 type="text"
+                name="username"
                 placeholder="Username"
                 onChange={handleChange}
-                value={formValues.email}
+                value={formValues.username}
               />
               <i className="bi bi-person-fill">
                 <svg
@@ -56,6 +60,7 @@ export default function Login() {
                 <input
                   className="login-input"
                   type="password"
+                  name="password"
                   placeholder="Password"
                   onChange={handleChange}
                   value={formValues.password}
