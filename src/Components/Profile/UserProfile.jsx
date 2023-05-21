@@ -2,8 +2,7 @@ import React from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { Rating } from "@mui/material";
-import RequestDialog from "./Request-Dialog";
-
+import ConsentDialog from "./Consent-Dialog";
 import "./Profile.css";
 export default function UserProfile() {
   return (
@@ -54,23 +53,23 @@ export default function UserProfile() {
                 <th>Price</th>
                 <th>Status</th>
               </tr>
-              <tr>
+              <tr className="text-gray-500">
                 <td>CBRE inc.</td>
                 <td>..@gmail.com</td>
                 <td>Technology</td>
                 <td>350JD</td>
                 <br />
                 <br />
-                <RequestDialog />
+                <ConsentDialog />
               </tr>
-              <tr>
+              <tr className="text-gray-500">
                 <td>KPMG</td>
                 <td>..@gmail.com</td>
                 <td>Real Estate</td>
                 <td>200JD</td>
                 <br />
                 <br />
-                <RequestDialog />
+                <ConsentDialog />
               </tr>
             </table>
           </div>

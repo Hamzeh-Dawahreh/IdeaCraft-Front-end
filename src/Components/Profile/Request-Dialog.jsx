@@ -61,7 +61,7 @@ export default function Example() {
           >
             <span className="text-rose-700">Reject</span>
           </Button>
-          <Button variant="gradient" color="green" onClick={handleOpen}>
+          <Button variant="gradient" color="teal" onClick={handleOpen}>
             <span className="text-white	">Confirm</span>
           </Button>
         </DialogFooter>

@@ -65,14 +65,14 @@ export default function CompanyProfile() {
                   <RequestDialog />
                 </td>
               </tr>
-              <tr className="text-emerald-700	">
+              <tr className="text-gray-500">
                 <td>Ali</td>
                 <td>..@gmail.com</td>
                 <td>DBS</td>
                 <td>200JD</td>
                 <RequestDialog />
               </tr>
-              <tr className="text-rose-700">
+              <tr className="text-gray-500">
                 <td>Hamzeh</td>
                 <td>..@gmail.com</td>
                 <td>ABC</td>

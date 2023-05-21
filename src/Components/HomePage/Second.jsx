@@ -17,8 +17,7 @@ export default function Second() {
     <div className="welcome-section">
       <div className="welcome-paragraph">
         <p className="company-description">
-          Welcome to{" "}
-          <span className="company-name"> FROM IDEA TO RENDER(FITR),</span>
+          Welcome to <span className="company-name"> IdeaCraft,</span>
           <br />
           <br />
           the leading platform for connecting expert companies with clients in

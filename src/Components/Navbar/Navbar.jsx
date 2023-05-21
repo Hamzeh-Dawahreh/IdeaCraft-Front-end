@@ -17,13 +17,10 @@ export default function Navbar() {
           <div className=" relative max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <Link to="/" className="flex items-center">
               <img
-                src="./Images/logo.png"
-                className="h-8 "
-                alt="Flowbite Logo"
+                src="./src/Images/logo.png"
+                className="h-10 w-32"
+                alt="LOGO"
               />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                aper clip
-              </span>
             </Link>
             <div className="flex md:order-2">
               <button
