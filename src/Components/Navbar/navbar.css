@@ -11,7 +11,7 @@
   margin-bottom: 0;
   background-color: rgb(28, 29, 38);
   letter-spacing: 2px;
-  z-index: 1000;
+  z-index: 999;
   height: 4.5rem;
 }
 .nav-solution {
@@ -53,11 +53,11 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  color: white;
 }
 
 .dropdown-content {
-  display: flex;
-  flex-direction: column;
+  display: none;
   opacity: 0;
   position: absolute;
   min-width: 160px;
@@ -66,26 +66,18 @@
   background-color: white;
   color: black;
   transition-property: opacity;
-
   transition-duration: 0.5s;
-  height: 8.5rem;
+  height: 8rem;
 }
 
 .dropdown:hover .dropdown-content {
+  display: flex;
   opacity: 1;
   border-radius: 20px;
-}
-.navbar-nav {
-  gap: 1rem;
-}
-.dropdown {
-  color: white;
-}
-.dropdown-content {
-  display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: start;
 }
+
 .dropdown-content a:hover {
-  color: rgb(29 78 216);
+  color: rgb(29, 78, 216);
 }
