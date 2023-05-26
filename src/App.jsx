@@ -18,7 +18,7 @@ import Manufacturing from "./Components/Solutions/Manufacturing";
 import CompanyProfile from "./Components/Profile/CompanyProfile";
 import UserProfile from "./Components/Profile/UserProfile";
 import Pricing from "./Components/Pricing/Pricing";
-import Payment from "./Components/Payment/Payment";
+// import Payment from "./Components/Payment/Payment";
 import ContactUs from "./Components/Contact Us/ContactUs";
 import AboutUs from "./Components/About Us/Aboutus";
 import Checkout from "./Components/Payment/Checkout";
@@ -51,7 +51,7 @@ export default function App() {
           <Route path="/companyprofile" element={<CompanyProfile />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/subscription" element={<Pricing />} />
-          <Route path="/payment" element={<Payment />} />
+          {/* <Route path="/payment" element={<Payment />} /> */}
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/checkout" element={<Checkout />} />
