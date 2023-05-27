@@ -33,12 +33,14 @@ export default function App() {
     <>
       <Router>
         <ScrollToTop />
+        <Routes>
+          <Route path="/login" element={<Login />}>
+            {" "}
+          </Route>
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
         <Layout>
           <Routes>
-            <Route path="/login" element={<Login />}>
-              {" "}
-            </Route>
-            <Route path="/signup" element={<Signup />} />
             <Route path="/" element={<HomePage />} />
 
             {/* <Route path="*" element={<PageNotFound />} /> */}

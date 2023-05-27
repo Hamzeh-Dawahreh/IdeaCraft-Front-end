@@ -25,6 +25,8 @@ export default function Signup() {
   // };
   return (
     <>
+      <br />
+      <br />
       <div className="register-body">
         <div className="login-container">
           <div className="left-side">

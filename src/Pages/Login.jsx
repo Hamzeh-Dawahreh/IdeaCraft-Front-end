@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 import "../Assets/Styles/register.css";
 export default function Login() {
+  useEffect(() => {
+    // window.location.reload(false);
+  }, []);
   const [formValues, setFormValues] = useState({
     username: "",
     password: "",
@@ -23,6 +26,8 @@ export default function Login() {
   }
   return (
     <>
+      <br />
+      <br />
       <div className="register-body">
         <div className="login-container">
           <div className="left-side">

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { NavLink, Link } from "react-router-dom";
-import "./navbar.css";
 import { useNavigate } from "react-router-dom";
+import "../Assets/Styles/navbar.css";
 
 export default function Navbar() {
   const activeLink =

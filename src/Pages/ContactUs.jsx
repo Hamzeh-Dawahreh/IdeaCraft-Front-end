@@ -1,7 +1,33 @@
 import React from "react";
+import { useState } from "react";
+
+import emailjs from "emailjs-com";
 
 import "../Assets/Styles/contactus.css";
 export default function ContactUs() {
+  const [email, setEmail] = useState("");
+  const [first, setFirst] = useState("");
+  const [last, setLast] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    emailjs
+      .sendForm(
+        "service_kb1ss47",
+        "template_r9aphvl",
+        e.target,
+        "R7Np1gdSLZeJ_BZ8h"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
   return (
     <>
       <div className="contact-us-body">
@@ -50,25 +76,48 @@ export default function ContactUs() {
             </p>
           </div>
           <div className="leave-a-message">
-            <div className="first-last">
-              <label htmlFor="First Name" className="message-lable">
-                First Name
-                <input type="text" />
+            <form onSubmit={handleSubmit}>
+              <div className="first-last">
+                <label htmlFor="First Name" className="message-lable">
+                  First Name
+                  <input
+                    type="text"
+                    value={first}
+                    onChange={(e) => setFirst(e.target.value)}
+                  />
+                </label>
+                <label htmlFor="Last Name" className="message-lable">
+                  Last Name
+                  <input
+                    type="text"
+                    value={last}
+                    onChange={(e) => setLast(e.target.value)}
+                  />
+                </label>
+              </div>
+              <label htmlFor="Email" className="message-lable">
+                Email
+                <input
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </label>
-              <label htmlFor="Last Name" className="message-lable">
-                Last Name
-                <input type="text" />
+              <label htmlFor="Comments" className="message-lable">
+                Comments
+                <textarea
+                  name=""
+                  id=""
+                  cols="30"
+                  rows="10"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                ></textarea>
               </label>
-            </div>
-            <label htmlFor="Email" className="message-lable">
-              Email
-              <input type="text" />
-            </label>
-            <label htmlFor="Comments" className="message-lable">
-              Comments
-              <textarea name="" id="" cols="30" rows="10"></textarea>
-            </label>
-            <button className="submit-message">Submit</button>
+              <button type="submit" className="submit-message">
+                Send
+              </button>
+            </form>
           </div>
         </div>
       </div>

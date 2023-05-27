@@ -29,7 +29,8 @@ export default function Second() {
       <div className="welcome-image">
         <img src="/src/Assets/Images/Welcome-section.png" alt="image" />
       </div>
-      <h2 className="home-title">MOST RATED COMPANIES</h2>
+      <h2 className="home-title text-3xl">MOST RATED COMPANIES</h2>
+      <br />
       <div className="line-2"></div>
       <Splide aria-label="My Favorite Images" className="asdsad">
         <SplideSlide>
@@ -176,9 +177,10 @@ export default function Second() {
       <br />
       <br />
       <br />
-      <h2 className="home-title mt-5 " id="importance">
-        How Feasibility Studies Can Help Your Project Succeed
+      <h2 className="home-title mt-5 text-3xl " id="importance">
+        Make Your Project Succeed
       </h2>
+      <br />
       <div className="line-2"></div>
       <div className="importance-container">
         <p className="importance-first">
