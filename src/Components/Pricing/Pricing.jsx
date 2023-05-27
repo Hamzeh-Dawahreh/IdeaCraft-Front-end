@@ -132,7 +132,7 @@ export default function Pricing() {
               </ul>
             </div>
             <div class="card-action">
-              <Link to="/payment">
+              <Link to="/checkout">
                 <button type="button">Get Basic</button>
               </Link>
             </div>
@@ -162,7 +162,7 @@ export default function Pricing() {
               </ul>
             </div>
             <div class="card-action">
-              <Link to="/payment">
+              <Link to="/checkout">
                 <button type="button">Get Pro</button>
               </Link>
             </div>
@@ -188,7 +188,7 @@ export default function Pricing() {
               </ul>
             </div>
             <div class="card-action">
-              <Link to="/payment">
+              <Link to="/checkout">
                 <button type="button">Get Premium</button>
               </Link>
             </div>
