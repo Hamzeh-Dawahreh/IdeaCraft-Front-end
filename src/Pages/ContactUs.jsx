@@ -1,32 +1,30 @@
 import React from "react";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
-import "./contactus.css";
+
+import "../Assets/Styles/contactus.css";
 export default function ContactUs() {
   return (
     <>
-      <Navbar />
       <div className="contact-us-body">
         <div className="get-in-touch">
           <h1>
             {" "}
-            <b>GET IN TOUCH</b>
+            <b className="text-3xl">GET IN TOUCH</b>
           </h1>
           <div className="get-in-touch-info">
             <div className="location">
-              <img src="./src/Images/location.png" />
+              <img src="./src/Assets/Images/location.png" />
               <h5>ADDRESS</h5>
-              F.I.T.R for consultant <br /> Amman,Jordan road
+              IdeaCraft for consultant <br /> Amman,Jordan road
             </div>
             <div className="phone">
-              <img src="./src/Images/phone.png" />
+              <img src="./src/Assets/Images/phone.png" />
               <h5>PHONE</h5>
               <p>
-                F.I.T.R for consultant <br /> +962 712345678
+                IdeaCraft for consultant <br /> +962 712345678
               </p>
             </div>
             <div className="email">
-              <img src="./src/Images/email.png" />
+              <img src="./src/Assets/Images/email.png" />
               <h5>EMAIL</h5>
               <p>
                 Request for Proposal <br /> hmzhdawahreh@gmai.com
@@ -38,7 +36,7 @@ export default function ContactUs() {
           <div className="message-us">
             <h1>
               {" "}
-              <b>Message Us</b>
+              <b className="text-3xl">Message Us</b>
             </h1>
             <br />
             <p>
@@ -74,7 +72,6 @@ export default function ContactUs() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

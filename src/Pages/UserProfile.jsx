@@ -1,20 +1,17 @@
 import React from "react";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
 import { Rating } from "@mui/material";
-import ConsentDialog from "./Consent-Dialog";
-import "./Profile.css";
+import ConsentDialog from "../Components/Dialogs/Consent-Dialog";
+import "../Assets/Styles/profile.css";
 export default function UserProfile() {
   return (
     <>
-      <Navbar />
       <br />
       <br />
       <br />
       <br />
       <div className="profile-container">
         <div className="user-image">
-          <img src="./src/Images/profile.png" />
+          <img src="./src/Assets/Images/profile.png" />
         </div>
         <div className="profile-info-container">
           <div className="profile-info">
@@ -36,7 +33,7 @@ export default function UserProfile() {
               <p>YOUR INFORMATION</p>
             </div>
             <div className="edit-image">
-              <img src="./src/Images/Edit.png" />
+              <img src="./src/Assets/Images/Edit.png" />
             </div>
           </div>
         </div>
@@ -79,7 +76,6 @@ export default function UserProfile() {
           <hr />
         </div>
       </div>
-      <Footer />
     </>
   );
 }

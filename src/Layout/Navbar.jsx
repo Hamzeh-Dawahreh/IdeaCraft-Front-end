@@ -13,11 +13,11 @@ export default function Navbar() {
   return (
     <>
       <header>
-        <nav className="bg-[#1c1d26] dark:bg-[#1c1d26] fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600 z-50	 ">
+        <nav className="bg-[#1c1d26] dark:bg-[#1c1d26] fixed w-full z-100 top-0 left-0 border-b border-gray-200 dark:border-gray-600 z-50	 ">
           <div className=" relative max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <Link to="/" className="flex items-center">
               <img
-                src="./src/Images/logo.png"
+                src="./src/Assets/Images/logo.png"
                 className="h-10 w-32"
                 alt="LOGO"
               />

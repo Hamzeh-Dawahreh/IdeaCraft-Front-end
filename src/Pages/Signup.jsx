@@ -1,7 +1,8 @@
 import React from "react";
-import "./register.css";
 import { useState } from "react";
-import Validation from "./Validation";
+import Validation from "../Components/RegisterValidation/Validation";
+import "../Assets/Styles/register.css";
+
 export default function Signup() {
   const [checked, setChecked] = useState("off");
   const [formValues, setFormValues] = useState("");
@@ -27,7 +28,7 @@ export default function Signup() {
       <div className="register-body">
         <div className="login-container">
           <div className="left-side">
-            <img src="./src/Images/signup-cover.png" />
+            <img src="./src/Assets/Images/signup-cover.png" />
 
             <div className="square">
               <h3>Join us and let's succeed together !</h3>

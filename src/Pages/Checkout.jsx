@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import React, { useState } from "react";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
 import Swal from "sweetalert2";
 
 const Checkout = () => {
@@ -15,7 +13,6 @@ const Checkout = () => {
 
   return (
     <>
-      <Navbar />
       <br />
       <br />
       <br />
@@ -213,7 +210,6 @@ const Checkout = () => {
       <br />
       <br />
       <br />
-      <Footer />
     </>
   );
 };

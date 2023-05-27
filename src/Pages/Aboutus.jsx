@@ -1,12 +1,8 @@
 import React from "react";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
-import "./AboutUs.css"; // Import your custom CSS file for styling
 
 const AboutUs = () => {
   return (
     <>
-      <Navbar />
       <br />
       <br />
       <br />
@@ -64,7 +60,7 @@ const AboutUs = () => {
                   alt="Alexa featured Img"
                 />
                 <p className="font-medium text-xl leading-5 text-gray-800 mt-4">
-                  Bashar
+                  John Doe
                 </p>
               </div>
               <div className="p-4 pb-6 flex justify-center flex-col items-center">
@@ -74,7 +70,7 @@ const AboutUs = () => {
                   alt="Olivia featured Img"
                 />
                 <p className="font-medium text-xl leading-5 text-gray-800 mt-4">
-                  dania{" "}
+                  John Doe{" "}
                 </p>
               </div>
               <div className="p-4 pb-6 flex justify-center flex-col items-center">
@@ -84,7 +80,7 @@ const AboutUs = () => {
                   alt="Liam featued Img"
                 />
                 <p className="font-medium text-xl leading-5 text-gray-800 mt-4">
-                  abdalrahman drobi
+                  John Doe
                 </p>
               </div>
               <div className="p-4 pb-6 flex justify-center flex-col items-center">
@@ -94,7 +90,7 @@ const AboutUs = () => {
                   alt="Elijah featured img"
                 />
                 <p className="font-medium text-xl leading-5 text-gray-800 mt-4">
-                  Amer Khawalda
+                  John Doe
                 </p>
               </div>
             </div>
@@ -105,8 +101,6 @@ const AboutUs = () => {
         <br />
         <br />
       </div>
-
-      <Footer />
     </>
   );
 };

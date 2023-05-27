@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
-import "./register.css";
+import "../Assets/Styles/register.css";
 export default function Login() {
   const [formValues, setFormValues] = useState({
     username: "",
@@ -16,7 +16,7 @@ export default function Login() {
       };
     });
   }
-  function handleClick() {
+  function handleClick(event) {
     //fdsokfopdsf
     event.preventDefault();
     localStorage.setItem("email", JSON.stringify(email));
@@ -26,12 +26,12 @@ export default function Login() {
       <div className="register-body">
         <div className="login-container">
           <div className="left-side">
-            <img src="./src/Images/login-cover.png" />
+            <img src="./src/Assets/Images/login-cover.png" />
 
             <div className="circle"></div>
           </div>
           <div className="userInfo-register">
-            <img src="./src/Images/login-user.png" />
+            <img src="./src/Assets/Images/login-user.png" />
             <h1>WELCOME</h1>
             <div className="input-icon">
               <input

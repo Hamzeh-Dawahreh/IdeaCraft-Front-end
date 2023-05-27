@@ -4,24 +4,20 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-import Navbar from "./Components/Navbar/Navbar";
-import Footer from "./Components/Footer/Footer";
 import { createContext, useState, useEffect } from "react";
-// import Layout from "./components/Layout/Layout";
-
-import HomePage from "./Components/HomePage/HomePage";
-import Login from "./Components/Register/Login";
-import Signup from "./Components/Register/Signup";
-import RealEstate from "./Components/Solutions/Real-estate";
-import Technology from "./Components/Solutions/Technology";
-import Manufacturing from "./Components/Solutions/Manufacturing";
-import CompanyProfile from "./Components/Profile/CompanyProfile";
-import UserProfile from "./Components/Profile/UserProfile";
-import Pricing from "./Components/Pricing/Pricing";
-// import Payment from "./Components/Payment/Payment";
-import ContactUs from "./Components/Contact Us/ContactUs";
-import AboutUs from "./Components/About Us/Aboutus";
-import Checkout from "./Components/Payment/Checkout";
+import Layout from "./Layout/Layout";
+import HomePage from "./Pages/HomePage";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
+import RealEstate from "./Pages/Real-estate";
+import Technology from "./Pages/Technology";
+import Manufacturing from "./Pages/Manufacturing";
+import CompanyProfile from "./Pages/CompanyProfile";
+import UserProfile from "./Pages/UserProfile";
+import Subscription from "./Pages/Subscription";
+import ContactUs from "./Pages/ContactUs";
+import Aboutus from "./Pages/Aboutus";
+import Checkout from "./Pages/Checkout";
 export default function App() {
   const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -36,26 +32,28 @@ export default function App() {
   return (
     <>
       <Router>
-        <ScrollToTop /> <Routes></Routes>
-        <Routes>
-          <Route path="/login" element={<Login />}>
-            {" "}
-          </Route>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/" element={<HomePage />} />
+        <ScrollToTop />
+        <Layout>
+          <Routes>
+            <Route path="/login" element={<Login />}>
+              {" "}
+            </Route>
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/" element={<HomePage />} />
 
-          {/* <Route path="*" element={<PageNotFound />} /> */}
-          <Route path="/realestate" element={<RealEstate />} />
-          <Route path="/technology" element={<Technology />} />
-          <Route path="/manufacturing" element={<Manufacturing />} />
-          <Route path="/companyprofile" element={<CompanyProfile />} />
-          <Route path="/userprofile" element={<UserProfile />} />
-          <Route path="/subscription" element={<Pricing />} />
-          {/* <Route path="/payment" element={<Payment />} /> */}
-          <Route path="/contactus" element={<ContactUs />} />
-          <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/checkout" element={<Checkout />} />
-        </Routes>
+            {/* <Route path="*" element={<PageNotFound />} /> */}
+            <Route path="/realestate" element={<RealEstate />} />
+            <Route path="/technology" element={<Technology />} />
+            <Route path="/manufacturing" element={<Manufacturing />} />
+            <Route path="/companyprofile" element={<CompanyProfile />} />
+            <Route path="/userprofile" element={<UserProfile />} />
+            <Route path="/subscription" element={<Subscription />} />
+            {/* <Route path="/payment" element={<Payment />} /> */}
+            <Route path="/contactus" element={<ContactUs />} />
+            <Route path="/aboutus" element={<Aboutus />} />
+            <Route path="/checkout" element={<Checkout />} />
+          </Routes>
+        </Layout>
       </Router>
     </>
   );

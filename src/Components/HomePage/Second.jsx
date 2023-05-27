@@ -27,7 +27,7 @@ export default function Second() {
         </p>
       </div>
       <div className="welcome-image">
-        <img src="/src/Images/Welcome-section.png" alt="image" />
+        <img src="/src/Assets/Images/Welcome-section.png" alt="image" />
       </div>
       <h2 className="home-title">MOST RATED COMPANIES</h2>
       <div className="line-2"></div>
@@ -35,7 +35,7 @@ export default function Second() {
         <SplideSlide>
           <div className="cards">
             <div className="card-container">
-              <img src="/src/Images/CBRE.png" alt="image" width={350} />
+              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
               <p className="company-description mt-2">
                 CBRE Group, Inc. is an American commercial real estate services
                 and investment firm. The abbreviation CBRE stands for Coldwell
@@ -49,7 +49,7 @@ export default function Second() {
               </div>
             </div>{" "}
             <div className="card-container">
-              <img src="/src/Images/CBRE.png" alt="image" width={350} />
+              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
               <p className="company-description mt-2">
                 CBRE Group, Inc. is an American commercial real estate services
                 and investment firm. The abbreviation CBRE stands for Coldwell
@@ -63,53 +63,7 @@ export default function Second() {
               </div>
             </div>{" "}
             <div className="card-container">
-              <img src="/src/Images/CBRE.png" alt="image" width={350} />
-              <p className="company-description mt-2">
-                CBRE Group, Inc. is an American commercial real estate services
-                and investment firm. The abbreviation CBRE stands for Coldwell
-                Banker Richard Ellis. It is the world's largest commercial real
-                estate services and investment firm.
-              </p>
-              <div className="rating-category mt-4">
-                <Rating name="read-only" value="3" readOnly />
-
-                <p>Category - Real Estate</p>
-              </div>
-            </div>{" "}
-          </div>
-        </SplideSlide>
-        <SplideSlide>
-          <div className="cards">
-            <div className="card-container">
-              <img src="/src/Images/CBRE.png" alt="image" width={350} />
-              <p className="company-description mt-2">
-                CBRE Group, Inc. is an American commercial real estate services
-                and investment firm. The abbreviation CBRE stands for Coldwell
-                Banker Richard Ellis. It is the world's largest commercial real
-                estate services and investment firm.
-              </p>
-              <div className="rating-category mt-4">
-                <Rating name="read-only" value="3" readOnly />
-
-                <p>Category - Real Estate</p>
-              </div>
-            </div>{" "}
-            <div className="card-container">
-              <img src="/src/Images/CBRE.png" alt="image" width={350} />
-              <p className="company-description mt-2">
-                CBRE Group, Inc. is an American commercial real estate services
-                and investment firm. The abbreviation CBRE stands for Coldwell
-                Banker Richard Ellis. It is the world's largest commercial real
-                estate services and investment firm.
-              </p>
-              <div className="rating-category mt-4">
-                <Rating name="read-only" value="3" readOnly />
-
-                <p>Category - Real Estate</p>
-              </div>
-            </div>{" "}
-            <div className="card-container">
-              <img src="/src/Images/CBRE.png" alt="image" width={350} />
+              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
               <p className="company-description mt-2">
                 CBRE Group, Inc. is an American commercial real estate services
                 and investment firm. The abbreviation CBRE stands for Coldwell
@@ -127,7 +81,7 @@ export default function Second() {
         <SplideSlide>
           <div className="cards">
             <div className="card-container">
-              <img src="/src/Images/CBRE.png" alt="image" width={350} />
+              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
               <p className="company-description mt-2">
                 CBRE Group, Inc. is an American commercial real estate services
                 and investment firm. The abbreviation CBRE stands for Coldwell
@@ -141,7 +95,7 @@ export default function Second() {
               </div>
             </div>{" "}
             <div className="card-container">
-              <img src="/src/Images/CBRE.png" alt="image" width={350} />
+              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
               <p className="company-description mt-2">
                 CBRE Group, Inc. is an American commercial real estate services
                 and investment firm. The abbreviation CBRE stands for Coldwell
@@ -155,7 +109,53 @@ export default function Second() {
               </div>
             </div>{" "}
             <div className="card-container">
-              <img src="/src/Images/CBRE.png" alt="image" width={350} />
+              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
+              <p className="company-description mt-2">
+                CBRE Group, Inc. is an American commercial real estate services
+                and investment firm. The abbreviation CBRE stands for Coldwell
+                Banker Richard Ellis. It is the world's largest commercial real
+                estate services and investment firm.
+              </p>
+              <div className="rating-category mt-4">
+                <Rating name="read-only" value="3" readOnly />
+
+                <p>Category - Real Estate</p>
+              </div>
+            </div>{" "}
+          </div>
+        </SplideSlide>
+        <SplideSlide>
+          <div className="cards">
+            <div className="card-container">
+              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
+              <p className="company-description mt-2">
+                CBRE Group, Inc. is an American commercial real estate services
+                and investment firm. The abbreviation CBRE stands for Coldwell
+                Banker Richard Ellis. It is the world's largest commercial real
+                estate services and investment firm.
+              </p>
+              <div className="rating-category mt-4">
+                <Rating name="read-only" value="3" readOnly />
+
+                <p>Category - Real Estate</p>
+              </div>
+            </div>{" "}
+            <div className="card-container">
+              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
+              <p className="company-description mt-2">
+                CBRE Group, Inc. is an American commercial real estate services
+                and investment firm. The abbreviation CBRE stands for Coldwell
+                Banker Richard Ellis. It is the world's largest commercial real
+                estate services and investment firm.
+              </p>
+              <div className="rating-category mt-4">
+                <Rating name="read-only" value="3" readOnly />
+
+                <p>Category - Real Estate</p>
+              </div>
+            </div>{" "}
+            <div className="card-container">
+              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
               <p className="company-description mt-2">
                 CBRE Group, Inc. is an American commercial real estate services
                 and investment firm. The abbreviation CBRE stands for Coldwell
