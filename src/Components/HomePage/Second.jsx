@@ -15,24 +15,13 @@ export default function Second() {
 
   return (
     <div className="welcome-section">
-      <div className="welcome-paragraph">
-        <p className="company-description">
-          Welcome to <span className="company-name"> IdeaCraft,</span>
-          <br />
-          <br />
-          the leading platform for connecting expert companies with clients in
-          need of high-quality feasibility studies. Our platform makes it easy
-          for you to find the right feasibility study for your industry or
-          category, whether you're in real estate, manufacturing or technology.
-        </p>
-      </div>
-      <div className="welcome-image">
-        <img src="/src/Assets/Images/Welcome-section.png" alt="image" />
-      </div>
-      <h2 className="home-title text-3xl">MOST RATED COMPANIES</h2>
+      <h2 className="home-title text-3xl mt-20">MOST RATED COMPANIES</h2>
       <br />
       <div className="line-2"></div>
-      <Splide aria-label="My Favorite Images" className="asdsad">
+      <Splide
+        aria-label="My Favorite Images"
+        className="most-companies-carousel"
+      >
         <SplideSlide>
           <div className="cards">
             <div className="card-container">

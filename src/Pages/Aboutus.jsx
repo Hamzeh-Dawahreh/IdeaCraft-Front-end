@@ -13,20 +13,19 @@ const AboutUs = () => {
               About Us
             </h1>
             <p className="font-normal text-base leading-6 text-gray-600 ">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum.In the first place we have granted to
-              God, and by this our present charter confirmed for us and our
-              heirs forever that the English Church shall be free, and shall
-              have her rights entire, and her liberties inviolate; and we will
-              that it be thus observed; which is apparent from
+              Welcome to <span className="company-name"> IdeaCraft</span>, the
+              leading platform for connecting expert companies with clients in
+              need of high-quality feasibility studies. Our platform makes it
+              easy for you to find the right feasibility study for your industry
+              or category, whether you're in real estate, manufacturing or
+              technology.
             </p>
           </div>
           <div className="w-full lg:w-8/12 ">
             <img
               className="w-full h-full"
-              // src={About1}
-              alt="A group of People"
+              src="/src/Assets/Images/Welcome-section.png"
+              alt="image"
             />
           </div>
         </div>
