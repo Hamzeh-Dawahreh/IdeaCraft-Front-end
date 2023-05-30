@@ -108,7 +108,7 @@ export default function Hero() {
                         ></path>
                       </svg>
                     </span>
-                    <span class="relative transition-all duration-700 ease group-hover:px-3 mr-3">
+                    <span class="relative transition-all duration-700 ease group-hover:px-3 ">
                       Learn More
                     </span>
                   </Link>
