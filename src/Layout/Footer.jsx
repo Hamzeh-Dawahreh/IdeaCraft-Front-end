@@ -2,7 +2,7 @@ import React from "react";
 export default function Footer() {
   return (
     <footer aria-label="Site Footer" class="bg-[#1C1D26] text-white">
-      <div class="max-w-screen-xl px-4 py-16 mx-auto space-y-8 sm:px-6 lg:space-y-16 lg:px-8">
+      <div class="max-w-screen-xl  mx-auto space-y-8 sm:px-6 lg:space-y-16 lg:px-8">
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
             <div class="text-white">

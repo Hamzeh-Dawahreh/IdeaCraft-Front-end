@@ -31,12 +31,12 @@
   position: absolute;
   width: 30rem;
   height: 18rem;
-  background-color: rgba(79, 76, 76, 0.593);
+  /* background-color: rgba(79, 76, 76, 0.593); */
   color: white;
   left: 35rem;
   top: 12rem;
   padding: 10px;
-  backdrop-filter: blur(4px);
+  /* backdrop-filter: blur(4px); */
 }
 .hero-article-2 {
   height: 18rem;
