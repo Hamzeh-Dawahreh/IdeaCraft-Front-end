@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 export default function Signup() {
   const [checked, setChecked] = useState("off");
   const [formValues, setFormValues] = useState("");
-
+  const [isSubmut, setIsSubmit] = useState(false);
   const [formErrors, setFormErrors] = useState({});
   const navigate = useNavigate();
   function handleToggle() {
@@ -18,17 +18,17 @@ export default function Signup() {
   function handleChange(e) {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   }
-  const handleClickuser = async (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
     setFormErrors(validationUser(formValues));
+    setIsSubmit(true);
   };
 
   useEffect(() => {
-    console.log(formErrors);
-    if (Object.keys(formErrors).length === 0) {
+    if (Object.keys(formErrors).length == 0 && isSubmut) {
       sendDataToServer();
     }
-  }, [formErrors]);
+  }, [formErrors, isSubmut]);
 
   const sendDataToServer = async () => {
     try {
@@ -38,11 +38,9 @@ export default function Signup() {
       );
       console.log("Data sent successfully");
 
-      // Optionally, you can store the token in localStorage
-      // if (token) {
-      //   localStorage.setItem("token", response.data.token);
-      // }
-      // navigate("/");
+      localStorage.setItem("token", response.data.token);
+
+      navigate("/");
     } catch (error) {
       console.error("Error sending data:", error);
       // Handle the error or display an error message to the user
@@ -182,7 +180,7 @@ export default function Signup() {
                   </svg>
                 </div>
 
-                <button className="login-button" onClick={handleClickuser}>
+                <button className="login-button" onClick={handleClick}>
                   Sign up
                 </button>
               </>
@@ -279,7 +277,7 @@ export default function Signup() {
                   </svg>
                 </div>
 
-                <button className="login-button" onClick={handleClickco}>
+                <button className="login-button" onClick={handleClick}>
                   Sign up
                 </button>
               </>
