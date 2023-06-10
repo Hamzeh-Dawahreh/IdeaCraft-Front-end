@@ -1,28 +1,10 @@
-export default function Validation(data) {
+export default function validationCompany(data) {
   const errors = {};
   const nameRegex = /^[A-Za-z]+(?:[A-Za-z]+)*$/;
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passwordRegex = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/;
 
-  if (!data.FirstName) {
-    errors.FirstName = "First Name is required";
-  } else if (!nameRegex.test(data.FirstName)) {
-    errors.FirstName =
-      "First Name shouldn't start with a number, and shouldn't contain special characters or spaces. ";
-  }
-  if (!data.LastName) {
-    errors.LastName = "Last Name is required";
-  } else if (!nameRegex.test(data.LastName)) {
-    errors.LastName =
-      "Last Name shouldn't start with a number, and shouldn't contain special characters or spaces. ";
-  }
-  if (!data.Username) {
-    errors.Username = "Username is required";
-  } else if (!nameRegex.test(data.Username)) {
-    errors.Username =
-      "Username shouldn't start with a number, and shouldn't contain special characters or spaces. ";
-  }
   if (!data.CompanyName) {
     errors.CompanyName = "CompanyName is required";
   } else if (!nameRegex.test(data.CompanyName)) {
