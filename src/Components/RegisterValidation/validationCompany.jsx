@@ -5,11 +5,8 @@ export default function validationCompany(data) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passwordRegex = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/;
 
-  if (!data.CompanyName) {
-    errors.CompanyName = "CompanyName is required";
-  } else if (!nameRegex.test(data.CompanyName)) {
-    errors.CompanyName =
-      "CompanyName shouldn't start with a number, and shouldn't contain special characters or spaces. ";
+  if (!data.companyname) {
+    errors.companyname = "Company name is required";
   }
   if (!data.password) {
     errors.password = "Password Field is required";
@@ -24,8 +21,9 @@ export default function validationCompany(data) {
   } else if (!emailRegex.test(data.email)) {
     errors.email = " email Field must contains the required format ";
   }
-  if (!data.Industry) {
-    errors.Industry = " Industry Field is required";
+  if (!data.industry) {
+    errors.industry = " Industry Field is required";
   }
+
   return errors;
 }

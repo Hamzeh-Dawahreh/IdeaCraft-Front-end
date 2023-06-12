@@ -7,22 +7,43 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
-  const [checked, setChecked] = useState("off");
+  const [role, setRole] = useState("user");
   const [formValues, setFormValues] = useState("");
   const [isSubmut, setIsSubmit] = useState(false);
   const [formErrors, setFormErrors] = useState({});
   const navigate = useNavigate();
   function handleToggle() {
-    checked === "off" ? setChecked("on") : setChecked("off");
+    const newrole = role === "user" ? "company" : "user";
+    setRole(newrole);
   }
+
   function handleChange(e) {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+    const { name, value, type } = e.target;
+    const newValue = type === "checkbox" ? role : value;
+    setFormValues({ ...formValues, [name]: newValue, role });
   }
   const handleClick = async (e) => {
     e.preventDefault();
-    setFormErrors(validationUser(formValues));
+    if (role === "user") {
+      setFormErrors(validationUser(formValues));
+    } else {
+      setFormErrors(validationCompany(formValues));
+    }
     setIsSubmit(true);
   };
+  function handleToggle() {
+    const newRole = role === "user" ? "company" : "user";
+    setRole(newRole);
+  }
+
+  useEffect(() => {
+    setFormValues({});
+    setFormErrors({});
+  }, [role]);
+
+  console.log(">>>>>>>1", formValues);
+
+  // Rest of your code...
 
   useEffect(() => {
     if (Object.keys(formErrors).length == 0 && isSubmut) {
@@ -40,13 +61,13 @@ export default function Signup() {
 
       localStorage.setItem("token", response.data.token);
 
-      navigate("/");
+      // navigate("/");
     } catch (error) {
       console.error("Error sending data:", error);
       // Handle the error or display an error message to the user
     }
   };
-
+  console.log(formValues);
   return (
     <>
       <br />
@@ -65,12 +86,14 @@ export default function Signup() {
               <input
                 type="checkbox"
                 className="hide-checkbox"
-                onChange={handleToggle}
+                name="role"
+                onChange={handleChange}
+                onClick={handleToggle}
                 required
               />
               <span className="slider"></span>
             </label>
-            {checked === "off" ? (
+            {role === "user" ? (
               <>
                 <div className="first-last">
                   <label htmlFor="FIRST NAME" className="signup-label ">
@@ -191,17 +214,22 @@ export default function Signup() {
                   <input
                     type="text"
                     placeholder="Example co."
-                    name="CompanyName"
+                    name="companyname"
                     className="signup-input "
                     onChange={handleChange}
                     required
                   />
+                  {formErrors && (
+                    <>
+                      <p className="invalid">{formErrors.companyname}</p>
+                    </>
+                  )}
                 </label>
                 <label htmlFor="INDUSTRY" className="signup-label">
                   Industry/Category{" "}
                   <select
                     className="signup-input"
-                    name="Industry"
+                    name="industry"
                     onChange={handleChange}
                     required
                   >
@@ -210,6 +238,11 @@ export default function Signup() {
                     <option value="Technology">Technology</option>
                     <option value="Manufacturing">Manufacturing</option>
                   </select>
+                  {formErrors && (
+                    <>
+                      <p className="invalid">{formErrors.industry}</p>
+                    </>
+                  )}
                 </label>
 
                 <label htmlFor="EMAIL ADDRESS" className="signup-label">
