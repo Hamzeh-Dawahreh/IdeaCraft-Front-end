@@ -1,28 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
-
+import React, { useState, useEffect, useContext } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { AuthContext } from "../App";
 import "../Assets/Styles/register.css";
 export default function Login() {
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+
   useEffect(() => {
     // window.location.reload(false);
   }, []);
   const [formValues, setFormValues] = useState({
-    username: "",
+    email: "",
     password: "",
   });
-  function handleChange(event) {
-    const { name, value } = event.target;
-    setFormValues((prevValues) => {
-      return {
-        ...prevValues,
-        [name]: value,
-      };
-    });
+  function handleChange(e) {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
   }
-  function handleClick(event) {
-    //fdsokfopdsf
+  const navigate = useNavigate();
+  async function handleClick(event) {
     event.preventDefault();
-    localStorage.setItem("email", JSON.stringify(email));
+    try {
+      const response = await axios.post(
+        "http://localhost:3500/authentication/auth",
+        formValues
+      );
+      localStorage.setItem("token", response.data.token);
+      setIsLoggedIn(!isLoggedIn);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <>
@@ -42,10 +49,10 @@ export default function Login() {
               <input
                 className="login-input"
                 type="text"
-                name="username"
-                placeholder="Username"
+                name="email"
+                placeholder="email"
                 onChange={handleChange}
-                value={formValues.username}
+                value={formValues.email}
               />
               <i className="bi bi-person-fill">
                 <svg

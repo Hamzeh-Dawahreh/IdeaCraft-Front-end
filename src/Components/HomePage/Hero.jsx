@@ -43,26 +43,26 @@ export default function Hero() {
                   {" "}
                   <Link
                     to="/realestate"
-                    class="relative inline-flex items-center px-3 py-2 overflow-hidden text-lg font-medium text-indigo-600 border-2 border-white hover:text-white group hover:bg-gray-50"
+                    className="relative inline-flex items-center px-3 py-2 overflow-hidden text-lg font-medium text-indigo-600 border-2 border-white hover:text-white group hover:bg-gray-50"
                   >
-                    <span class="absolute left-0 block w-full h-0 transition-all bg-red-400 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
-                    <span class="absolute right-0 flex items-center justify-start w-8 h-10  duration-300 transform translate-x-full group-hover:translate-x-0 ease">
+                    <span className="absolute left-0 block w-full h-0 transition-all bg-red-400 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+                    <span className="absolute right-0 flex items-center justify-start w-8 h-10  duration-300 transform translate-x-full group-hover:translate-x-0 ease">
                       <svg
-                        class="w-5 h-5"
+                        className="w-5 h-5"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           d="M14 5l7 7m0 0l-7 7m7-7H3"
                         ></path>
                       </svg>
                     </span>
-                    <span class="relative transition-all duration-700 ease group-hover:px-3 mr-3">
+                    <span className="relative transition-all duration-700 ease group-hover:px-3 mr-3">
                       Learn More
                     </span>
                   </Link>
@@ -89,26 +89,26 @@ export default function Hero() {
                   {" "}
                   <Link
                     to="/realestate"
-                    class="relative inline-flex items-center px-3 py-2 overflow-hidden text-lg font-medium text-indigo-600 border-2 border-white hover:text-white group hover:bg-gray-50"
+                    className="relative inline-flex items-center px-3 py-2 overflow-hidden text-lg font-medium text-indigo-600 border-2 border-white hover:text-white group hover:bg-gray-50"
                   >
-                    <span class="absolute left-0 block w-full h-0 transition-all bg-red-400 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
-                    <span class="absolute right-0 flex items-center justify-start w-8 h-10  duration-300 transform translate-x-full group-hover:translate-x-0 ease">
+                    <span className="absolute left-0 block w-full h-0 transition-all bg-red-400 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+                    <span className="absolute right-0 flex items-center justify-start w-8 h-10  duration-300 transform translate-x-full group-hover:translate-x-0 ease">
                       <svg
-                        class="w-5 h-5"
+                        className="w-5 h-5"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           d="M14 5l7 7m0 0l-7 7m7-7H3"
                         ></path>
                       </svg>
                     </span>
-                    <span class="relative transition-all duration-700 ease group-hover:px-3 ">
+                    <span className="relative transition-all duration-700 ease group-hover:px-3 ">
                       Learn More
                     </span>
                   </Link>
@@ -135,26 +135,26 @@ export default function Hero() {
                   {" "}
                   <Link
                     to="/realestate"
-                    class="relative inline-flex items-center px-3 py-2 overflow-hidden text-lg font-medium text-indigo-600 border-2 border-white hover:text-white group hover:bg-gray-50"
+                    className="relative inline-flex items-center px-3 py-2 overflow-hidden text-lg font-medium text-indigo-600 border-2 border-white hover:text-white group hover:bg-gray-50"
                   >
-                    <span class="absolute left-0 block w-full h-0 transition-all bg-red-400 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
-                    <span class="absolute right-0 flex items-center justify-start w-8 h-10  duration-300 transform translate-x-full group-hover:translate-x-0 ease">
+                    <span className="absolute left-0 block w-full h-0 transition-all bg-red-400 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+                    <span className="absolute right-0 flex items-center justify-start w-8 h-10  duration-300 transform translate-x-full group-hover:translate-x-0 ease">
                       <svg
-                        class="w-5 h-5"
+                        className="w-5 h-5"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           d="M14 5l7 7m0 0l-7 7m7-7H3"
                         ></path>
                       </svg>
                     </span>
-                    <span class="relative transition-all duration-700 ease group-hover:px-3 mr-3">
+                    <span className="relative transition-all duration-700 ease group-hover:px-3 mr-3">
                       Learn More
                     </span>
                   </Link>

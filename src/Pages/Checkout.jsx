@@ -19,49 +19,52 @@ const Checkout = () => {
       <br />
       <br />
       <div>
-        <div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
-          <div class="px-4 pt-8 bg-gray-100 rounded-lg shadow-md">
-            <p class="text-xl font-medium">Project Details</p>
+        <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
+          <div className="px-4 pt-8 bg-gray-100 rounded-lg shadow-md">
+            <p className="text-xl font-medium">Project Details</p>
             <br />
             <br />
-            <div class="space-y-4">
-              <p class="text-gray-400">Project Name:</p>
-              <p class="font-medium">Consulting Project ABC</p>
-              <p class="text-gray-400">Company Name:</p>
-              <p class="font-medium">Fake Consulting Co.</p>
-              <p class="text-gray-400">Other details:</p>
-              <p class="font-normal">
+            <div className="space-y-4">
+              <p className="text-gray-400">Project Name:</p>
+              <p className="font-medium">Consulting Project ABC</p>
+              <p className="text-gray-400">Company Name:</p>
+              <p className="font-medium">Fake Consulting Co.</p>
+              <p className="text-gray-400">Other details:</p>
+              <p className="font-normal">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
                 hendrerit eros non enim tincidunt, nec tempor quam porta. Sed
                 nec quam ac nisl tristique cursus. Duis eu sem id orci cursus
                 dignissim vel id libero.
               </p>
-              <p class="text-gray-400">Price:</p>
-              <p class="font-medium">$100 per hour (estimated)</p>
+              <p className="text-gray-400">Price:</p>
+              <p className="font-medium">$100 per hour (estimated)</p>
             </div>
           </div>
 
-          <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
-            <p class="text-xl font-medium">Payment Details</p>
-            <p class="text-gray-400">
+          <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+            <p className="text-xl font-medium">Payment Details</p>
+            <p className="text-gray-400">
               Complete your order by providing your payment details.
             </p>
-            <div class="">
-              <label for="email" class="mt-4 mb-2 block text-sm font-medium">
+            <div className="">
+              <label
+                for="email"
+                className="mt-4 mb-2 block text-sm font-medium"
+              >
                 Email
               </label>
-              <div class="relative">
+              <div className="relative">
                 <input
                   type="text"
                   id="email"
                   name="email"
-                  class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                   placeholder="your.email@gmail.com"
                 />
-                <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 text-gray-400"
+                    className="h-4 w-4 text-gray-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -77,22 +80,22 @@ const Checkout = () => {
               </div>
               <label
                 for="card-holder"
-                class="mt-4 mb-2 block text-sm font-medium"
+                className="mt-4 mb-2 block text-sm font-medium"
               >
                 Card Holder
               </label>
-              <div class="relative">
+              <div className="relative">
                 <input
                   type="text"
                   id="card-holder"
                   name="card-holder"
-                  class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                   placeholder="Your full name here"
                 />
-                <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-4 w-4 text-gray-400"
+                    className="h-4 w-4 text-gray-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -106,21 +109,24 @@ const Checkout = () => {
                   </svg>
                 </div>
               </div>
-              <label for="card-no" class="mt-4 mb-2 block text-sm font-medium">
+              <label
+                for="card-no"
+                className="mt-4 mb-2 block text-sm font-medium"
+              >
                 Card Details
               </label>
-              <div class="flex">
-                <div class="relative w-7/12 flex-shrink-0">
+              <div className="flex">
+                <div className="relative w-7/12 flex-shrink-0">
                   <input
                     type="text"
                     id="card-no"
                     name="card-no"
-                    class="w-full rounded-md border border-gray-200 px-2 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                    className="w-full rounded-md border border-gray-200 px-2 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder="xxxx-xxxx-xxxx-xxxx"
                   />
-                  <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                     <svg
-                      class="h-4 w-4 text-gray-400"
+                      className="h-4 w-4 text-gray-400"
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
@@ -135,34 +141,34 @@ const Checkout = () => {
                 <input
                   type="text"
                   name="credit-expiry"
-                  class="w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                   placeholder="MM/YY"
                 />
                 <input
                   type="text"
                   name="credit-cvc"
-                  class="w-1/6 flex-shrink-0 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                  className="w-1/6 flex-shrink-0 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                   placeholder="CVC"
                 />
               </div>
               <label
                 for="billing-address"
-                class="mt-4 mb-2 block text-sm font-medium"
+                className="mt-4 mb-2 block text-sm font-medium"
               >
                 Billing Address
               </label>
-              <div class="flex flex-col sm:flex-row">
-                <div class="relative flex-shrink-0 sm:w-7/12">
+              <div className="flex flex-col sm:flex-row">
+                <div className="relative flex-shrink-0 sm:w-7/12">
                   <input
                     type="text"
                     id="billing-address"
                     name="billing-address"
-                    class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                    className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder="Street Address"
                   />
-                  <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                     <img
-                      class="h-4 w-4 object-contain"
+                      className="h-4 w-4 object-contain"
                       src="https://flagpack.xyz/_nuxt/4c829b6c0131de7162790d2f897a90fd.svg"
                       alt=""
                     />
@@ -171,36 +177,36 @@ const Checkout = () => {
                 <select
                   type="text"
                   name="billing-state"
-                  class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                 >
                   <option value="State">State</option>
                 </select>
                 <input
                   type="text"
                   name="billing-zip"
-                  class="flex-shrink-0 rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none sm:w-1/6 focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                  className="flex-shrink-0 rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none sm:w-1/6 focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                   placeholder="ZIP"
                 />
               </div>
 
-              <div class="mt-6 border-t border-b py-2">
-                <div class="flex items-center justify-between">
-                  <p class="text-sm font-medium text-gray-900">Subtotal</p>
-                  <p class="font-semibold text-gray-900">10 jd</p>
+              <div className="mt-6 border-t border-b py-2">
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-medium text-gray-900">Subtotal</p>
+                  <p className="font-semibold text-gray-900">10 jd</p>
                 </div>
-                {/* <div class="flex items-center justify-between">
-                                <p class="text-sm font-medium text-gray-900">Shipping</p>
-                                <p class="font-semibold text-gray-900">2.00 JD</p>
+                {/* <div className="flex items-center justify-between">
+                                <p className="text-sm font-medium text-gray-900">Shipping</p>
+                                <p className="font-semibold text-gray-900">2.00 JD</p>
                             </div> */}
               </div>
-              <div class="mt-6 flex items-center justify-between">
-                <p class="text-sm font-medium text-gray-900">Total</p>
-                <p class="text-2xl font-semibold text-gray-900">10 JD</p>
+              <div className="mt-6 flex items-center justify-between">
+                <p className="text-sm font-medium text-gray-900">Total</p>
+                <p className="text-2xl font-semibold text-gray-900">10 JD</p>
               </div>
             </div>
             <button
               onClick={handleMessage}
-              class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white"
+              className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white"
             >
               Submit Payment
             </button>

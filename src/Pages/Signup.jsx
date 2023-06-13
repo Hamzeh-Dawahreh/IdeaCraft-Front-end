@@ -1,16 +1,22 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import validationUser from "../Components/RegisterValidation/validationUser";
 import validationCompany from "../Components/RegisterValidation/validationCompany";
 import "../Assets/Styles/register.css";
 import axios from "axios";
+import { AuthContext } from "../App";
+
 import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+
   const [role, setRole] = useState("user");
   const [formValues, setFormValues] = useState("");
   const [isSubmut, setIsSubmit] = useState(false);
   const [formErrors, setFormErrors] = useState({});
+  const [Econflict, setEConclict] = useState("");
+  const [Uconflict, setUConclict] = useState("");
   const navigate = useNavigate();
   function handleToggle() {
     const newrole = role === "user" ? "company" : "user";
@@ -41,10 +47,6 @@ export default function Signup() {
     setFormErrors({});
   }, [role]);
 
-  console.log(">>>>>>>1", formValues);
-
-  // Rest of your code...
-
   useEffect(() => {
     if (Object.keys(formErrors).length == 0 && isSubmut) {
       sendDataToServer();
@@ -54,20 +56,22 @@ export default function Signup() {
   const sendDataToServer = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3500/register",
+        "http://localhost:3500/register/newuser",
         formValues
       );
       console.log("Data sent successfully");
 
       localStorage.setItem("token", response.data.token);
+      setIsLoggedIn(!isLoggedIn);
 
-      // navigate("/");
+      navigate("/");
     } catch (error) {
-      console.error("Error sending data:", error);
+      setEConclict(error.response.data.Emessage);
+      setUConclict(error.response.data.Umessage);
       // Handle the error or display an error message to the user
     }
   };
-  console.log(formValues);
+
   return (
     <>
       <br />
@@ -140,6 +144,9 @@ export default function Signup() {
                   />
                   {formErrors && (
                     <p className="invalid invalid-1">{formErrors.username}</p>
+                  )}{" "}
+                  {Uconflict && (
+                    <p className="invalid invalid-1">{Uconflict}</p>
                   )}
                 </label>
                 <label htmlFor="EMAIL ADDRESS" className="signup-label">
@@ -154,6 +161,9 @@ export default function Signup() {
                   />
                   {formErrors && (
                     <p className="invalid invalid-1">{formErrors.email}</p>
+                  )}
+                  {Econflict && (
+                    <p className="invalid invalid-1">{Econflict}</p>
                   )}
                 </label>
                 <label htmlFor="PASSWORD" className="signup-label">
