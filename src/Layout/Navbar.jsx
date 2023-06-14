@@ -7,6 +7,7 @@ import { Login } from "@mui/icons-material";
 import jwtDecode from "jwt-decode";
 
 export default function Navbar() {
+  const token = localStorage.getItem("token");
   const {
     isLoggedIn,
     setIsLoggedIn,
@@ -17,23 +18,6 @@ export default function Navbar() {
     setUsername,
   } = useContext(AuthContext);
 
-  // const [username, setUsername] = useState("");
-  // const [companyname, setCompanyName] = useState();
-  // const [role, setRole] = useState();
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     // Decode the token to extract user information
-  //     const decodedToken = jwtDecode(token);
-  //     if (decodedToken) {
-  //       setUsername(decodedToken.username);
-  //       setCompanyName(decodedToken.companyname);
-  //       setRole(decodedToken.role);
-  //       setIsLoggedIn(true);
-  //     }
-  //   }
-  // }, []);
   const activeLink =
     "block py-2 pl-3 pr-4 text-blue-700	 bg-[#867070] rounded md:bg-transparent md:text-blue md:p-0 md:dark:text-blue-700	";
   const normalLink =
@@ -52,7 +36,7 @@ export default function Navbar() {
             </Link>
             <div className="flex md:order-2">
               <div className=" leading-10 text-white mr-4"></div>
-              {isLoggedIn && role == "company" ? (
+              {token && role == "company" ? (
                 <Link to="/companyprofile">
                   <p className=" text-white leading-8 mr-4 ">
                     <i> {companyname} </i>
@@ -63,19 +47,17 @@ export default function Navbar() {
                   <i> {username} </i>
                 </Link>
               )}
-              {!isLoggedIn ? (
+              {!token ? (
                 <Link to="/login">
                   <button
                     type="button"
                     className="text-white bg-[#E44C65] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-[#E44C65] dark:hover:bg-[#bea9a9] dark:focus:ring-[#867070]"
                   >
-                    {" "}
-                    Sign In{" "}
+                    Sign In
                   </button>
                 </Link>
               ) : (
                 <Link
-                  to="/"
                   className="w-full"
                   onClick={() => {
                     localStorage.removeItem("token");

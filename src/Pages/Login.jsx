@@ -94,11 +94,10 @@ export default function Login() {
             </div>
             <div>
               <div>
-                <Link className="link" to="/signup">
+                <Link className="link text-blue-600" to="/signup">
                   {" "}
                   Don't have an account?
                 </Link>
-                <br /> Forgot password?
               </div>
             </div>
             <div className="login-with">

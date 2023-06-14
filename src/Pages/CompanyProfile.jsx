@@ -1,6 +1,7 @@
 import React from "react";
 import { Rating } from "@mui/material";
 import RequestDialog from "../Components/Dialogs/Request-Dialog";
+import Edit from "../Components/Dialogs/Edit-Dialog";
 import "../Assets/Styles/profile.css";
 export default function CompanyProfile() {
   return (
@@ -18,14 +19,19 @@ export default function CompanyProfile() {
             <div className="user-titles">
               <span>Company Name</span>
               <span>Category/Industry</span>
-              <span>Username</span>
+              <span>Details</span>
               <span>Email Address</span>
               <span>Subscription</span>
             </div>
             <div className="user-info">
               <span>CBRE</span>
               <span>Real-estate</span>
-              <span>CBRE</span>
+              <span className="details">
+                CBRE Group, Inc. is an American commercial real estate services
+                and investment firm. The abbreviation CBRE stands for Coldwell
+                Banker Richard Ellis. It is the world's largest commercial real
+                estate services and investment firm
+              </span>
               <span>CBRE@gmaill.com</span>
               <span>Jan- June 2023</span>
             </div>
@@ -35,9 +41,10 @@ export default function CompanyProfile() {
                 Your rating
               </p>
             </div>
-            <div className="edit-image">
-              <img src="./src/Assets/Images/Edit.png" />
-            </div>
+            {/* <div className="edit-image"> */}
+            <Edit />
+            {/* <img src="./src/Assets/Images/Edit.png" /> */}
+            {/* </div> */}
           </div>
         </div>
         <hr />

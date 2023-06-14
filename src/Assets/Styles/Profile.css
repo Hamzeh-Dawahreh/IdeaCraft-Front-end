@@ -4,6 +4,13 @@
   flex-direction: column;
   gap: 8rem;
 }
+.details {
+  display: inline-block;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .user-image {
   display: flex;
   justify-content: center;
