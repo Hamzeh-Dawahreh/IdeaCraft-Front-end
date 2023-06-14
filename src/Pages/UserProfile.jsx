@@ -1,8 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Rating } from "@mui/material";
 import ConsentDialog from "../Components/Dialogs/Consent-Dialog";
+import axios from "axios";
 import "../Assets/Styles/profile.css";
 export default function UserProfile() {
+  const [userData, setUserData] = useState();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`, // Replace with your actual token
+      },
+    };
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3500/users/getuser`,
+          config
+        );
+        setUserData(response.data);
+        // Do something with the user data
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <br />

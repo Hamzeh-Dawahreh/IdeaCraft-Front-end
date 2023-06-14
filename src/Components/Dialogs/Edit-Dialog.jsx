@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import {
   Button,
   Dialog,
@@ -6,28 +6,88 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
+import axios from "axios";
 
-export default function () {
+export default function Edit({ userData }) {
+  const [errors, setErrors] = useState({});
+
   const [formData, setFormData] = useState({
-    company: "",
-    category: "",
+    companyname: "",
+    industry: "",
     details: "",
     email: "",
-    subscription: false,
   });
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    const fieldValue = type === "checkbox" ? checked : value;
+  useEffect(() => {
+    setFormData({
+      companyname: userData && userData.companyname,
+      industry: userData && userData.industry,
+      details: userData && userData.details,
+      email: userData && userData.email,
+    });
+  }, [userData]);
 
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: fieldValue,
-    }));
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Perform form submission logic here
-    console.log(formData);
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    // Validation
+    const errors = {};
+
+    // Validate company name
+    if (!formData.companyname) {
+      errors.companyname = "Company name is required";
+    }
+
+    // Validate industry
+    if (!formData.industry) {
+      errors.industry = "Industry is required";
+    }
+
+    // Validate details
+    if (!formData.details) {
+      errors.details = "Details is required";
+    }
+
+    // Validate email
+    if (!formData.email) {
+      errors.email = "Email is required";
+    } else if (!isValidEmail(formData.email)) {
+      errors.email = "Invalid email format";
+    }
+
+    // Check if there are any errors
+    if (Object.keys(errors).length > 0) {
+      // Handle errors (e.g., update the state or show error messages)
+      setErrors(errors);
+      return;
+    }
+
+    try {
+      const response = await axios.put(
+        `http://localhost:3500/users/updateuser`,
+        formData,
+        config
+      );
+      console.log("User details updated successfully");
+      // You can add any additional logic here, such as updating the UI with the new data
+    } catch (error) {
+      console.error("Error updating user details:", error.response.data);
+      // Handle the error here, such as showing an error message to the user
+    }
+    setOpen(!open);
+  };
+  const isValidEmail = (email) => {
+    // Simple email validation using regular expression
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
 
   const [open, setOpen] = useState(false);
@@ -49,8 +109,8 @@ export default function () {
       >
         <DialogHeader className="">Change your information</DialogHeader>
         <form
-          onSubmit={handleSubmit}
           className="max-w-md mx-auto p-4 bg-white rounded shadow"
+          onSubmit={handleSubmit}
         >
           <div className="mb-4">
             <label
@@ -61,33 +121,41 @@ export default function () {
             </label>
             <input
               type="text"
-              id="company"
-              name="company"
-              value={formData.company}
+              id="companyname"
+              value={formData.companyname}
+              name="companyname"
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               required
             />
+            {errors.companyname && (
+              <span className="text-red-500">{errors.companyname}</span>
+            )}
           </div>
-
           <div className="mb-4">
             <label
-              htmlFor="category"
+              htmlFor="industry"
               className="block text-gray-700 font-bold mb-2"
             >
-              Category/Industry
+              Industry
             </label>
-            <input
-              type="text"
-              id="category"
-              name="category"
-              value={formData.category}
+            <select
+              id="industry"
+              name="industry"
+              value={formData.industry}
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               required
-            />
+            >
+              <option value="">Select an industry</option>
+              <option value="Technology">Technology</option>
+              <option value="Real Estate">Real Estate</option>
+              <option value="Manufacturing">Manufacturing</option>
+            </select>
+            {errors.industry && (
+              <span className="text-red-500">{errors.industry}</span>
+            )}
           </div>
-
           <div className="mb-4">
             <label
               htmlFor="details"
@@ -97,14 +165,16 @@ export default function () {
             </label>
             <textarea
               id="details"
-              name="details"
               value={formData.details}
+              name="details"
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               required
             ></textarea>
+            {errors.details && (
+              <span className="text-red-500">{errors.details}</span>
+            )}
           </div>
-
           <div className="mb-4">
             <label
               htmlFor="email"
@@ -114,15 +184,19 @@ export default function () {
             </label>
             <input
               type="email"
+              value={formData.email}
               id="email"
               name="email"
-              value={formData.email}
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               required
             />
+            {errors.email && (
+              <span className="text-red-500">{errors.email}</span>
+            )}
           </div>
         </form>
+
         <DialogFooter>
           <Button
             variant="text"
@@ -136,9 +210,9 @@ export default function () {
             type="submit"
             variant="gradient"
             color="green"
-            onClick={handleOpen}
+            onClick={handleSubmit}
           >
-            <span>Confirm</span>
+            Confirm
           </Button>
         </DialogFooter>
       </Dialog>

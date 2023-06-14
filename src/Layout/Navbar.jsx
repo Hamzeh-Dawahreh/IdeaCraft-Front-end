@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../Assets/Styles/navbar.css";
 import { AuthContext } from "../App";
@@ -7,6 +7,7 @@ import { Login } from "@mui/icons-material";
 import jwtDecode from "jwt-decode";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const {
     isLoggedIn,
@@ -64,6 +65,7 @@ export default function Navbar() {
                     setIsLoggedIn(!isLoggedIn);
                     setCompanyName("");
                     setUsername("");
+                    navigate("/");
                   }}
                 >
                   <button

@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Rating } from "@mui/material";
 import RequestDialog from "../Components/Dialogs/Request-Dialog";
 import Edit from "../Components/Dialogs/Edit-Dialog";
 import "../Assets/Styles/profile.css";
+import axios from "axios";
 export default function CompanyProfile() {
+  const [userData, setUserData] = useState();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3500/users/getuser`,
+          config
+        );
+        setUserData(response.data);
+        // Do something with the user data
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <br />
@@ -24,15 +52,10 @@ export default function CompanyProfile() {
               <span>Subscription</span>
             </div>
             <div className="user-info">
-              <span>CBRE</span>
-              <span>Real-estate</span>
-              <span className="details">
-                CBRE Group, Inc. is an American commercial real estate services
-                and investment firm. The abbreviation CBRE stands for Coldwell
-                Banker Richard Ellis. It is the world's largest commercial real
-                estate services and investment firm
-              </span>
-              <span>CBRE@gmaill.com</span>
+              <span>{userData && userData.companyname}</span>
+              <span>{userData && userData.industry}</span>
+              <span className="details">{userData && userData.details}</span>
+              <span>{userData && userData.email}</span>
               <span>Jan- June 2023</span>
             </div>
             <div className="info-line">
@@ -42,7 +65,7 @@ export default function CompanyProfile() {
               </p>
             </div>
             {/* <div className="edit-image"> */}
-            <Edit />
+            <Edit userData={userData} />
             {/* <img src="./src/Assets/Images/Edit.png" /> */}
             {/* </div> */}
           </div>
