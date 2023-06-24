@@ -7,10 +7,12 @@ export default function validationCompany(data) {
 
   if (!data.companyname) {
     errors.companyname = "Company name is required";
+  } else if (!nameRegex.test(data.companyname)) {
+    errors.companyname =
+      "Company Name shouldn't start with a number, and shouldn't contain special characters or spaces. ";
   }
   if (!data.password) {
     errors.password = "Password Field is required";
-    console.log("Password is required");
   } else if (!passwordRegex.test(data.password)) {
     errors.password =
       "Password Field must  contain more than 8 characters, with at least 1 number, uppercase, and special characters ";

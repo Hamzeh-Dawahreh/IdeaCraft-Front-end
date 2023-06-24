@@ -10,24 +10,39 @@ import axios from "axios";
 
 export default function Edit({ userData }) {
   const [errors, setErrors] = useState({});
+  const [isChecked, setIsChecked] = useState(false);
 
   const [formData, setFormData] = useState({
     companyname: "",
     industry: "",
-    details: "",
     email: "",
+    newPassword: "",
+    confirmPassword: "",
   });
   useEffect(() => {
     setFormData({
       companyname: userData && userData.companyname,
       industry: userData && userData.industry,
-      details: userData && userData.details,
       email: userData && userData.email,
     });
   }, [userData]);
-
+  console.log(formData.industry);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleCheckboxChange = (e) => {
+    setIsChecked(e.target.checked);
+    if (!e.target.checked) {
+      // Reset password fields and errors if checkbox is unchecked
+      setFormData({
+        newPassword: "",
+        confirmPassword: "",
+      });
+      setErrors({
+        newPassword: "",
+        confirmPassword: "",
+      });
+    }
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,16 +66,21 @@ export default function Edit({ userData }) {
       errors.industry = "Industry is required";
     }
 
-    // Validate details
-    if (!formData.details) {
-      errors.details = "Details is required";
-    }
-
     // Validate email
     if (!formData.email) {
       errors.email = "Email is required";
     } else if (!isValidEmail(formData.email)) {
       errors.email = "Invalid email format";
+    }
+    // Validate new password
+    if (!isValidPassword(formData.newPassword)) {
+      errors.newPassword =
+        "Password must contain at least one uppercase letter, one non-alphanumeric character, and be at least 8 characters long";
+    }
+
+    // Validate confirm password
+    if (formData.newPassword !== formData.confirmPassword) {
+      errors.confirmPassword = "Passwords do not match";
     }
 
     // Check if there are any errors
@@ -89,6 +109,11 @@ export default function Edit({ userData }) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
+  const isValidPassword = (password) => {
+    const passwordRegex = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/;
+
+    return passwordRegex.test(password);
+  };
 
   const [open, setOpen] = useState(false);
 
@@ -107,7 +132,9 @@ export default function Edit({ userData }) {
           unmount: { scale: 0.9, y: -100 },
         }}
       >
-        <DialogHeader className="">Change your information</DialogHeader>
+        <DialogHeader className=" text-base">
+          Change your information
+        </DialogHeader>
         <form
           className="max-w-md mx-auto p-4 bg-white rounded shadow"
           onSubmit={handleSubmit}
@@ -115,7 +142,7 @@ export default function Edit({ userData }) {
           <div className="mb-4">
             <label
               htmlFor="company"
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-gray-700 font-bold mb-2 text-sm"
             >
               Company Name
             </label>
@@ -126,7 +153,6 @@ export default function Edit({ userData }) {
               name="companyname"
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
-              required
             />
             {errors.companyname && (
               <span className="text-red-500">{errors.companyname}</span>
@@ -135,7 +161,7 @@ export default function Edit({ userData }) {
           <div className="mb-4">
             <label
               htmlFor="industry"
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-gray-700 font-bold mb-2 text-sm"
             >
               Industry
             </label>
@@ -145,7 +171,6 @@ export default function Edit({ userData }) {
               value={formData.industry}
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
-              required
             >
               <option value="">Select an industry</option>
               <option value="Technology">Technology</option>
@@ -156,29 +181,11 @@ export default function Edit({ userData }) {
               <span className="text-red-500">{errors.industry}</span>
             )}
           </div>
-          <div className="mb-4">
-            <label
-              htmlFor="details"
-              className="block text-gray-700 font-bold mb-2"
-            >
-              Details
-            </label>
-            <textarea
-              id="details"
-              value={formData.details}
-              name="details"
-              onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
-              required
-            ></textarea>
-            {errors.details && (
-              <span className="text-red-500">{errors.details}</span>
-            )}
-          </div>
+
           <div className="mb-4">
             <label
               htmlFor="email"
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-gray-700 font-bold mb-2 text-sm"
             >
               Email Address
             </label>
@@ -189,10 +196,57 @@ export default function Edit({ userData }) {
               name="email"
               onChange={handleChange}
               className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
-              required
             />
             {errors.email && (
               <span className="text-red-500">{errors.email}</span>
+            )}
+          </div>
+          <label htmlFor="" className=" text-xs text-gray-400 font-light">
+            Change password
+          </label>
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleCheckboxChange}
+          />
+          <div className="mb-4">
+            <label
+              htmlFor="newPassword"
+              className="block text-gray-700 font-bold mb-2 text-sm"
+            >
+              New Password
+            </label>
+            <input
+              type="password"
+              value={formData.newPassword}
+              id="newPassword"
+              name="newPassword"
+              disabled={!isChecked}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+            />
+            {errors.newPassword && (
+              <small className="text-red-500">{errors.newPassword}</small>
+            )}
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="confirmPassword"
+              className="block text-gray-700 font-bold mb-2 text-sm"
+            >
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              value={formData.confirmPassword}
+              disabled={!isChecked}
+              id="confirmPassword"
+              name="confirmPassword"
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+            />
+            {errors.confirmPassword && (
+              <span className="text-red-500">{errors.confirmPassword}</span>
             )}
           </div>
         </form>

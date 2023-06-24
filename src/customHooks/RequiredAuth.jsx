@@ -29,7 +29,7 @@ const RequiredAuth = () => {
   // Check if the user is authorized for the current route
   const isAuthorized = isUserAuthorized || isProviderAuthorized;
 
-  return token && isAuthorized ? <Outlet /> : <Navigate to="*" />;
+  return token && isAuthorized ? <Outlet /> : <Navigate to="/" />;
 };
 
 export default RequiredAuth;

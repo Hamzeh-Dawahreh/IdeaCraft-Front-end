@@ -13,7 +13,7 @@ export default function Signup() {
 
   const [role, setRole] = useState("user");
   const [formValues, setFormValues] = useState("");
-  const [isSubmut, setIsSubmit] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
   const [formErrors, setFormErrors] = useState({});
   const [Econflict, setEConclict] = useState("");
   const [Uconflict, setUConclict] = useState("");
@@ -21,8 +21,9 @@ export default function Signup() {
   function handleToggle() {
     const newrole = role === "user" ? "company" : "user";
     setRole(newrole);
+    setFormErrors("");
+    setFormValues("");
   }
-
   function handleChange(e) {
     const { name, value, type } = e.target;
     const newValue = type === "checkbox" ? role : value;
@@ -48,17 +49,20 @@ export default function Signup() {
   }, [role]);
 
   useEffect(() => {
-    if (Object.keys(formErrors).length == 0 && isSubmut) {
+    if (Object.keys(formErrors).length == 0 && isSubmit) {
       sendDataToServer();
     }
-  }, [formErrors, isSubmut]);
-
+  }, [formErrors, isSubmit]);
   const sendDataToServer = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:3500/register/newuser",
-        formValues
-      );
+      let registrationUrl = "";
+      if (role === "user") {
+        registrationUrl = "http://localhost:3500/register/newuser";
+      } else {
+        registrationUrl = "http://localhost:3500/register/newcompany";
+      }
+
+      const response = await axios.post(registrationUrl, formValues);
       console.log("Data sent successfully");
 
       localStorage.setItem("token", response.data.token);
@@ -71,7 +75,7 @@ export default function Signup() {
       // Handle the error or display an error message to the user
     }
   };
-
+  console.log(Econflict);
   return (
     <>
       <br />
@@ -161,7 +165,7 @@ export default function Signup() {
                   />
                   {formErrors && (
                     <p className="invalid invalid-1">{formErrors.email}</p>
-                  )}
+                  )}{" "}
                   {Econflict && (
                     <p className="invalid invalid-1">{Econflict}</p>
                   )}
@@ -266,9 +270,10 @@ export default function Signup() {
                     required
                   />
                   {formErrors && (
-                    <>
-                      <p className="invalid">{formErrors.email}</p>
-                    </>
+                    <p className="invalid invalid-1">{formErrors.email}</p>
+                  )}{" "}
+                  {Econflict && (
+                    <p className="invalid invalid-1">{Econflict}</p>
                   )}
                 </label>
                 <label htmlFor="PASSWORD" className="signup-label">

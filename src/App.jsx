@@ -21,7 +21,7 @@ import Checkout from "./Pages/Checkout";
 import RequiredAuth from "./customHooks/RequiredAuth";
 import NotFound from "./Pages/NotFound404";
 import jwtDecode from "jwt-decode";
-
+import CompanyForm from "./Components/Profile/CompanyForm";
 export const AuthContext = createContext();
 
 export default function App() {
@@ -83,6 +83,7 @@ export default function App() {
               <Route path="/contactus" element={<ContactUs />} />
               <Route path="/aboutus" element={<Aboutus />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/companyform" element={<CompanyForm />} />
               <Route element={<RequiredAuth />}>
                 <Route path="/companyprofile" element={<CompanyProfile />} />
                 <Route path="/userprofile" element={<UserProfile />} />

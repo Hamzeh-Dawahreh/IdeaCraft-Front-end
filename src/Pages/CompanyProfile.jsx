@@ -19,7 +19,7 @@ export default function CompanyProfile() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3500/users/getuser`,
+          `http://localhost:3500/users/getcompany`,
           config
         );
         setUserData(response.data);
@@ -47,14 +47,12 @@ export default function CompanyProfile() {
             <div className="user-titles">
               <span>Company Name</span>
               <span>Category/Industry</span>
-              <span>Details</span>
               <span>Email Address</span>
               <span>Subscription</span>
             </div>
             <div className="user-info">
               <span>{userData && userData.companyname}</span>
               <span>{userData && userData.industry}</span>
-              <span className="details">{userData && userData.details}</span>
               <span>{userData && userData.email}</span>
               <span>Jan- June 2023</span>
             </div>

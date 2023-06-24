@@ -1,7 +1,15 @@
 import { Rating } from "@mui/material";
 import Dialog from "../Components/Dialogs/Book-Dialog";
 import "../Assets/Styles/solution.css";
+import { useEffect } from "react";
+import axios from "axios";
 export default function RealEstate() {
+  useEffect(async () => {
+    const response = await axios.get(
+      "http://localhost:3500/form/getRealEstate"
+    );
+    console.log(response.data);
+  }, []);
   return (
     <>
       {" "}
@@ -38,7 +46,7 @@ export default function RealEstate() {
             Our Companies
           </h1>
           <br /> <div className="line-2"></div>
-          <div className="company-card">
+          {/* <div className="company-card">
             <img src="./src/Assets/Images/CBRE.png" />
             <div className="info">
               <p>
@@ -57,12 +65,11 @@ export default function RealEstate() {
               </h6>
               <div className="company-rating">
                 <Rating name="read-only" value="3" readOnly />
-                {/* <button className="company-book">Book</button> */}
                 <Dialog />
               </div>
             </div>
-          </div>
-          <div className="company-card">
+          </div> */}
+          {/* <div className="company-card">
             <img src="./src/Assets/Images/BDO.png" />
             <div className="info">
               <p>
@@ -83,8 +90,8 @@ export default function RealEstate() {
                 <Dialog />
               </div>
             </div>
-          </div>
-          <div className="company-card">
+          </div> */}
+          {/* <div className="company-card">
             <img src="./src/Assets/Images/CBRE.png" />
             <div className="info">
               <p>
@@ -106,7 +113,7 @@ export default function RealEstate() {
                 <Dialog />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <br />
