@@ -52,7 +52,7 @@ function BenifactorForm() {
         formDataWithFiles,
         config
       );
-
+      console.log(formDataWithFiles);
       console.log("Data sent successfully");
     } catch (error) {
       console.log("Error:", error.message);

@@ -1,18 +1,28 @@
+import "../Assets/Styles/solution.css";
 import { Rating } from "@mui/material";
 import Dialog from "../Components/Dialogs/Book-Dialog";
-import "../Assets/Styles/solution.css";
-import { useEffect } from "react";
+import Pagination from "@mui/material/Pagination";
+
+import { useEffect, useState } from "react";
 import axios from "axios";
 export default function RealEstate() {
-  useEffect(async () => {
-    const response = await axios.get(
-      "http://localhost:3500/form/getRealEstate"
-    );
-    console.log(response.data);
+  const [companyData, setCompanyData] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3500/form/getRealEstate"
+        );
+        setCompanyData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
   }, []);
   return (
     <>
-      {" "}
       <br />
       <br />
       <div className="solution-container">
@@ -46,75 +56,48 @@ export default function RealEstate() {
             Our Companies
           </h1>
           <br /> <div className="line-2"></div>
-          {/* <div className="company-card">
-            <img src="./src/Assets/Images/CBRE.png" />
-            <div className="info">
-              <p>
-                CBRE Group, Inc. is an American commercial real estate services
-                and investment firm. The abbreviation CBRE stands for Coldwell
-                Banker Richard Ellis. It is the world's largest commercial real
-                estate services and investment firm <br />
-                “Our mission is to realize the potential of our
-                clients,professionals and partners by building the real estate
-                solutions of the future. From instilling confidence in today’s
-                decisions to re-imagining tomorrow’s spaces, we thrive in
-                complex and ever-changing environments.”
-              </p>
-              <h6>
-                *CBRE Group has made 39 feasibility study on the website.*
-              </h6>
-              <div className="company-rating">
-                <Rating name="read-only" value="3" readOnly />
-                <Dialog />
+          {companyData?.map((data) => {
+            return (
+              <div className="company-card">
+                {data.Images?.slice(0, 1).map((image, index) => (
+                  <img
+                    alt="image"
+                    src={`http://localhost:3500/${image}`}
+                    className="w-full h-full rounded-xl object-fit shadow-lg max-w-full"
+                    key={index}
+                  />
+                ))}
+                <div className="info">
+                  <div>
+                    <p>{data.description}</p>
+                    <i>
+                      {" "}
+                      <p className=" text-gray-500 text-sm">
+                        Location : {data.country}/{data.city}
+                      </p>{" "}
+                    </i>
+                  </div>
+                  <div className="flex text-gray-500  text-sm ">
+                    <div>Email:</div>
+                    <div>{data.email}</div>
+                    <div className=" ml-4">Phone:</div>
+                    <div>{data.phone}</div>
+                  </div>
+                  <h6>
+                    *CBRE Group has made 39 feasibility study on the website.*
+                  </h6>
+                  <div className="company-rating">
+                    <Rating name="read-only" value="3" readOnly />
+                    <Dialog />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div> */}
-          {/* <div className="company-card">
-            <img src="./src/Assets/Images/BDO.png" />
-            <div className="info">
-              <p>
-                BDO USA, LLP is the United States member firm of BDO
-                International, a global accounting network. The company is
-                headquartered in Chicago. The firm adopted its current moniker
-                in 1973, each letter corresponding to a surname of an original
-                founder of the corporation: Binder, Dijker. <br />
-                “Our mission is to realize the potential of our
-                clients,professionals and partners by building the real estate
-                solutions of the future. From instilling confidence in today’s
-                decisions to re-imagining tomorrow’s spaces, we thrive in
-                complex and ever-changing environments.”
-              </p>
-              <h6>*BDO USA has made 20 feasibility study on the website.* </h6>
-              <div className="company-rating">
-                <Rating name="read-only" value="3" readOnly />
-                <Dialog />
-              </div>
-            </div>
-          </div> */}
-          {/* <div className="company-card">
-            <img src="./src/Assets/Images/CBRE.png" />
-            <div className="info">
-              <p>
-                CBRE Group, Inc. is an American commercial real estate services
-                and investment firm. The abbreviation CBRE stands for Coldwell
-                Banker Richard Ellis. It is the world's largest commercial real
-                estate services and investment firm <br />
-                “Our mission is to realize the potential of our
-                clients,professionals and partners by building the real estate
-                solutions of the future. From instilling confidence in today’s
-                decisions to re-imagining tomorrow’s spaces, we thrive in
-                complex and ever-changing environments.”
-              </p>
-              <h6>
-                *CBRE Group has made 39 feasibility study on the website.*
-              </h6>
-              <div className="company-rating">
-                <Rating name="read-only" value="3" readOnly />
-                <Dialog />
-              </div>
-            </div>
-          </div> */}
+            );
+          })}
         </div>
+      </div>{" "}
+      <div className=" flex justify-center">
+        <Pagination className=" mt-20" count={10} color="primary" />
       </div>
       <br />
       <br />

@@ -33,7 +33,7 @@
   justify-content: space-around;
 }
 .info {
-  width: 35rem;
+  max-width: 35rem;
 }
 .company-rating {
   display: flex;
