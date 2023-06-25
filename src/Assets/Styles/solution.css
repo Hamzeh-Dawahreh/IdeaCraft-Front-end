@@ -24,9 +24,7 @@
   border: 2px solid black;
   width: 100%;
 }
-.our-companies h1 {
-  text-align: center;
-}
+
 .company-card {
   margin-top: 5rem;
   display: flex;
