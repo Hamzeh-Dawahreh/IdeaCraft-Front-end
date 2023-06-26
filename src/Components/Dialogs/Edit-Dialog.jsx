@@ -26,7 +26,6 @@ export default function Edit({ userData }) {
       email: userData && userData.email,
     });
   }, [userData]);
-  console.log(formData.industry);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };

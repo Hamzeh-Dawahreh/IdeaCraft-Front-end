@@ -5,6 +5,8 @@ import Edit from "../Components/Dialogs/Edit-Dialog";
 import "../Assets/Styles/profile.css";
 import axios from "axios";
 export default function CompanyProfile() {
+  const [clients, setClients] = useState([]);
+
   const [userData, setUserData] = useState();
 
   useEffect(() => {
@@ -23,7 +25,6 @@ export default function CompanyProfile() {
           config
         );
         setUserData(response.data);
-        // Do something with the user data
       } catch (error) {
         console.error(error);
       }
@@ -31,7 +32,29 @@ export default function CompanyProfile() {
 
     fetchData();
   }, []);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
 
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const getRequest = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3500/books/getRequest",
+          config
+        );
+        setClients(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getRequest();
+  }, []);
+  console.log(clients);
   return (
     <>
       <br />
@@ -62,10 +85,7 @@ export default function CompanyProfile() {
                 Your rating
               </p>
             </div>
-            {/* <div className="edit-image"> */}
             <Edit userData={userData} />
-            {/* <img src="./src/Assets/Images/Edit.png" /> */}
-            {/* </div> */}
           </div>
         </div>
         <hr />
@@ -77,33 +97,24 @@ export default function CompanyProfile() {
               <tr>
                 <th>User</th>
                 <th>Email</th>
-                <th>Project</th>
                 <th>Price</th>
                 <th>Status</th>
+                <th>Requests</th>
               </tr>
-              <tr className="text-gray-500">
-                <td>Elon</td>
-                <td>..@gmail.com</td>
-                <td>Alpha</td>
-                <td>350JD</td>
-                <td>
-                  <RequestDialog />
-                </td>
-              </tr>
-              <tr className="text-gray-500">
-                <td>Ali</td>
-                <td>..@gmail.com</td>
-                <td>DBS</td>
-                <td>200JD</td>
-                <RequestDialog />
-              </tr>
-              <tr className="text-gray-500">
-                <td>Hamzeh</td>
-                <td>..@gmail.com</td>
-                <td>ABC</td>
-                <td>200JD</td>
-                <RequestDialog />
-              </tr>
+              {clients.bookings?.map((data, index) => {
+                return (
+                  <tr className="text-gray-500" key={index}>
+                    <td>{data.user_id.username}</td>
+                    <td>{data.user_id.email}</td>
+                    <td>350JD</td>
+                    <td>Approved</td>
+
+                    <td>
+                      <RequestDialog userReq={data.userReq} key={index} />
+                    </td>
+                  </tr>
+                );
+              })}
             </table>
           </div>
           <br />

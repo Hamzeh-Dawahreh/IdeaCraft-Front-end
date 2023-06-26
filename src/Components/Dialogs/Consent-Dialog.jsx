@@ -7,7 +7,7 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 
-export default function Example() {
+export default function ConsentDialog() {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(!open);

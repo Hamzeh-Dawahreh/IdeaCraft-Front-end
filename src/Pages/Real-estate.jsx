@@ -135,7 +135,7 @@ export default function RealEstate() {
                   <img
                     alt="image"
                     src={`http://localhost:3500/${image}`}
-                    className="w-full h-full rounded-xl object-fit shadow-lg max-w-full"
+                    className=" max-h-80 rounded-xl object-fit shadow-lg"
                     key={index}
                   />
                 ))}
@@ -162,7 +162,10 @@ export default function RealEstate() {
                   </h6>
                   <div className="company-rating mt-2">
                     <Rating name="read-only" value="3" readOnly />
-                    <Dialog company_id={data._id} />
+                    <Dialog
+                      service_id={data._id}
+                      company_id={data.company_id}
+                    />
                   </div>
                 </div>
               </div>

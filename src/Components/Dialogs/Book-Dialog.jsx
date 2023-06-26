@@ -11,7 +11,7 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
-export default function BookingDialog({ company_id }) {
+export default function BookingDialog({ service_id, company_id }) {
   const [message, setMessage] = useState("");
   const [open, setOpen] = React.useState(false);
 
@@ -39,7 +39,7 @@ export default function BookingDialog({ company_id }) {
 
       const response = await axios.post(
         "http://localhost:3500/books/userReq",
-        { ...message, company_id: company_id },
+        { ...message, service_id: service_id, company_id: company_id },
         config
       );
 
