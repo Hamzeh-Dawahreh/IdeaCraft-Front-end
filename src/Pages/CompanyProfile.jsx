@@ -110,7 +110,11 @@ export default function CompanyProfile() {
                     <td>Approved</td>
 
                     <td>
-                      <RequestDialog userReq={data.userReq} key={index} />
+                      <RequestDialog
+                        userReq={data.userReq}
+                        user_id={data.user_id._id}
+                        service_id={data.service_id}
+                      />
                     </td>
                   </tr>
                 );

@@ -8,7 +8,8 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 
-export default function RequestDialog({ userReq }) {
+export default function RequestDialog({ userReq, user_id, service_id }) {
+  console.log(service_id);
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState();
   const handleClick = async () => {
@@ -22,7 +23,7 @@ export default function RequestDialog({ userReq }) {
 
       const response = await axios.post(
         "http://localhost:3500/books/companyRes",
-        message,
+        { ...message, user_id: user_id, service_id: service_id },
         config
       );
 
@@ -36,7 +37,6 @@ export default function RequestDialog({ userReq }) {
     }
   };
   const handleOpen = () => setOpen(!open);
-
   return (
     <Fragment>
       <Button onClick={handleOpen} variant="gradient" color="cyan">
@@ -57,6 +57,7 @@ export default function RequestDialog({ userReq }) {
           <textarea
             placeholder="Write Your response to the Client"
             className="w-full text-start"
+            name="companyRes"
             onChange={(e) => {
               setMessage({ [e.target.name]: e.target.value });
             }}
