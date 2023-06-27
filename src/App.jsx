@@ -82,7 +82,7 @@ export default function App() {
               {/* <Route path="/payment" element={<Payment />} /> */}
               <Route path="/contactus" element={<ContactUs />} />
               <Route path="/aboutus" element={<Aboutus />} />
-              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/checkout/:id" element={<Checkout />} />
               <Route path="/companyform" element={<CompanyForm />} />
               <Route element={<RequiredAuth />}>
                 <Route path="/companyprofile" element={<CompanyProfile />} />

@@ -5,6 +5,7 @@ import axios from "axios";
 import "../Assets/Styles/profile.css";
 export default function UserProfile() {
   const [userData, setUserData] = useState();
+  const [company, setCompany] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -30,7 +31,29 @@ export default function UserProfile() {
 
     fetchData();
   }, []);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
 
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const getRequest = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3500/books/getResponse",
+          config
+        );
+        setCompany(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getRequest();
+  }, []);
+  console.log(company);
   return (
     <>
       <br />
@@ -71,31 +94,37 @@ export default function UserProfile() {
             <h3 className="text-2xl">REQUESTED SERVICES</h3>
             <br />
             <table>
-              <tr>
-                <th>Company</th>
-                <th>Email</th>
-                <th>Project</th>
-                <th>Price</th>
-                <th>Status</th>
-              </tr>
-              <tr className="text-gray-500">
-                <td>CBRE inc.</td>
-                <td>..@gmail.com</td>
-                <td>Technology</td>
-                <td>350JD</td>
-                <br />
-                <br />
-                <ConsentDialog />
-              </tr>
-              <tr className="text-gray-500">
-                <td>KPMG</td>
-                <td>..@gmail.com</td>
-                <td>Real Estate</td>
-                <td>200JD</td>
-                <br />
-                <br />
-                <ConsentDialog />
-              </tr>
+              <thead>
+                <tr>
+                  <th>Company</th>
+                  <th>Email</th>
+                  <th>Industry</th>
+                  <th>Status</th>
+                  <th>Price</th>
+                  <th>Response</th>
+                </tr>
+              </thead>
+              <tbody>
+                {company.bookings?.map((data, index) => {
+                  return (
+                    <tr className="text-gray-500" key={index}>
+                      <td>{data.company_id.companyname}</td>
+                      <td>{data.company_id.email}</td>
+                      <td>{data.company_id.industry}</td>
+                      <td>Pending</td>
+                      <td className="text-green-500">{data.price} JOD</td>
+                      <td>
+                        <ConsentDialog
+                          companyRes={data.companyRes}
+                          id={data._id}
+                          companyname={data.company_id.companyname}
+                          company_id={data.company_id._id}
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
             </table>
           </div>
           <br />

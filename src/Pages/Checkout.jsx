@@ -1,16 +1,37 @@
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Swal from "sweetalert2";
 
 const Checkout = () => {
+  const [data, setData] = useState([]);
   function handleMessage() {
     Swal.fire("Thank you!", "Your payment has been completed!", "success");
 
     navigate("/");
   }
-  const navigate = useNavigate();
+  const { id } = useParams();
 
+  const navigate = useNavigate();
+  useEffect(() => {
+    const getData = async () => {
+      const token = localStorage.getItem("token");
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const response = await axios.get(
+        `http://localhost:3500/books/getBooking/${id}`,
+        config
+      );
+      setData(response.data);
+    };
+
+    getData();
+  }, []);
   return (
     <>
       <br />
@@ -21,23 +42,26 @@ const Checkout = () => {
       <div>
         <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
           <div className="px-4 pt-8 bg-gray-100 rounded-lg shadow-md">
-            <p className="text-xl font-medium">Project Details</p>
+            <p className="text-xl font-medium">Service Details</p>
             <br />
             <br />
             <div className="space-y-4">
-              <p className="text-gray-400">Project Name:</p>
-              <p className="font-medium">Consulting Project ABC</p>
               <p className="text-gray-400">Company Name:</p>
-              <p className="font-medium">Fake Consulting Co.</p>
-              <p className="text-gray-400">Other details:</p>
+              <p className="font-medium">
+                {data.bookings && data.bookings.company_id.companyname}
+              </p>
+              <p className="text-gray-400">Industry:</p>
+              <p className="font-medium">
+                {data.bookings && data.bookings.company_id.industry}
+              </p>
+              <p className="text-gray-400">Details:</p>
               <p className="font-normal">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                hendrerit eros non enim tincidunt, nec tempor quam porta. Sed
-                nec quam ac nisl tristique cursus. Duis eu sem id orci cursus
-                dignissim vel id libero.
+                {data.bookings && data.bookings.companyRes}{" "}
               </p>
               <p className="text-gray-400">Price:</p>
-              <p className="font-medium">$100 per hour (estimated)</p>
+              <p className="font-medium">
+                {data.bookings && data.bookings.price} JOD
+              </p>
             </div>
           </div>
 
@@ -194,10 +218,6 @@ const Checkout = () => {
                   <p className="text-sm font-medium text-gray-900">Subtotal</p>
                   <p className="font-semibold text-gray-900">10 jd</p>
                 </div>
-                {/* <div className="flex items-center justify-between">
-                                <p className="text-sm font-medium text-gray-900">Shipping</p>
-                                <p className="font-semibold text-gray-900">2.00 JD</p>
-                            </div> */}
               </div>
               <div className="mt-6 flex items-center justify-between">
                 <p className="text-sm font-medium text-gray-900">Total</p>

@@ -35,7 +35,7 @@ export default function Hero() {
             <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
               <p className="text-5xl">DID YOU KNOW ? </p>
-              <p className="second-p">
+              <div className="second-p">
                 Feasibility studies are crucial to determining the success of a
                 project, according to 58% of real estate professionals. <br />{" "}
                 <br />
@@ -67,7 +67,7 @@ export default function Hero() {
                     </span>
                   </Link>
                 </div>{" "}
-              </p>{" "}
+              </div>{" "}
             </div>
           </div>
         </div>
@@ -81,7 +81,7 @@ export default function Hero() {
             <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
               <p className="text-5xl">DID YOU KNOW ? </p>
-              <p className="second-p">
+              <div className="second-p">
                 Feasibility studies are crucial to determining the success of a
                 project, according to 58% of real estate professionals. <br />{" "}
                 <br />
@@ -113,7 +113,7 @@ export default function Hero() {
                     </span>
                   </Link>
                 </div>{" "}
-              </p>{" "}
+              </div>{" "}
             </div>
           </div>
         </div>
@@ -127,7 +127,7 @@ export default function Hero() {
             <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
               <p className="text-5xl">DID YOU KNOW ? </p>
-              <p className="second-p">
+              <div className="second-p">
                 Feasibility studies are crucial to determining the success of a
                 project, according to 58% of real estate professionals. <br />{" "}
                 <br />
@@ -159,7 +159,7 @@ export default function Hero() {
                     </span>
                   </Link>
                 </div>{" "}
-              </p>{" "}
+              </div>{" "}
             </div>
           </div>
         </div>

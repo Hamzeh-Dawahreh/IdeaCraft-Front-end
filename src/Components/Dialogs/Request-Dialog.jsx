@@ -23,7 +23,12 @@ export default function RequestDialog({ userReq, user_id, service_id }) {
 
       const response = await axios.post(
         "http://localhost:3500/books/companyRes",
-        { ...message, user_id: user_id, service_id: service_id },
+        {
+          ...message,
+          user_id: user_id,
+          service_id: service_id,
+          userReq: userReq,
+        },
         config
       );
 
@@ -36,6 +41,7 @@ export default function RequestDialog({ userReq, user_id, service_id }) {
       // Perform any necessary error handling
     }
   };
+  console.log(message);
   const handleOpen = () => setOpen(!open);
   return (
     <Fragment>
@@ -54,12 +60,22 @@ export default function RequestDialog({ userReq, user_id, service_id }) {
         <DialogBody divider>
           {userReq} <br />
           <br />
+          <label htmlFor="">Your Response:</label>
           <textarea
             placeholder="Write Your response to the Client"
             className="w-full text-start"
             name="companyRes"
             onChange={(e) => {
-              setMessage({ [e.target.name]: e.target.value });
+              setMessage({ ...message, [e.target.name]: e.target.value });
+            }}
+          />
+          <label htmlFor="">Price:</label>
+          <input
+            type="number"
+            name="price"
+            placeholder="Enter the price in JOD"
+            onChange={(e) => {
+              setMessage({ ...message, [e.target.name]: e.target.value });
             }}
           />
         </DialogBody>
@@ -70,7 +86,7 @@ export default function RequestDialog({ userReq, user_id, service_id }) {
             onClick={handleOpen}
             className="mr-1"
           >
-            <span className="text-rose-700">Cancel</span>
+            <span className="text-rose-700">Reject</span>
           </Button>
           <Button
             variant="gradient"
@@ -80,7 +96,7 @@ export default function RequestDialog({ userReq, user_id, service_id }) {
               handleClick();
             }}
           >
-            <span className="text-white	">Send</span>
+            <span className="text-white	">Approve</span>
           </Button>
         </DialogFooter>
       </Dialog>

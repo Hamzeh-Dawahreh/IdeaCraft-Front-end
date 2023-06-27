@@ -30,7 +30,7 @@ export default function Navbar() {
           <div className=" relative max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <Link to="/" className="flex items-center">
               <img
-                src="./src/Assets/Images/logo.png"
+                src="../src/Assets/Images/logo.png"
                 className="h-10 w-32"
                 alt="LOGO"
               />
@@ -115,18 +115,9 @@ export default function Navbar() {
                     Home
                   </NavLink>
                 </li>
-                {/* <li>
-                  <NavLink
-                    to="ProductsPage"
-                    className="dropdown"
-                  >
-                    Solutions⮛
-                  </NavLink>
-                </li> */}
+
                 <li className="dropdown">
-                  <a href="javascript:void(0)" className="dropbtn">
-                    Solutions⮛
-                  </a>
+                  <a className="dropbtn">Solutions⮛</a>
                   <div className="dropdown-content">
                     <Link to="/realestate" className="mt-2">
                       Real-estate

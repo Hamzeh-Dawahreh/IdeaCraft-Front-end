@@ -54,7 +54,6 @@ export default function CompanyProfile() {
     };
     getRequest();
   }, []);
-  console.log(clients);
   return (
     <>
       <br />
