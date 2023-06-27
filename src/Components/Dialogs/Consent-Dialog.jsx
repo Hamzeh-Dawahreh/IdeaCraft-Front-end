@@ -18,6 +18,7 @@ export default function ConsentDialog({
   service_id,
   userConsent,
   setStatus,
+  companyConsent,
 }) {
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(false);
@@ -88,23 +89,26 @@ export default function ConsentDialog({
         <DialogHeader>{companyname}</DialogHeader>
         <DialogBody divider>{companyRes} </DialogBody>
         <DialogFooter>
-          <Button
-            variant="text"
-            color="red"
-            onClick={() => {
-              handleOpen();
-              handleReject();
-            }}
-            className="mr-1"
-          >
-            <span className="text-rose-700">Reject</span>
-          </Button>
-          {!error && !userConsent && (
-            <Link to={`/checkout/${id}`}>
-              <Button variant="gradient" color="teal" onClick={handleOpen}>
-                <span>Confirm</span>
+          {!error && userConsent == undefined && companyConsent && (
+            <>
+              {" "}
+              <Button
+                variant="text"
+                color="red"
+                onClick={() => {
+                  handleOpen();
+                  handleReject();
+                }}
+                className="mr-1"
+              >
+                <span className="text-rose-700">Reject</span>
               </Button>
-            </Link>
+              <Link to={`/checkout/${id}`}>
+                <Button variant="gradient" color="teal" onClick={handleOpen}>
+                  <span>Confirm</span>
+                </Button>
+              </Link>
+            </>
           )}
         </DialogFooter>
       </Dialog>

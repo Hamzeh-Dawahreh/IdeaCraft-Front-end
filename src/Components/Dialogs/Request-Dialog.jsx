@@ -18,6 +18,7 @@ export default function RequestDialog({
   companyConsent,
   setStatus,
 }) {
+  console.log(companyConsent);
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState();
   const [error, setError] = useState();
@@ -74,6 +75,7 @@ export default function RequestDialog({
             const response = await axios.post(
               "http://localhost:3500/books/companyConsent",
               {
+                ...message,
                 companyConsent: false,
                 service_id: service_id,
                 user_id: user_id,
@@ -146,7 +148,7 @@ export default function RequestDialog({
           />
         </DialogBody>
         <DialogFooter>
-          {companyRes && price && companyConsent && (
+          {!companyRes && !price && companyConsent == undefined && (
             <>
               <Button
                 variant="text"

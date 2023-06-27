@@ -55,7 +55,6 @@ export default function CompanyProfile() {
     };
     getRequest();
   }, [status]);
-  console.log(status);
   return (
     <>
       <br />
@@ -112,7 +111,7 @@ export default function CompanyProfile() {
                       <td>{data.user_id.username}</td>
                       <td>{data.user_id.email}</td>
                       <td className=" text-green-500">
-                        {data.price || "--"} JOD
+                        {data.price || "---"} JOD
                       </td>
                       <td>
                         {data.companyConsent === undefined
@@ -123,7 +122,7 @@ export default function CompanyProfile() {
                       </td>
                       <td>
                         {data.userConsent === undefined
-                          ? "Pending"
+                          ? "---"
                           : data.userConsent === true
                           ? "Approved"
                           : "Rejected"}
@@ -137,6 +136,7 @@ export default function CompanyProfile() {
                           companyRes={data.companyRes}
                           price={data.price}
                           setStatus={setStatus}
+                          companyConsent={data.companyConsent}
                         />
                       </td>
                     </tr>

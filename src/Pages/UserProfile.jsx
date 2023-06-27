@@ -102,6 +102,7 @@ export default function UserProfile() {
                   <th>Email</th>
                   <th>Industry</th>
                   <th>Company Approval</th>
+
                   <th>User Approval</th>
                   <th>Price</th>
                   <th>Response</th>
@@ -123,14 +124,14 @@ export default function UserProfile() {
                       </td>
                       <td>
                         {data.userConsent === undefined
-                          ? "Pending"
+                          ? "---"
                           : data.userConsent === true
                           ? "Approved"
                           : "Rejected"}
                       </td>
                       <td className="text-green-500">
                         {" "}
-                        {data.price || "--"} JOD
+                        {data.price || "---"} JOD
                       </td>
                       <td>
                         <ConsentDialog
@@ -140,6 +141,7 @@ export default function UserProfile() {
                           company_id={data.company_id._id}
                           service_id={data.service_id}
                           userConsent={data.userConsent}
+                          companyConsent={data.companyConsent}
                           setStatus={setStatus}
                         />
                       </td>
