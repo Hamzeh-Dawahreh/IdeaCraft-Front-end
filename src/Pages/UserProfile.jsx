@@ -3,9 +3,11 @@ import { Rating } from "@mui/material";
 import ConsentDialog from "../Components/Dialogs/Consent-Dialog";
 import axios from "axios";
 import "../Assets/Styles/profile.css";
+
 export default function UserProfile() {
   const [userData, setUserData] = useState();
   const [company, setCompany] = useState([]);
+  const [status, setStatus] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -52,7 +54,7 @@ export default function UserProfile() {
       }
     };
     getRequest();
-  }, []);
+  }, [status]);
   console.log(company);
   return (
     <>
@@ -111,7 +113,13 @@ export default function UserProfile() {
                       <td>{data.company_id.companyname}</td>
                       <td>{data.company_id.email}</td>
                       <td>{data.company_id.industry}</td>
-                      <td>Pending</td>
+                      <td>
+                        {data.userConsent === undefined
+                          ? "Pending"
+                          : data.userConsent === true
+                          ? "Approved"
+                          : "Rejected"}
+                      </td>
                       <td className="text-green-500">{data.price} JOD</td>
                       <td>
                         <ConsentDialog
@@ -119,6 +127,9 @@ export default function UserProfile() {
                           id={data._id}
                           companyname={data.company_id.companyname}
                           company_id={data.company_id._id}
+                          service_id={data.service_id}
+                          userConsent={data.userConsent}
+                          setStatus={setStatus}
                         />
                       </td>
                     </tr>

@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import {
   Button,
   Dialog,
@@ -8,14 +8,19 @@ import {
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
+
 export default function ConsentDialog({
   companyRes,
   id,
   companyname,
   company_id,
+  service_id,
+  userConsent,
+  setStatus,
 }) {
   const [open, setOpen] = useState(false);
-
+  const [message, setMessage] = useState(false);
   const handleOpen = () => setOpen(!open);
   const handleReject = () => {
     Swal.fire({
@@ -40,55 +45,39 @@ export default function ConsentDialog({
 
             const response = await axios.post(
               "http://localhost:3500/books/userConsent",
-              { userConsent: true, service_id: id, company_id: company_id },
+              {
+                userConsent: false,
+                service_id: service_id,
+                company_id: company_id,
+              },
               config
             );
 
-            // Handle the response data
+            setMessage(response.data.Errormessage);
+            if (response.data.Errormessage) {
+              Swal.fire(
+                "Something went wrong",
+                `${response.data.Errormessage}`,
+                "error"
+              );
+            } else {
+              Swal.fire(
+                "declined!",
+                "You have declined the company's offer",
+                "success"
+              );
+            }
             console.log("Data sent successfully");
-            // Perform any necessary actions with the response data
+            setStatus(!false);
           } catch (error) {
-            // Handle any errors that occurred during the API call
             console.error(error);
-            // Perform any necessary error handling
           }
-          Swal.fire(
-            "declined!",
-            "You have declined the company's offer",
-            "success"
-          );
         }
       })
       .catch((error) => {
         console.error(error);
-        // Handle any errors that occurred during the Swal promise
       });
   };
-
-  // const handleClick = async () => {
-  //   try {
-  //     const token = localStorage.getItem("token");
-  //     const config = {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     };
-
-  //     const response = await axios.post(
-  //       "http://localhost:3500/books/userReq",
-  //       { ...message, service_id: service_id, company_id: company_id },
-  //       config
-  //     );
-
-  //     // Handle the response data
-  //     console.log("Data sent successfully");
-  //     // Perform any necessary actions with the response data
-  //   } catch (error) {
-  //     // Handle any errors that occurred during the API call
-  //     console.error(error);
-  //     // Perform any necessary error handling
-  //   }
-  // };
 
   return (
     <Fragment>
@@ -110,11 +99,13 @@ export default function ConsentDialog({
           >
             <span className="text-rose-700">Reject</span>
           </Button>
-          <Link to={`/checkout/${id}`}>
-            <Button variant="gradient" color="teal" onClick={handleOpen}>
-              <span>Confirm</span>
-            </Button>
-          </Link>
+          {!message && !userConsent && (
+            <Link to={`/checkout/${id}`}>
+              <Button variant="gradient" color="teal" onClick={handleOpen}>
+                <span>Confirm</span>
+              </Button>
+            </Link>
+          )}
         </DialogFooter>
       </Dialog>
     </Fragment>

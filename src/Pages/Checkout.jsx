@@ -5,11 +5,34 @@ import Swal from "sweetalert2";
 
 const Checkout = () => {
   const [data, setData] = useState([]);
-  function handleMessage() {
+  const handleClick = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const response = await axios.post(
+        "http://localhost:3500/books/userConsent",
+        {
+          userConsent: true,
+          service_id: data.bookings.service_id,
+          company_id: data.bookings.company_id._id,
+        },
+        config
+      );
+      console.log(response);
+      console.log("Data sent successfully");
+    } catch (error) {
+      console.error(error);
+    }
+
     Swal.fire("Thank you!", "Your payment has been completed!", "success");
 
     navigate("/");
-  }
+  };
   const { id } = useParams();
 
   const navigate = useNavigate();
@@ -32,6 +55,7 @@ const Checkout = () => {
 
     getData();
   }, []);
+  console.log(data);
   return (
     <>
       <br />
@@ -72,38 +96,7 @@ const Checkout = () => {
             </p>
             <div className="">
               <label
-                for="email"
-                className="mt-4 mb-2 block text-sm font-medium"
-              >
-                Email
-              </label>
-              <div className="relative">
-                <input
-                  type="text"
-                  id="email"
-                  name="email"
-                  className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                  placeholder="your.email@gmail.com"
-                />
-                <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 text-gray-400"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <label
-                for="card-holder"
+                htmlFor="card-holder"
                 className="mt-4 mb-2 block text-sm font-medium"
               >
                 Card Holder
@@ -123,18 +116,18 @@ const Checkout = () => {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    stroke-width="2"
+                    strokeWidth="2"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z"
                     />
                   </svg>
                 </div>
               </div>
               <label
-                for="card-no"
+                htmlFor="card-no"
                 className="mt-4 mb-2 block text-sm font-medium"
               >
                 Card Details
@@ -176,7 +169,7 @@ const Checkout = () => {
                 />
               </div>
               <label
-                for="billing-address"
+                htmlFor="billing-address"
                 className="mt-4 mb-2 block text-sm font-medium"
               >
                 Billing Address
@@ -193,18 +186,17 @@ const Checkout = () => {
                   <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                     <img
                       className="h-4 w-4 object-contain"
-                      src="https://flagpack.xyz/_nuxt/4c829b6c0131de7162790d2f897a90fd.svg"
+                      src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Flag_of_Jordan.svg"
                       alt=""
                     />
                   </div>
                 </div>
-                <select
+                <input
+                  placeholder="Province"
                   type="text"
                   name="billing-state"
                   className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                >
-                  <option value="State">State</option>
-                </select>
+                ></input>
                 <input
                   type="text"
                   name="billing-zip"
@@ -215,17 +207,23 @@ const Checkout = () => {
 
               <div className="mt-6 border-t border-b py-2">
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-medium text-gray-900">Subtotal</p>
-                  <p className="font-semibold text-gray-900">10 jd</p>
+                  <p className="text-sm font-medium text-gray-900">Fees</p>
+                  <p className="font-semibold text-gray-900">0.08%</p>
                 </div>
               </div>
               <div className="mt-6 flex items-center justify-between">
                 <p className="text-sm font-medium text-gray-900">Total</p>
-                <p className="text-2xl font-semibold text-gray-900">10 JD</p>
+                <p className="text-2xl font-semibold text-gray-900">
+                  {data.bookings &&
+                    Math.round(
+                      parseInt(data.bookings.price) * 0.08 + data.bookings.price
+                    )}
+                  JOD
+                </p>
               </div>
             </div>
             <button
-              onClick={handleMessage}
+              onClick={handleClick}
               className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white"
             >
               Submit Payment

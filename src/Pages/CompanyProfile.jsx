@@ -54,6 +54,7 @@ export default function CompanyProfile() {
     };
     getRequest();
   }, []);
+  console.log(clients);
   return (
     <>
       <br />
@@ -93,29 +94,41 @@ export default function CompanyProfile() {
             <h3 className="text-2xl">CURRENT CLIENTS</h3>
             <br />
             <table>
-              <tr>
-                <th>User</th>
-                <th>Email</th>
-                <th>Price</th>
-                <th>Status</th>
-                <th>Requests</th>
-              </tr>
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Email</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Requests</th>
+                </tr>
+              </thead>
               {clients.bookings?.map((data, index) => {
                 return (
-                  <tr className="text-gray-500" key={index}>
-                    <td>{data.user_id.username}</td>
-                    <td>{data.user_id.email}</td>
-                    <td>350JD</td>
-                    <td>Approved</td>
+                  <tbody key={index}>
+                    <tr className="text-gray-500">
+                      <td>{data.user_id.username}</td>
+                      <td>{data.user_id.email}</td>
+                      <td className=" text-green-500">{data.price}</td>
+                      <td>
+                        {data.userConsent === undefined
+                          ? "Pending"
+                          : data.userConsent === true
+                          ? "Approved"
+                          : "Rejected"}
+                      </td>
 
-                    <td>
-                      <RequestDialog
-                        userReq={data.userReq}
-                        user_id={data.user_id._id}
-                        service_id={data.service_id}
-                      />
-                    </td>
-                  </tr>
+                      <td>
+                        <RequestDialog
+                          userReq={data.userReq}
+                          user_id={data.user_id._id}
+                          service_id={data.service_id}
+                          companyRes={data.companyRes}
+                          price={data.price}
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
                 );
               })}
             </table>
@@ -131,53 +144,57 @@ export default function CompanyProfile() {
             <h3 className="text-2xl">PREVIOUS CLIENTS </h3>
             <br />
             <table>
-              <tr>
-                <th>User</th>
-                <th>Email</th>
-                <th>Project</th>
-                <th>Price</th>
-                <th>Rating</th>
-              </tr>
-              <tr>
-                <td>Ali</td>
-                <td>..@gmail.com</td>
-                <td>Alpha</td>
-                <td>350JD</td>
-                <td>
-                  {" "}
-                  <Rating name="read-only" value="5" readOnly />
-                </td>
-              </tr>
-              <tr>
-                <td>Jamal</td>
-                <td>..@gmail.com</td>
-                <td>DBS</td>
-                <td>150JD</td>
-                <td>
-                  {" "}
-                  <Rating name="read-only" value="4" readOnly />
-                </td>
-              </tr>
-              <tr>
-                <td>Steve</td>
-                <td>..@gmail.com</td>
-                <td>ASDF</td>
-                <td>100JD</td>
-                <td>
-                  {" "}
-                  <Rating name="read-only" value="5" readOnly />
-                </td>
-              </tr>
-              <tr>
-                <td>Mahmoud</td>
-                <td>..@gmail.com</td>
-                <td>ABC</td>
-                <td>250JD</td>
-                <td>
-                  {" "}
-                  <Rating name="read-only" value="3" readOnly />
-                </td>
-              </tr>
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Email</th>
+                  <th>Project</th>
+                  <th>Price</th>
+                  <th>Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Ali</td>
+                  <td>..@gmail.com</td>
+                  <td>Alpha</td>
+                  <td>350JD</td>
+                  <td>
+                    {" "}
+                    <Rating name="read-only" value="5" readOnly />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Jamal</td>
+                  <td>..@gmail.com</td>
+                  <td>DBS</td>
+                  <td>150JD</td>
+                  <td>
+                    {" "}
+                    <Rating name="read-only" value="4" readOnly />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Steve</td>
+                  <td>..@gmail.com</td>
+                  <td>ASDF</td>
+                  <td>100JD</td>
+                  <td>
+                    {" "}
+                    <Rating name="read-only" value="5" readOnly />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Mahmoud</td>
+                  <td>..@gmail.com</td>
+                  <td>ABC</td>
+                  <td>250JD</td>
+                  <td>
+                    {" "}
+                    <Rating name="read-only" value="3" readOnly />
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>

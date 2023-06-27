@@ -8,8 +8,14 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 
-export default function RequestDialog({ userReq, user_id, service_id }) {
-  console.log(service_id);
+export default function RequestDialog({
+  userReq,
+  user_id,
+  service_id,
+  companyRes,
+  price,
+}) {
+  console.log(price);
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState();
   const handleClick = async () => {
@@ -41,7 +47,6 @@ export default function RequestDialog({ userReq, user_id, service_id }) {
       // Perform any necessary error handling
     }
   };
-  console.log(message);
   const handleOpen = () => setOpen(!open);
   return (
     <Fragment>
@@ -62,6 +67,7 @@ export default function RequestDialog({ userReq, user_id, service_id }) {
           <br />
           <label htmlFor="">Your Response:</label>
           <textarea
+            value={companyRes}
             placeholder="Write Your response to the Client"
             className="w-full text-start"
             name="companyRes"
@@ -71,6 +77,7 @@ export default function RequestDialog({ userReq, user_id, service_id }) {
           />
           <label htmlFor="">Price:</label>
           <input
+            value={price}
             type="number"
             name="price"
             placeholder="Enter the price in JOD"
@@ -80,24 +87,28 @@ export default function RequestDialog({ userReq, user_id, service_id }) {
           />
         </DialogBody>
         <DialogFooter>
-          <Button
-            variant="text"
-            color="red"
-            onClick={handleOpen}
-            className="mr-1"
-          >
-            <span className="text-rose-700">Reject</span>
-          </Button>
-          <Button
-            variant="gradient"
-            color="teal"
-            onClick={() => {
-              handleOpen();
-              handleClick();
-            }}
-          >
-            <span className="text-white	">Approve</span>
-          </Button>
+          {!companyRes && !price && (
+            <>
+              <Button
+                variant="text"
+                color="red"
+                onClick={handleOpen}
+                className="mr-1"
+              >
+                <span className="text-rose-700">Reject</span>
+              </Button>
+              <Button
+                variant="gradient"
+                color="teal"
+                onClick={() => {
+                  handleOpen();
+                  handleClick();
+                }}
+              >
+                <span className="text-white	">Approve</span>
+              </Button>
+            </>
+          )}
         </DialogFooter>
       </Dialog>
     </Fragment>
