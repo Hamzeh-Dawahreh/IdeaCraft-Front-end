@@ -101,7 +101,8 @@ export default function UserProfile() {
                   <th>Company</th>
                   <th>Email</th>
                   <th>Industry</th>
-                  <th>Status</th>
+                  <th>Company Approval</th>
+                  <th>User Approval</th>
                   <th>Price</th>
                   <th>Response</th>
                 </tr>
@@ -114,13 +115,23 @@ export default function UserProfile() {
                       <td>{data.company_id.email}</td>
                       <td>{data.company_id.industry}</td>
                       <td>
+                        {data.companyConsent === undefined
+                          ? "Pending"
+                          : data.companyConsent === true
+                          ? "Approved"
+                          : "Rejected"}
+                      </td>
+                      <td>
                         {data.userConsent === undefined
                           ? "Pending"
                           : data.userConsent === true
                           ? "Approved"
                           : "Rejected"}
                       </td>
-                      <td className="text-green-500">{data.price} JOD</td>
+                      <td className="text-green-500">
+                        {" "}
+                        {data.price || "--"} JOD
+                      </td>
                       <td>
                         <ConsentDialog
                           companyRes={data.companyRes}

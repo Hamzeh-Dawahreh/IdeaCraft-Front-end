@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import {
   Button,
   Dialog,
@@ -20,7 +20,7 @@ export default function ConsentDialog({
   setStatus,
 }) {
   const [open, setOpen] = useState(false);
-  const [message, setMessage] = useState(false);
+  const [error, setError] = useState(false);
   const handleOpen = () => setOpen(!open);
   const handleReject = () => {
     Swal.fire({
@@ -53,7 +53,7 @@ export default function ConsentDialog({
               config
             );
 
-            setMessage(response.data.Errormessage);
+            setError(response.data.Errormessage);
             if (response.data.Errormessage) {
               Swal.fire(
                 "Something went wrong",
@@ -99,7 +99,7 @@ export default function ConsentDialog({
           >
             <span className="text-rose-700">Reject</span>
           </Button>
-          {!message && !userConsent && (
+          {!error && !userConsent && (
             <Link to={`/checkout/${id}`}>
               <Button variant="gradient" color="teal" onClick={handleOpen}>
                 <span>Confirm</span>

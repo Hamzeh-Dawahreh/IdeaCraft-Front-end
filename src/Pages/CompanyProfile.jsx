@@ -6,6 +6,7 @@ import "../Assets/Styles/profile.css";
 import axios from "axios";
 export default function CompanyProfile() {
   const [clients, setClients] = useState([]);
+  const [status, setStatus] = useState(false);
 
   const [userData, setUserData] = useState();
 
@@ -53,8 +54,8 @@ export default function CompanyProfile() {
       }
     };
     getRequest();
-  }, []);
-  console.log(clients);
+  }, [status]);
+  console.log(status);
   return (
     <>
       <br />
@@ -99,7 +100,8 @@ export default function CompanyProfile() {
                   <th>User</th>
                   <th>Email</th>
                   <th>Price</th>
-                  <th>Status</th>
+                  <th>Company Approval</th>
+                  <th>User Approval</th>
                   <th>Requests</th>
                 </tr>
               </thead>
@@ -109,7 +111,16 @@ export default function CompanyProfile() {
                     <tr className="text-gray-500">
                       <td>{data.user_id.username}</td>
                       <td>{data.user_id.email}</td>
-                      <td className=" text-green-500">{data.price}</td>
+                      <td className=" text-green-500">
+                        {data.price || "--"} JOD
+                      </td>
+                      <td>
+                        {data.companyConsent === undefined
+                          ? "Pending"
+                          : data.companyConsent === true
+                          ? "Approved"
+                          : "Rejected"}
+                      </td>
                       <td>
                         {data.userConsent === undefined
                           ? "Pending"
@@ -125,6 +136,7 @@ export default function CompanyProfile() {
                           service_id={data.service_id}
                           companyRes={data.companyRes}
                           price={data.price}
+                          setStatus={setStatus}
                         />
                       </td>
                     </tr>
