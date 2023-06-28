@@ -8,9 +8,8 @@ import axios from "axios";
 export default function CompanyProfile() {
   const [clients, setClients] = useState([]);
   const [status, setStatus] = useState(false);
-
+  const [service, setService] = useState();
   const [userData, setUserData] = useState();
-
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -56,6 +55,24 @@ export default function CompanyProfile() {
     };
     getRequest();
   }, [status]);
+  useEffect(() => {
+    const getData = async () => {
+      const token = localStorage.getItem("token");
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.get(
+        `http://localhost:3500/form/getService/`,
+        config
+      );
+      setService(response.data);
+    };
+    getData();
+  }, []);
+  console.log(service);
   return (
     <>
       <br />
@@ -68,15 +85,16 @@ export default function CompanyProfile() {
         </div>
         <div className="profile-info-container">
           <div className="profile-info">
-            {clients.bookings && (
-              <Link
-                to="/companyForm"
-                className=" absolute top-0 left-0 bg-[#17a2b8] p-1  text-white text-sm"
-              >
+            <Link
+              to="/companyForm"
+              className=" absolute top-0 left-0 bg-[#17a2b8] p-1  text-white text-sm"
+            >
+              {service && service.bookings == null ? (
                 <button>Add Service</button>
-              </Link>
-            )}
-
+              ) : (
+                <button>Update Service</button>
+              )}
+            </Link>
             <div className="user-titles">
               <span>Company Name</span>
               <span>Category/Industry</span>
@@ -98,6 +116,46 @@ export default function CompanyProfile() {
             <Edit userData={userData} />
           </div>
         </div>
+        {service && service.bookings !== null && (
+          <div>
+            <h1 className=" text-2xl text-center mb-3">You Service</h1> <hr />
+            <div className="company-card">
+              {service &&
+                service.bookings?.Images.slice(0, 1).map((image, index) => (
+                  <img
+                    alt="image"
+                    src={`http://localhost:3500/${image}`}
+                    className=" max-h-80 rounded-xl object-fit shadow-lg"
+                    key={index}
+                  />
+                ))}
+              <div className="info">
+                <h1 className=" text-2xl mb-3">
+                  {service.bookings && service.bookings.companyname}
+                </h1>
+
+                <div>
+                  <p className=" mb-2">
+                    {service.bookings && service.bookings.description}
+                  </p>
+                  <i>
+                    {" "}
+                    <p className="mb-2 text-gray-500 text-sm">
+                      Location : {service.bookings && service.bookings.country}/
+                      {service.bookings && service.bookings.city}
+                    </p>{" "}
+                  </i>
+                </div>
+                <div className="flex text-gray-500  text-sm mb-2 ">
+                  <div>Email:</div>
+                  <div>{service.bookings && service.bookings.email}</div>
+                  <div className=" ml-4">Phone:</div>
+                  <div>{service.bookings && service.bookings.phone}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
         <hr />
         <div className="clients">
           {" "}

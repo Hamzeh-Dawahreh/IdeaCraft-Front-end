@@ -156,9 +156,7 @@ export default function RealEstate() {
                     <div className=" ml-4">Phone:</div>
                     <div>{data.phone}</div>
                   </div>
-                  <h6>
-                    *CBRE Group has made 39 feasibility study on the website.*
-                  </h6>
+
                   <div className="company-rating mt-2">
                     <Rating name="read-only" value="3" readOnly />
                     <Dialog

@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import {
   Button,
   Dialog,
@@ -17,6 +17,7 @@ export default function RequestDialog({
   price,
   companyConsent,
   setStatus,
+  setId,
 }) {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState();

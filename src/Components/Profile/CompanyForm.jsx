@@ -52,7 +52,6 @@ function BenifactorForm() {
         formDataWithFiles,
         config
       );
-      console.log(formDataWithFiles);
       console.log("Data sent successfully");
     } catch (error) {
       console.log("Error:", error.message);
@@ -294,7 +293,7 @@ function BenifactorForm() {
                   class="py-3 px-8 bg-green-400 text-white font-bold"
                   onClick={showSuccessAlert}
                 >
-                  Confirm{" "}
+                  Add Service{" "}
                 </button>
               </div>
             </div>
