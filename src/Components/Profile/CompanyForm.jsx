@@ -64,8 +64,6 @@ function BenifactorForm() {
         "Your request has been completed successfully, we will display your request as soon as possible",
       icon: "success",
       confirmButtonText: "OK",
-    }).then(() => {
-      //   window.location.href = "http://localhost:3000/";
     });
   };
 

@@ -26,7 +26,6 @@ export default function RealEstate() {
 
     fetchData();
   }, []);
-  console.log(companyData);
   //Search
 
   //Pagination

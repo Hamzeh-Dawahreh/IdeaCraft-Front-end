@@ -24,7 +24,8 @@ const RequiredAuth = () => {
   const isUserAuthorized =
     location.pathname === "/userprofile" && role === "user";
   const isProviderAuthorized =
-    location.pathname === "/companyprofile" && role === "company";
+    (location.pathname === "/companyprofile" || "/companyForm") &&
+    role === "company";
 
   // Check if the user is authorized for the current route
   const isAuthorized = isUserAuthorized || isProviderAuthorized;

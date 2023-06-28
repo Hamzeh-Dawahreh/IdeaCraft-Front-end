@@ -67,18 +67,17 @@
 .current-clients,
 .previous-clients {
   display: flex;
-  flex-direction: column;
+
   justify-content: center;
-  align-items: center;
 }
 .current-clients table,
 .previous-clients table {
   background-color: rgb(249, 249, 255);
-  width: 65rem;
-  height: 20rem;
+  width: 100%;
+  border-collapse: collapse;
   margin-top: 2rem;
 }
-.current-clients,
+.current-clients table th,
 .previous-clients table th,
 td,
 tr {
@@ -94,4 +93,39 @@ tr {
 }
 .clients h3 {
   color: black;
+}
+@media (max-width: 640px) {
+  .current-clients,
+  .previous-clients {
+    font-size: 10px;
+  }
+  .view-request {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 7px;
+    width: 70%;
+  }
+}
+@media (max-width: 550px) {
+  .current-clients table,
+  .previous-clients table {
+    font-size: 8px;
+  }
+}
+@media (max-width: 500px) {
+  .current-clients table th,
+  .previous-clients table th,
+  td,
+  tr {
+    padding: 10px;
+  }
+}
+@media (max-width: 386) {
+  .current-clients table th,
+  .previous-clients table th,
+  td,
+  tr {
+    padding: 5px;
+  }
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Rating } from "@mui/material";
 import RequestDialog from "../Components/Dialogs/Request-Dialog";
 import Edit from "../Components/Dialogs/Edit-Dialog";
@@ -67,6 +68,15 @@ export default function CompanyProfile() {
         </div>
         <div className="profile-info-container">
           <div className="profile-info">
+            {clients.bookings && (
+              <Link
+                to="/companyForm"
+                className=" absolute top-0 left-0 bg-[#17a2b8] p-1  text-white text-sm"
+              >
+                <button>Add Service</button>
+              </Link>
+            )}
+
             <div className="user-titles">
               <span>Company Name</span>
               <span>Category/Industry</span>
@@ -90,10 +100,11 @@ export default function CompanyProfile() {
         </div>
         <hr />
         <div className="clients">
+          {" "}
+          <h3 className="text-2xl text-center">CURRENT CLIENTS</h3>
           <div className="current-clients">
-            <h3 className="text-2xl">CURRENT CLIENTS</h3>
             <br />
-            <table>
+            <table className=" sm:text-xs">
               <thead>
                 <tr>
                   <th>User</th>
@@ -149,13 +160,13 @@ export default function CompanyProfile() {
           <br />
           <br />
           <hr />
+          <h3 className="text-2xl text-center mt-10">PREVIOUS CLIENTS </h3>
           <div className="previous-clients">
             <br />
             <br />
             <br />
-            <h3 className="text-2xl">PREVIOUS CLIENTS </h3>
             <br />
-            <table>
+            <table className=" sm:text-xs">
               <thead>
                 <tr>
                   <th>User</th>

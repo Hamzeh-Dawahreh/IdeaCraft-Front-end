@@ -83,9 +83,9 @@ export default function App() {
               <Route path="/contactus" element={<ContactUs />} />
               <Route path="/aboutus" element={<Aboutus />} />
               <Route path="/checkout/:id" element={<Checkout />} />
-              <Route path="/companyform" element={<CompanyForm />} />
               <Route element={<RequiredAuth />}>
-                <Route path="/companyprofile" element={<CompanyProfile />} />
+                <Route path="/companyprofile" element={<CompanyProfile />} />{" "}
+                <Route path="/companyform" element={<CompanyForm />} />
                 <Route path="/userprofile" element={<UserProfile />} />
               </Route>
               <Route path="*" element={<NotFound />} />

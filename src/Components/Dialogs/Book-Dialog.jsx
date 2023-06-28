@@ -11,6 +11,7 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
+import Swal from "sweetalert2";
 export default function BookingDialog({ service_id, company_id }) {
   const [message, setMessage] = useState("");
   const [open, setOpen] = React.useState(false);
@@ -42,14 +43,16 @@ export default function BookingDialog({ service_id, company_id }) {
         { ...message, service_id: service_id, company_id: company_id },
         config
       );
+      console.log(response);
 
-      // Handle the response data
       console.log("Data sent successfully");
-      // Perform any necessary actions with the response data
     } catch (error) {
-      // Handle any errors that occurred during the API call
-      console.error(error);
-      // Perform any necessary error handling
+      console.log(error.response.data.message);
+      Swal.fire(
+        "Something went wrong",
+        `${error.response.data.message}`,
+        "error"
+      );
     }
   };
   const handleOpen = () => setOpen(!open);

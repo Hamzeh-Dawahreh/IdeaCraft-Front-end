@@ -18,7 +18,6 @@ export default function RequestDialog({
   companyConsent,
   setStatus,
 }) {
-  console.log(companyConsent);
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState();
   const [error, setError] = useState();
@@ -111,7 +110,12 @@ export default function RequestDialog({
 
   return (
     <Fragment>
-      <Button onClick={handleOpen} variant="gradient" color="cyan">
+      <Button
+        onClick={handleOpen}
+        variant="gradient"
+        color="cyan"
+        className="view-request"
+      >
         view request
       </Button>
       <Dialog
@@ -138,6 +142,7 @@ export default function RequestDialog({
           />
           <label htmlFor="">Price:</label>
           <input
+            className="w-full text-start"
             value={price}
             type="number"
             name="price"
