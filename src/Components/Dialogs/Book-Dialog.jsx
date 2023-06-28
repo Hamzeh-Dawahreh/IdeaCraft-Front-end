@@ -43,7 +43,6 @@ export default function BookingDialog({ service_id, company_id }) {
         { ...message, service_id: service_id, company_id: company_id },
         config
       );
-      console.log(response);
 
       console.log("Data sent successfully");
     } catch (error) {

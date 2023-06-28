@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import {
   Button,
   Dialog,
@@ -19,10 +19,16 @@ export default function ConsentDialog({
   userConsent,
   setStatus,
   companyConsent,
+  setService,
+  setCompanyId,
 }) {
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(false);
   const handleOpen = () => setOpen(!open);
+  useEffect(() => {
+    setService(service_id);
+    setCompanyId(company_id);
+  }, []);
   const handleReject = () => {
     Swal.fire({
       title: "Are you sure?",

@@ -72,7 +72,7 @@ export default function CompanyProfile() {
     };
     getData();
   }, []);
-  console.log(service);
+  console.log(clients);
   return (
     <>
       <br />
@@ -89,7 +89,7 @@ export default function CompanyProfile() {
               to="/companyForm"
               className=" absolute top-0 left-0 bg-[#17a2b8] p-1  text-white text-sm"
             >
-              {service && service.bookings == null ? (
+              {service && service.service == null ? (
                 <button>Add Service</button>
               ) : (
                 <button>Update Service</button>
@@ -116,12 +116,12 @@ export default function CompanyProfile() {
             <Edit userData={userData} />
           </div>
         </div>
-        {service && service.bookings !== null && (
+        {service && service.service !== null && (
           <div>
             <h1 className=" text-2xl text-center mb-3">You Service</h1> <hr />
             <div className="company-card">
               {service &&
-                service.bookings?.Images.slice(0, 1).map((image, index) => (
+                service.service?.Images.slice(0, 1).map((image, index) => (
                   <img
                     alt="image"
                     src={`http://localhost:3500/${image}`}
@@ -131,26 +131,26 @@ export default function CompanyProfile() {
                 ))}
               <div className="info">
                 <h1 className=" text-2xl mb-3">
-                  {service.bookings && service.bookings.companyname}
+                  {service.service && service.service.companyname}
                 </h1>
 
                 <div>
                   <p className=" mb-2">
-                    {service.bookings && service.bookings.description}
+                    {service.service && service.service.description}
                   </p>
                   <i>
                     {" "}
                     <p className="mb-2 text-gray-500 text-sm">
-                      Location : {service.bookings && service.bookings.country}/
-                      {service.bookings && service.bookings.city}
+                      Location : {service.service && service.service.country}/
+                      {service.service && service.service.city}
                     </p>{" "}
                   </i>
                 </div>
                 <div className="flex text-gray-500  text-sm mb-2 ">
                   <div>Email:</div>
-                  <div>{service.bookings && service.bookings.email}</div>
+                  <div>{service.service && service.service.email}</div>
                   <div className=" ml-4">Phone:</div>
-                  <div>{service.bookings && service.bookings.phone}</div>
+                  <div>{service.service && service.service.phone}</div>
                 </div>
               </div>
             </div>

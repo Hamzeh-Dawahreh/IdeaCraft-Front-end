@@ -1,21 +1,18 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Swal from "sweetalert2";
 
 function BenifactorForm() {
   const [formData, setFormData] = useState({
-    companyname: "",
-    industry: "",
     phone: "",
-    email: "",
     country: "",
     city: "",
     description: "",
   });
   const [images, setImages] = useState([]);
-
+  const [companyData, setCompanyData] = useState("");
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -35,10 +32,7 @@ function BenifactorForm() {
     try {
       const formDataWithFiles = new FormData();
       formDataWithFiles.append("companyId", formData.companyId);
-      formDataWithFiles.append("companyname", formData.companyname);
       formDataWithFiles.append("phone", formData.phone);
-      formDataWithFiles.append("email", formData.email);
-      formDataWithFiles.append("industry", formData.industry);
       formDataWithFiles.append("country", formData.country);
       formDataWithFiles.append("city", formData.city);
       formDataWithFiles.append("description", formData.description);
@@ -65,7 +59,30 @@ function BenifactorForm() {
       confirmButtonText: "OK",
     });
   };
+  useEffect(() => {
+    const token = localStorage.getItem("token");
 
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3500/users/getcompany`,
+          config
+        );
+        setCompanyData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  console.log(companyData);
   return (
     <div className=" mt-40">
       <h1 className="text-center pb-8 font-bold text-cyan-400 text-3xl ">
@@ -99,11 +116,11 @@ function BenifactorForm() {
                 type="text"
                 id="name"
                 name="companyname"
+                value={companyData.companyname}
                 placeholder="Company Name"
                 class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
                       text-gray-600 placeholder-gray-400
                       outline-none"
-                onChange={handleChange}
               />
             </div>
             <div class="flex items-center  mb-5">
@@ -117,8 +134,8 @@ function BenifactorForm() {
               <select
                 className="signup-input"
                 name="industry"
-                onChange={handleChange}
                 required
+                value={companyData.industry}
               >
                 <option value="">Select an option</option>
                 <option value="Real Estates">Real Estates</option>
@@ -155,6 +172,7 @@ function BenifactorForm() {
                 Email Address
               </label>
               <input
+                value={companyData.email}
                 type="tel"
                 id="number"
                 name="email"
@@ -162,7 +180,6 @@ function BenifactorForm() {
                 class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
                       text-gray-600 placeholder-gray-400
                       outline-none"
-                onChange={handleChange}
               />
             </div>
 

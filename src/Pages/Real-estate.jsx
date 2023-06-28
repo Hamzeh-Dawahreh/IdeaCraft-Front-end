@@ -27,7 +27,6 @@ export default function RealEstate() {
     fetchData();
   }, []);
   //Search
-
   //Pagination
   const indexOfLastCompany = currentPage * companiesPerPage;
   const indexOfFirstCompany = indexOfLastCompany - companiesPerPage;
@@ -40,7 +39,6 @@ export default function RealEstate() {
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
   };
-
   return (
     <>
       <br />
@@ -139,7 +137,9 @@ export default function RealEstate() {
                   />
                 ))}
                 <div className="info">
-                  <h1 className=" text-2xl mb-3">{data.companyname}</h1>
+                  <h1 className=" text-2xl mb-3">
+                    {data.company_id.companyname}
+                  </h1>
 
                   <div>
                     <p className=" mb-2">{data.description}</p>
@@ -152,13 +152,23 @@ export default function RealEstate() {
                   </div>
                   <div className="flex text-gray-500  text-sm mb-2 ">
                     <div>Email:</div>
-                    <div>{data.email}</div>
+                    <div>{data.company_id.email}</div>
                     <div className=" ml-4">Phone:</div>
                     <div>{data.phone}</div>
                   </div>
 
                   <div className="company-rating mt-2">
-                    <Rating name="read-only" value="3" readOnly />
+                    <div className=" flex">
+                      <Rating
+                        name="half-rating-read"
+                        defaultValue={data.company_id.rating}
+                        precision={0.5}
+                        readOnly
+                      />
+                      <div className=" text-gray-500">
+                        ({data.company_id.rating})
+                      </div>
+                    </div>
                     <Dialog
                       service_id={data._id}
                       company_id={data.company_id}

@@ -8,13 +8,17 @@ export default function UserProfile() {
   const [userData, setUserData] = useState();
   const [company, setCompany] = useState([]);
   const [status, setStatus] = useState(false);
+  const [value, setValue] = useState();
+  const [service, setService] = useState();
+  const [companyId, setCompanyId] = useState();
+  const [rating, setRating] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
 
     const config = {
       headers: {
-        Authorization: `Bearer ${token}`, // Replace with your actual token
+        Authorization: `Bearer ${token}`,
       },
     };
 
@@ -25,7 +29,6 @@ export default function UserProfile() {
           config
         );
         setUserData(response.data);
-        // Do something with the user data
       } catch (error) {
         console.error(error);
       }
@@ -54,8 +57,32 @@ export default function UserProfile() {
       }
     };
     getRequest();
-  }, [status]);
-  console.log(company);
+  }, [status, rating]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const response = await axios.post(
+        "http://localhost:3500/books/userRating",
+        {
+          rating: value,
+          service_id: service,
+          company_id: companyId,
+        },
+        config
+      );
+      console.log("Data sent successfully");
+      setRating(!rating);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
       <br />
@@ -92,8 +119,9 @@ export default function UserProfile() {
         </div>
         <hr />
         <div className="clients">
+          {" "}
+          <h3 className="text-2xl text-center">REQUESTED SERVICES</h3>
           <div className="current-clients">
-            <h3 className="text-2xl">REQUESTED SERVICES</h3>
             <br />
             <table>
               <thead>
@@ -102,9 +130,9 @@ export default function UserProfile() {
                   <th>Email</th>
                   <th>Industry</th>
                   <th>Company Approval</th>
-
                   <th>User Approval</th>
                   <th>Price</th>
+                  <th>Rating</th>
                   <th>Response</th>
                 </tr>
               </thead>
@@ -130,8 +158,31 @@ export default function UserProfile() {
                           : "Rejected"}
                       </td>
                       <td className="text-green-500">
-                        {" "}
                         {data.price || "---"} JOD
+                      </td>
+                      <td>
+                        {data.userConsent !== undefined &&
+                        data.rating == undefined ? (
+                          <form
+                            onSubmit={handleSubmit}
+                            className=" flex flex-col justify-center items-center"
+                          >
+                            <Rating
+                              name="simple-controlled"
+                              value={value}
+                              onChange={(event, newValue) => {
+                                setValue(newValue);
+                              }}
+                            />
+                            <input type="submit" value="submit" />
+                          </form>
+                        ) : (
+                          <Rating
+                            name="read-only"
+                            value={data.rating}
+                            readOnly
+                          />
+                        )}
                       </td>
                       <td>
                         <ConsentDialog
@@ -143,6 +194,8 @@ export default function UserProfile() {
                           userConsent={data.userConsent}
                           companyConsent={data.companyConsent}
                           setStatus={setStatus}
+                          setService={setService}
+                          setCompanyId={setCompanyId}
                         />
                       </td>
                     </tr>
