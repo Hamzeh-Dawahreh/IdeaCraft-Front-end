@@ -10,6 +10,8 @@ export default function CompanyProfile() {
   const [status, setStatus] = useState(false);
   const [service, setService] = useState();
   const [userData, setUserData] = useState();
+  const [isUpdated, setIsUpdated] = useState(false);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -32,7 +34,7 @@ export default function CompanyProfile() {
     };
 
     fetchData();
-  }, []);
+  }, [isUpdated]);
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -113,7 +115,7 @@ export default function CompanyProfile() {
                 Your rating
               </p>
             </div>
-            <Edit userData={userData} />
+            <Edit userData={userData} setIsUpdated={setIsUpdated} />
           </div>
         </div>
         {service && service.service !== null && (
