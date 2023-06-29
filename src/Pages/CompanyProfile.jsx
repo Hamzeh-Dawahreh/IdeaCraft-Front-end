@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Rating } from "@mui/material";
 import RequestDialog from "../Components/Dialogs/Request-Dialog";
-import Edit from "../Components/Dialogs/Edit-Dialog";
+import Edit from "../Components/Dialogs/EditCompany-Dialog";
 import "../Assets/Styles/profile.css";
 import axios from "axios";
 export default function CompanyProfile() {
@@ -115,7 +115,11 @@ export default function CompanyProfile() {
                 Your rating
               </p>
             </div>
-            <Edit userData={userData} setIsUpdated={setIsUpdated} />
+            <Edit
+              userData={userData}
+              setIsUpdated={setIsUpdated}
+              isUpdated={isUpdated}
+            />
           </div>
         </div>
         {service && service.service !== null && (
@@ -219,9 +223,11 @@ export default function CompanyProfile() {
           <br />
           <br />
           <br />
+          <br />
+          <br />
           <hr />
-          <h3 className="text-2xl text-center mt-10">PREVIOUS CLIENTS </h3>
-          <div className="previous-clients">
+          {/* <h3 className="text-2xl text-center mt-10">PREVIOUS CLIENTS </h3> */}
+          {/* <div className="previous-clients">
             <br />
             <br />
             <br />
@@ -279,7 +285,7 @@ export default function CompanyProfile() {
                 </tr>
               </tbody>
             </table>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

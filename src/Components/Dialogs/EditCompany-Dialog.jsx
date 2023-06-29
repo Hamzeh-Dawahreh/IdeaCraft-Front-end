@@ -7,8 +7,8 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import axios from "axios";
-
-export default function Edit({ userData, setIsUpdated }) {
+import Swal from "sweetalert2";
+export default function Edit({ setIsUpdated, isUpdated }) {
   const [isFirstFormActive, setFirstFormActive] = useState(true);
   const [open, setOpen] = useState(false);
   const [passData, setPassData] = useState({
@@ -77,11 +77,18 @@ export default function Edit({ userData, setIsUpdated }) {
         formData,
         config
       );
-      setIsUpdated(!false);
+      setIsUpdated(!isUpdated);
       console.log("User details updated successfully");
+
       // You can add any additional logic here, such as updating the UI with the new data
     } catch (error) {
       console.error("Error updating user details:", error.response.data);
+      Swal.fire(
+        "Something went wrong",
+        `${error.response.data.Emessage || error.response.data.Umessage}`,
+        "error"
+      );
+
       // Handle the error here, such as showing an error message to the user
     }
     setOpen(!open);

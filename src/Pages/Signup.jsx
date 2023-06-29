@@ -75,7 +75,6 @@ export default function Signup() {
       // Handle the error or display an error message to the user
     }
   };
-  console.log(Econflict);
   return (
     <>
       <br />
