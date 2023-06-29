@@ -8,18 +8,19 @@ import {
   Input,
   Textarea,
 } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 import Swal from "sweetalert2";
-export default function BookingDialog({ service_id, company_id }) {
+export default function BookingDialog({ service_id, company_id, role }) {
   const [message, setMessage] = useState("");
   const [open, setOpen] = React.useState(false);
-
+  const navigate = useNavigate();
   const token = localStorage.getItem("token");
   let username = "";
   let user_id = "";
-
+  console.log(token);
   if (token) {
     try {
       const decodedToken = jwtDecode(token);
@@ -54,10 +55,17 @@ export default function BookingDialog({ service_id, company_id }) {
       );
     }
   };
-  const handleOpen = () => setOpen(!open);
+  const handleOpen = () => {
+    token ? setOpen(!open) : navigate("/login");
+  };
+
   return (
     <React.Fragment>
-      <Button onClick={handleOpen} className="company-book">
+      <Button
+        onClick={handleOpen}
+        className="company-book"
+        disabled={role == "company"}
+      >
         Book
       </Button>
       <Dialog open={open} handler={handleOpen}>

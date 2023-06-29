@@ -31,10 +31,13 @@ export default function Login() {
       navigate("/");
     } catch (error) {
       console.log(error);
+      const errorMessage = error.response.data.error
+        ? error.response.data.error
+        : error.response.data.message;
       Swal.fire({
         icon: "error",
         title: "We're sorry!",
-        text: error.response ? error.response.data.error : "An error occurred",
+        text: errorMessage,
       });
     }
   }

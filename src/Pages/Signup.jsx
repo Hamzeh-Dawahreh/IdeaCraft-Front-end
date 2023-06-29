@@ -103,7 +103,7 @@ export default function Signup() {
             {role === "user" ? (
               <>
                 <div className="first-last">
-                  <label htmlFor="FIRST NAME" className="signup-label ">
+                  <label htmlFor="FIRST NAME" className="signup-label text-xs ">
                     FIRST NAME
                     <input
                       type="text"
@@ -120,7 +120,7 @@ export default function Signup() {
                       </>
                     )}
                   </label>
-                  <label htmlFor="LAST NAME" className="signup-label">
+                  <label htmlFor="LAST NAME" className="signup-label text-xs">
                     LAST NAME
                     <input
                       type="text"
@@ -135,7 +135,7 @@ export default function Signup() {
                     )}
                   </label>
                 </div>
-                <label htmlFor="USERNAME" className="signup-label">
+                <label htmlFor="USERNAME" className="signup-label text-xs">
                   USERNAME
                   <input
                     type="text"
@@ -152,7 +152,7 @@ export default function Signup() {
                     <p className="invalid invalid-1">{Uconflict}</p>
                   )}
                 </label>
-                <label htmlFor="EMAIL ADDRESS" className="signup-label">
+                <label htmlFor="EMAIL ADDRESS" className="signup-label text-xs">
                   EMAIL ADDRESS
                   <input
                     type="text"
@@ -169,7 +169,7 @@ export default function Signup() {
                     <p className="invalid invalid-1">{Econflict}</p>
                   )}
                 </label>
-                <label htmlFor="PASSWORD" className="signup-label">
+                <label htmlFor="PASSWORD" className="signup-label text-xs">
                   PASSWORD
                   <input
                     type="password"
@@ -183,7 +183,24 @@ export default function Signup() {
                     <p className="invalid invalid-1">{formErrors.password}</p>
                   )}
                 </label>
-                <div className="login-with">
+                <label htmlFor="PASSWORD" className="signup-label text-xs">
+                  CONFIRM PASSWORD
+                  <input
+                    type="password"
+                    placeholder="*******"
+                    className="signup-input"
+                    name="confirmPassword"
+                    onChange={handleChange}
+                    required
+                  />
+                  {formErrors && (
+                    <p className="invalid invalid-1">
+                      {formErrors.confirmPassword}
+                    </p>
+                  )}
+                </label>
+
+                {/* <div className="login-with">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="25"
@@ -214,7 +231,7 @@ export default function Signup() {
                   >
                     <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
                   </svg>
-                </div>
+                </div> */}
 
                 <button className="login-button" onClick={handleClick}>
                   Sign up
@@ -291,7 +308,23 @@ export default function Signup() {
                     </>
                   )}
                 </label>
-                <div className="login-with">
+                <label htmlFor="PASSWORD" className="signup-label text-xs">
+                  CONFIRM PASSWORD
+                  <input
+                    type="password"
+                    placeholder="*******"
+                    className="signup-input"
+                    name="confirmPassword"
+                    onChange={handleChange}
+                    required
+                  />
+                  {formErrors && (
+                    <p className="invalid invalid-1">
+                      {formErrors.confirmPassword}
+                    </p>
+                  )}
+                </label>
+                {/* <div className="login-with">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="25"
@@ -322,7 +355,7 @@ export default function Signup() {
                   >
                     <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
                   </svg>
-                </div>
+                </div> */}
 
                 <button className="login-button" onClick={handleClick}>
                   Sign up

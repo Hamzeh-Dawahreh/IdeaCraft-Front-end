@@ -36,6 +36,10 @@ export default function validationUser(data) {
   } else if (!emailRegex.test(data.email)) {
     errors.email = " email Field must contains the required format ";
   }
-
+  if (!data.confirmPassword) {
+    errors.confirmPassword = "Confirm password is required";
+  } else if (data.confirmPassword !== data.password) {
+    errors.confirmPassword = "Passwords do not match";
+  }
   return errors;
 }

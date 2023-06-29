@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import Swal from "sweetalert2";
 
-function BenifactorForm() {
+function companyForm() {
   const [formData, setFormData] = useState({
     phone: "",
     country: "",
@@ -116,32 +116,12 @@ function BenifactorForm() {
                 type="text"
                 id="name"
                 name="companyname"
-                value={companyData.companyname}
+                value={companyData && companyData.companyname}
                 placeholder="Company Name"
                 class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
                       text-gray-600 placeholder-gray-400
                       outline-none"
               />
-            </div>
-            <div class="flex items-center  mb-5">
-              <label
-                for="name"
-                class="inline-block w-20 mr-6 text-right 
-                                 font-bold text-gray-600 text-sm"
-              >
-                Industry
-              </label>
-              <select
-                className="signup-input"
-                name="industry"
-                required
-                value={companyData.industry}
-              >
-                <option value="">Select an option</option>
-                <option value="Real Estates">Real Estates</option>
-                <option value="Technology">Technology</option>
-                <option value="Manufacturing">Manufacturing</option>
-              </select>{" "}
             </div>
 
             <div class="flex items-center mb-5">
@@ -172,7 +152,7 @@ function BenifactorForm() {
                 Email Address
               </label>
               <input
-                value={companyData.email}
+                value={companyData && companyData.email}
                 type="tel"
                 id="number"
                 name="email"
@@ -321,4 +301,4 @@ function BenifactorForm() {
   );
 }
 
-export default BenifactorForm;
+export default companyForm;

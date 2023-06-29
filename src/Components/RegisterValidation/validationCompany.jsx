@@ -26,6 +26,11 @@ export default function validationCompany(data) {
   if (!data.industry) {
     errors.industry = " Industry Field is required";
   }
+  if (!data.confirmPassword) {
+    errors.confirmPassword = "Confirm password is required";
+  } else if (data.confirmPassword !== data.password) {
+    errors.confirmPassword = "Passwords do not match";
+  }
 
   return errors;
 }

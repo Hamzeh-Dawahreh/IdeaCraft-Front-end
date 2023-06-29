@@ -2,14 +2,20 @@ import "../Assets/Styles/solution.css";
 import { Rating } from "@mui/material";
 import Dialog from "../Components/Dialogs/Book-Dialog";
 import Pagination from "@mui/material/Pagination";
-
-import { useEffect, useState } from "react";
+import { AuthContext } from "../App";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 export default function RealEstate() {
   const [companyData, setCompanyData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
+  const {
+    isLoggedIn,
 
+    role,
+  } = useContext(AuthContext);
+
+  console.log(role);
   const companiesPerPage = 3;
 
   useEffect(() => {
@@ -34,7 +40,7 @@ export default function RealEstate() {
     indexOfFirstCompany,
     indexOfLastCompany
   );
-
+  console.log(currentCompanies);
   // Change page
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
@@ -172,6 +178,7 @@ export default function RealEstate() {
                     <Dialog
                       service_id={data._id}
                       company_id={data.company_id}
+                      role={role}
                     />
                   </div>
                 </div>
