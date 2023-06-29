@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import {
   Button,
   Dialog,
@@ -16,6 +16,112 @@ export default function Edit({ setIsUpdated, isUpdated }) {
     newPassword: "",
     confirmPassword: "",
   });
+  const [errors, setErrors] = useState({});
+  const [passErrors, setPassErrors] = useState({});
+  const [formData, setFormData] = useState({
+    companyname: "",
+    industry: "",
+    email: "",
+  });
+  const nameRegex = /^[A-Za-z]+(?:[A-Za-z]+)*$/;
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    let newErrors = { ...errors };
+
+    // Perform validation based on the input field name
+    switch (name) {
+      case "companyname":
+        if (!value) {
+          newErrors.companyname = "Company Name is required";
+        } else if (!nameRegex.test(value)) {
+          newErrors.companyname =
+            "Company Name shouldn't start with a number, and shouldn't contain special characters or spaces.";
+        } else {
+          delete newErrors.companyname; // Clear the error if it was previously set
+        }
+        break;
+      case "industry":
+        if (!value) {
+          newErrors.industry = "Industry is required";
+        } else {
+          delete newErrors.industry; // Clear the error if it was previously set
+        }
+        break;
+      case "email":
+        if (!value) {
+          newErrors.email = "Email is required";
+        } else if (!isValidEmail(value)) {
+          newErrors.email = "Invalid email format";
+        } else {
+          delete newErrors.email; // Clear the error if it was previously set
+        }
+        break;
+      default:
+        break;
+    }
+
+    setErrors(newErrors);
+  };
+
+  const handlePassBlur = (e) => {
+    const { name, value } = e.target;
+    let newPassErrors = { ...passErrors };
+
+    // Perform validation based on the input field name
+    switch (name) {
+      case "oldPassword":
+        if (!value) {
+          newPassErrors.oldPassword = "Old Password is required";
+        } else {
+          delete newPassErrors.oldPassword; // Clear the error if it was previously set
+        }
+        break;
+      case "newPassword":
+        if (!value) {
+          newPassErrors.newPassword = "New Password is required";
+        } else if (!isValidPassword(value)) {
+          newPassErrors.newPassword =
+            "Password must contain at least one uppercase letter, one non-alphanumeric character, and be at least 8 characters long";
+        } else {
+          delete newPassErrors.newPassword; // Clear the error if it was previously set
+        }
+        break;
+      case "confirmPassword":
+        if (!value) {
+          newPassErrors.confirmPassword = "Confirm Password is required";
+        } else if (value !== passData.newPassword) {
+          newPassErrors.confirmPassword = "Passwords do not match";
+        } else {
+          delete newPassErrors.confirmPassword; // Clear the error if it was previously set
+        }
+        break;
+      default:
+        break;
+    }
+
+    setPassErrors(newPassErrors);
+  };
+  useEffect(() => {
+    if (isFirstFormActive) {
+      // Reset form data
+      setFormData({
+        companyname: "",
+        industry: "",
+        email: "",
+      });
+      setErrors({});
+    } else {
+      // Reset pass data
+      setPassData({
+        oldPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+      });
+      setPassErrors({});
+    }
+  }, [isFirstFormActive]);
+
   const handlePassChange = (e) => {
     setPassData({ ...passData, [e.target.name]: e.target.value });
   };
@@ -23,14 +129,6 @@ export default function Edit({ setIsUpdated, isUpdated }) {
   const handleToggleForm = () => {
     setFirstFormActive(!isFirstFormActive);
   };
-
-  const [errors, setErrors] = useState({});
-  const [passErorrs, setPassErrors] = useState({});
-  const [formData, setFormData] = useState({
-    companyname: "",
-    industry: "",
-    email: "",
-  });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -43,26 +141,6 @@ export default function Edit({ setIsUpdated, isUpdated }) {
         Authorization: `Bearer ${token}`,
       },
     };
-
-    // Validation
-    const errors = {};
-
-    // Validate company name
-    if (!formData.companyname) {
-      errors.companyname = "Company name is required";
-    }
-
-    // Validate industry
-    if (!formData.industry) {
-      errors.industry = "Industry is required";
-    }
-
-    // Validate email
-    if (!formData.email) {
-      errors.email = "Email is required";
-    } else if (!isValidEmail(formData.email)) {
-      errors.email = "Invalid email format";
-    }
 
     // Check if there are any errors
     if (Object.keys(errors).length > 0) {
@@ -103,35 +181,9 @@ export default function Edit({ setIsUpdated, isUpdated }) {
         Authorization: `Bearer ${token}`,
       },
     };
-    // Validate new password
-    if (!isValidPassword(passData.newPassword)) {
-      setPassErrors((prevErrors) => ({
-        ...prevErrors,
-        newPassword:
-          "Password must contain at least one uppercase letter, one non-alphanumeric character, and be at least 8 characters long",
-      }));
-    } else {
-      setPassErrors((prevErrors) => ({
-        ...prevErrors,
-        newPassword: "", // Clear the error if it was previously set
-      }));
-    }
-
-    // Validate confirm password
-    if (passData.newPassword !== passData.confirmPassword) {
-      setPassErrors((prevErrors) => ({
-        ...prevErrors,
-        confirmPassword: "Passwords do not match",
-      }));
-    } else {
-      setPassErrors((prevErrors) => ({
-        ...prevErrors,
-        confirmPassword: "", // Clear the error if it was previously set
-      }));
-    }
     // Check if there are any errors
-    if (Object.keys(passErorrs).length > 0) {
-      setPassErrors(passErorrs);
+    if (Object.keys(passErrors).length > 0) {
+      setPassErrors(passErrors);
       return;
     }
     try {
@@ -141,18 +193,20 @@ export default function Edit({ setIsUpdated, isUpdated }) {
         config
       );
       console.log("Password updated successfully");
-      setOpen(!open);
+      Swal.fire("Done!", "Your password has been changed.", "success");
 
       // You can add any additional logic here, such as updating the UI with the new data
     } catch (error) {
       console.error(error);
       // Handle the error here, such as showing an error message to the user
 
-      setPassErrors((prevErrors) => ({
-        ...prevErrors,
-        oldPassword: error.response.data.message,
-      }));
+      Swal.fire(
+        "Something went wrong",
+        `${error.response.data.message}`,
+        "error"
+      );
     }
+    setOpen(!open);
   };
   const isValidEmail = (email) => {
     // Simple email validation using regular expression
@@ -164,7 +218,6 @@ export default function Edit({ setIsUpdated, isUpdated }) {
 
     return passwordRegex.test(password);
   };
-  console.log(errors);
   const handleOpen = () => setOpen(!open);
 
   return (
@@ -205,10 +258,11 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                 id="companyname"
                 name="companyname"
                 onChange={handleChange}
+                onBlur={handleBlur}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               />
               {errors.companyname && (
-                <span className="text-red-500">{errors.companyname}</span>
+                <small className="text-red-500">{errors.companyname}</small>
               )}
             </div>
             <div className="mb-4">
@@ -222,6 +276,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                 id="industry"
                 name="industry"
                 onChange={handleChange}
+                onBlur={handleBlur}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               >
                 <option value="">Select an industry</option>
@@ -230,7 +285,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                 <option value="Manufacturing">Manufacturing</option>
               </select>
               {errors.industry && (
-                <span className="text-red-500">{errors.industry}</span>
+                <small className="text-red-500">{errors.industry}</small>
               )}
             </div>
 
@@ -246,10 +301,11 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                 id="email"
                 name="email"
                 onChange={handleChange}
+                onBlur={handleBlur}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               />
               {errors.email && (
-                <span className="text-red-500">{errors.email}</span>
+                <small className="text-red-500">{errors.email}</small>
               )}
               <br />
             </div>
@@ -272,14 +328,14 @@ export default function Edit({ setIsUpdated, isUpdated }) {
               </label>
               <input
                 type="password"
-                value={passData.oldPassword}
                 id="oldPassword"
                 name="oldPassword"
                 onChange={handlePassChange}
+                onBlur={handlePassBlur}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               />
-              {passErorrs.oldPassword && (
-                <small className="text-red-500">{passErorrs.oldPassword}</small>
+              {passErrors.oldPassword && (
+                <small className="text-red-500">{passErrors.oldPassword}</small>
               )}
             </div>
             <div className="mb-4">
@@ -291,14 +347,14 @@ export default function Edit({ setIsUpdated, isUpdated }) {
               </label>
               <input
                 type="password"
-                value={passData.newPassword}
                 id="newPassword"
                 name="newPassword"
                 onChange={handlePassChange}
+                onBlur={handlePassBlur}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               />
-              {passErorrs.newPassword && (
-                <small className="text-red-500">{passErorrs.newPassword}</small>
+              {passErrors.newPassword && (
+                <small className="text-red-500">{passErrors.newPassword}</small>
               )}
             </div>
             <div className="mb-4">
@@ -310,15 +366,15 @@ export default function Edit({ setIsUpdated, isUpdated }) {
               </label>
               <input
                 type="password"
-                value={passData.confirmPassword}
                 id="confirmPassword"
                 name="confirmPassword"
                 onChange={handlePassChange}
+                onBlur={handlePassBlur}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               />
-              {passErorrs.confirmPassword && (
+              {passErrors.confirmPassword && (
                 <span className="text-red-500">
-                  {passErorrs.confirmPassword}
+                  {passErrors.confirmPassword}
                 </span>
               )}
             </div>

@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   Dialog,
@@ -63,21 +63,8 @@ export default function Edit({ setIsUpdated, isUpdated }) {
 
     setPassErrors(newPassErrors);
   };
-
   const handleToggleForm = () => {
     setFirstFormActive(!isFirstFormActive);
-    setPassData({
-      oldPassword: "",
-      newPassword: "",
-      confirmPassword: "",
-    });
-    setFormData({
-      firstname: "",
-      lastname: "",
-      username: "",
-      email: "",
-    });
-    setErrors({});
   };
 
   const handlePassChange = (e) => {
@@ -140,6 +127,26 @@ export default function Edit({ setIsUpdated, isUpdated }) {
 
     setErrors(newErrors);
   };
+  useEffect(() => {
+    if (isFirstFormActive) {
+      // Reset form data
+      setFormData({
+        firstname: "",
+        lastname: "",
+        username: "",
+        email: "",
+      });
+      setErrors({});
+    } else {
+      // Reset pass data
+      setPassData({
+        oldPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+      });
+      setPassErrors({});
+    }
+  }, [isFirstFormActive]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -214,10 +221,6 @@ export default function Edit({ setIsUpdated, isUpdated }) {
         `${error.response.data.message}`,
         "error"
       );
-      //   setPassErrors((prevErrors) => ({
-      //     ...prevErrors,
-      //     oldPassword: error.response.data.message,
-      //   }));
     }
     setOpen(!open);
   };
@@ -234,7 +237,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
   const handleOpen = () => setOpen(!open);
 
   return (
-    <Fragment>
+    <>
       <div className="edit-image">
         <img onClick={handleOpen} src="./src/Assets/Images/Edit.png" />
       </div>
@@ -430,6 +433,6 @@ export default function Edit({ setIsUpdated, isUpdated }) {
           </Button>
         </DialogFooter>
       </Dialog>
-    </Fragment>
+    </>
   );
 }
