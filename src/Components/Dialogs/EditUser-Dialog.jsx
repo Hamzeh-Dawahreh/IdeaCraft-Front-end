@@ -276,6 +276,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                 name="firstname"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                value={formData.firstname}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               />
               {errors.firstname && (
@@ -296,6 +297,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                 name="lastname"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                value={formData.lastname}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               />
               {errors.lastname && (
@@ -316,6 +318,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                 name="username"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                value={formData.username}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               />
               {errors.username && (
@@ -337,6 +340,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                 name="email"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                value={formData.email}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               />
               {errors.email && (
@@ -368,6 +372,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                 name="oldPassword"
                 onChange={handlePassChange}
                 onBlur={handlePassBlur}
+                value={passData.oldPassword}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               />
               {passErrors.oldPassword && (
@@ -388,6 +393,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                 name="newPassword"
                 onChange={handlePassChange}
                 onBlur={handlePassBlur}
+                value={passData.newPassword}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               />
               {passErrors.newPassword && (
@@ -408,6 +414,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                 name="confirmPassword"
                 onChange={handlePassChange}
                 onBlur={handlePassBlur}
+                value={passData.confirmPassword}
                 className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               />
               {passErrors.confirmPassword && (

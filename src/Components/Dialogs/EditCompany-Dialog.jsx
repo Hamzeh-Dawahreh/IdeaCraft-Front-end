@@ -248,6 +248,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                   Company Name
                 </label>
                 <input
+                  required
                   type="text"
                   id="companyname"
                   name="companyname"
@@ -268,6 +269,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                   Industry
                 </label>
                 <select
+                  required
                   id="industry"
                   name="industry"
                   onChange={handleChange}
@@ -293,6 +295,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                   Email Address
                 </label>
                 <input
+                  required
                   type="email"
                   id="email"
                   name="email"
@@ -324,6 +327,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                   Old Password
                 </label>
                 <input
+                  required
                   type="password"
                   id="oldPassword"
                   name="oldPassword"
@@ -346,6 +350,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                   New Password
                 </label>
                 <input
+                  required
                   type="password"
                   id="newPassword"
                   name="newPassword"
@@ -368,6 +373,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
                   Confirm Password
                 </label>
                 <input
+                  required
                   type="password"
                   id="confirmPassword"
                   name="confirmPassword"
