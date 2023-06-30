@@ -40,7 +40,6 @@ export default function RealEstate() {
     indexOfFirstCompany,
     indexOfLastCompany
   );
-  console.log(currentCompanies);
   // Change page
   const handlePageChange = (event, value) => {
     setCurrentPage(value);

@@ -102,25 +102,6 @@ export default function Edit({ setIsUpdated, isUpdated }) {
 
     setPassErrors(newPassErrors);
   };
-  useEffect(() => {
-    if (isFirstFormActive) {
-      // Reset form data
-      setFormData({
-        companyname: "",
-        industry: "",
-        email: "",
-      });
-      setErrors({});
-    } else {
-      // Reset pass data
-      setPassData({
-        oldPassword: "",
-        newPassword: "",
-        confirmPassword: "",
-      });
-      setPassErrors({});
-    }
-  }, [isFirstFormActive]);
 
   const handlePassChange = (e) => {
     setPassData({ ...passData, [e.target.name]: e.target.value });
@@ -128,6 +109,18 @@ export default function Edit({ setIsUpdated, isUpdated }) {
 
   const handleToggleForm = () => {
     setFirstFormActive(!isFirstFormActive);
+    setPassData({
+      oldPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+    });
+    setPassErrors({});
+    setFormData({
+      companyname: "",
+      industry: "",
+      email: "",
+    });
+    setErrors({});
   };
 
   const handleChange = (e) => {
@@ -241,149 +234,161 @@ export default function Edit({ setIsUpdated, isUpdated }) {
             {isFirstFormActive ? "Change password" : "Change your information"}
           </button>
         </DialogHeader>
-        {isFirstFormActive ? (
-          <form
-            className="max-w-md mx-auto p-4 bg-white rounded shadow"
-            onSubmit={handleSubmit}
-          >
-            <div className="mb-4">
-              <label
-                htmlFor="company"
-                className="block text-gray-700 font-bold mb-2 text-sm"
-              >
-                Company Name
-              </label>
-              <input
-                type="text"
-                id="companyname"
-                name="companyname"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
-              />
-              {errors.companyname && (
-                <small className="text-red-500">{errors.companyname}</small>
-              )}
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="industry"
-                className="block text-gray-700 font-bold mb-2 text-sm"
-              >
-                Industry
-              </label>
-              <select
-                id="industry"
-                name="industry"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
-              >
-                <option value="">Select an industry</option>
-                <option value="Technology">Technology</option>
-                <option value="Real Estate">Real Estate</option>
-                <option value="Manufacturing">Manufacturing</option>
-              </select>
-              {errors.industry && (
-                <small className="text-red-500">{errors.industry}</small>
-              )}
-            </div>
+        <DialogBody>
+          {isFirstFormActive ? (
+            <form
+              className="max-w-md mx-auto p-4 bg-white rounded shadow"
+              onSubmit={handleSubmit}
+            >
+              <div className="mb-4">
+                <label
+                  htmlFor="company"
+                  className="block text-gray-700 font-bold mb-2 text-sm"
+                >
+                  Company Name
+                </label>
+                <input
+                  type="text"
+                  id="companyname"
+                  name="companyname"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={formData.companyname}
+                  className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                />
+                {errors.companyname && (
+                  <small className="text-red-500">{errors.companyname}</small>
+                )}
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="industry"
+                  className="block text-gray-700 font-bold mb-2 text-sm"
+                >
+                  Industry
+                </label>
+                <select
+                  id="industry"
+                  name="industry"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={formData.industry}
+                  className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                >
+                  <option value="">Select an industry</option>
+                  <option value="Technology">Technology</option>
+                  <option value="Real Estates">Real Estate</option>
+                  <option value="Manufacturing">Manufacturing</option>
+                </select>
+                {errors.industry && (
+                  <small className="text-red-500">{errors.industry}</small>
+                )}
+              </div>
 
-            <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-gray-700 font-bold mb-2 text-sm"
-              >
-                Email Address
-              </label>
+              <div className="mb-4">
+                <label
+                  htmlFor="email"
+                  className="block text-gray-700 font-bold mb-2 text-sm"
+                >
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={formData.email}
+                  className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                />
+                {errors.email && (
+                  <small className="text-red-500">{errors.email}</small>
+                )}
+                <br />
+              </div>
               <input
-                type="email"
-                id="email"
-                name="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                type="submit"
+                className=" border p-2 rounded-md bg-[#0fa3c2] text-white"
               />
-              {errors.email && (
-                <small className="text-red-500">{errors.email}</small>
-              )}
-              <br />
-            </div>
-            <input
-              type="submit"
-              className=" border p-2 rounded-md bg-[#0fa3c2] text-white"
-            />
-          </form>
-        ) : (
-          <form
-            className="max-w-md mx-auto p-4 bg-white rounded shadow"
-            onSubmit={handlePassword}
-          >
-            <div className="mb-4">
-              <label
-                htmlFor="oldPassword"
-                className="block text-gray-700 font-bold mb-2 text-sm"
-              >
-                Old Password
-              </label>
+            </form>
+          ) : (
+            <form
+              className="max-w-md mx-auto p-4 bg-white rounded shadow"
+              onSubmit={handlePassword}
+            >
+              <div className="mb-4">
+                <label
+                  htmlFor="oldPassword"
+                  className="block text-gray-700 font-bold mb-2 text-sm"
+                >
+                  Old Password
+                </label>
+                <input
+                  type="password"
+                  id="oldPassword"
+                  name="oldPassword"
+                  onChange={handlePassChange}
+                  onBlur={handlePassBlur}
+                  value={passData.oldPassword}
+                  className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                />
+                {passErrors.oldPassword && (
+                  <small className="text-red-500">
+                    {passErrors.oldPassword}
+                  </small>
+                )}
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="newPassword"
+                  className="block text-gray-700 font-bold mb-2 text-sm"
+                >
+                  New Password
+                </label>
+                <input
+                  type="password"
+                  id="newPassword"
+                  name="newPassword"
+                  onChange={handlePassChange}
+                  onBlur={handlePassBlur}
+                  value={passData.newPassword}
+                  className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                />
+                {passErrors.newPassword && (
+                  <small className="text-red-500">
+                    {passErrors.newPassword}
+                  </small>
+                )}
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="confirmPassword"
+                  className="block text-gray-700 font-bold mb-2 text-sm"
+                >
+                  Confirm Password
+                </label>
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  onChange={handlePassChange}
+                  onBlur={handlePassBlur}
+                  value={passData.confirmPassword}
+                  className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                />
+                {passErrors.confirmPassword && (
+                  <span className="text-red-500">
+                    {passErrors.confirmPassword}
+                  </span>
+                )}
+              </div>
               <input
-                type="password"
-                id="oldPassword"
-                name="oldPassword"
-                onChange={handlePassChange}
-                onBlur={handlePassBlur}
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+                type="submit"
+                className=" border p-2 rounded-md bg-[#0fa3c2] text-white"
               />
-              {passErrors.oldPassword && (
-                <small className="text-red-500">{passErrors.oldPassword}</small>
-              )}
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="newPassword"
-                className="block text-gray-700 font-bold mb-2 text-sm"
-              >
-                New Password
-              </label>
-              <input
-                type="password"
-                id="newPassword"
-                name="newPassword"
-                onChange={handlePassChange}
-                onBlur={handlePassBlur}
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
-              />
-              {passErrors.newPassword && (
-                <small className="text-red-500">{passErrors.newPassword}</small>
-              )}
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="confirmPassword"
-                className="block text-gray-700 font-bold mb-2 text-sm"
-              >
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                id="confirmPassword"
-                name="confirmPassword"
-                onChange={handlePassChange}
-                onBlur={handlePassBlur}
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
-              />
-              {passErrors.confirmPassword && (
-                <span className="text-red-500">
-                  {passErrors.confirmPassword}
-                </span>
-              )}
-            </div>
-            <input
-              type="submit"
-              className=" border p-2 rounded-md bg-[#0fa3c2] text-white"
-            />
-          </form>
-        )}
+            </form>
+          )}
+        </DialogBody>
         <DialogFooter>
           <Button
             variant="text"

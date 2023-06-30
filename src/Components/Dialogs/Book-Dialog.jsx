@@ -20,7 +20,6 @@ export default function BookingDialog({ service_id, company_id, role }) {
   const token = localStorage.getItem("token");
   let username = "";
   let user_id = "";
-  console.log(token);
   if (token) {
     try {
       const decodedToken = jwtDecode(token);
