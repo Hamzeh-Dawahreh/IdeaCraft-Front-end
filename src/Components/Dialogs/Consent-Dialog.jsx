@@ -21,6 +21,7 @@ export default function ConsentDialog({
   companyConsent,
   setService,
   setCompanyId,
+  isDeleted,
 }) {
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(false);
@@ -85,12 +86,19 @@ export default function ConsentDialog({
         console.error(error);
       });
   };
-
+  console.log(companyRes);
   return (
     <Fragment>
-      <Button onClick={handleOpen} variant="gradient" color="cyan">
-        View Response
-      </Button>
+      {isDeleted ? (
+        <Button variant="gradient" color="cyan" disabled>
+          View Response
+        </Button>
+      ) : (
+        <Button onClick={handleOpen} variant="gradient" color="cyan">
+          View Response
+        </Button>
+      )}
+
       <Dialog open={open} handler={handleOpen}>
         <DialogHeader>{companyname}</DialogHeader>
         <DialogBody divider>{companyRes} </DialogBody>

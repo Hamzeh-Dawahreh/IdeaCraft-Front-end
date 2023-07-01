@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Rating } from "@mui/material";
 import RequestDialog from "../Components/Dialogs/Request-Dialog";
 import Edit from "../Components/Dialogs/EditCompany-Dialog";
 import "../Assets/Styles/profile.css";
 import axios from "axios";
+import Swal from "sweetalert2";
+import { AuthContext } from "../App";
+
 export default function CompanyProfile() {
   const [clients, setClients] = useState([]);
   const [status, setStatus] = useState(false);
-  const [service, setService] = useState();
+  const [service, setService] = useState("");
   const [userData, setUserData] = useState();
-  const [isUpdated, setIsUpdated] = useState(false);
+  const { isUpdated, setIsUpdated } = useContext(AuthContext);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -73,7 +76,48 @@ export default function CompanyProfile() {
       setService(response.data);
     };
     getData();
-  }, []);
+  }, [isDeleted]);
+  const handleDelete = async (service_id) => {
+    const confirmed = await showConfirmationPrompt();
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const isDeleted = true;
+
+    if (confirmed) {
+      try {
+        const response = await axios.put(
+          `http://localhost:3500/form/deleteService/${service_id}`,
+          { isDeleted },
+          config
+        );
+        Swal.fire("Done!", `${response.data}`, "success");
+        setService();
+
+        setIsDeleted(!isDeleted);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+  const showConfirmationPrompt = () => {
+    return new Promise((resolve) => {
+      Swal.fire({
+        title: "Are you sure you want to  delete this service?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, soft delete it!",
+      }).then((result) => {
+        resolve(result.isConfirmed);
+      });
+    });
+  };
+  console.log(service);
   return (
     <>
       <br />
@@ -90,11 +134,17 @@ export default function CompanyProfile() {
               to="/companyForm"
               className=" absolute top-0 left-0 bg-[#17a2b8] p-1  text-white text-sm"
             >
-              {service && service.service == null ? (
+              {(service && service.service !== null) || "" ? (
+                <button>Update Service</button>
+              ) : (
+                <button>Add Service</button>
+              )}
+              {/* {(service && service.service == null) || "" ? (
                 <button>Add Service</button>
               ) : (
                 <button>Update Service</button>
-              )}
+              )} */}
+              {/* ??????????????????? */}
             </Link>
             <div className="user-titles">
               <span>Company Name</span>
@@ -114,16 +164,12 @@ export default function CompanyProfile() {
                 Your rating
               </p>
             </div>
-            <Edit
-              userData={userData}
-              setIsUpdated={setIsUpdated}
-              isUpdated={isUpdated}
-            />
+            <Edit userData={userData} />
           </div>
         </div>
         {service && service.service !== null && (
           <div>
-            <h1 className=" text-2xl text-center mb-3">You Service</h1> <hr />
+            <h1 className=" text-2xl text-center mb-3">Your Service</h1> <hr />
             <div className="company-card">
               {service &&
                 service.service?.Images.slice(0, 1).map((image, index) => (
@@ -151,11 +197,19 @@ export default function CompanyProfile() {
                     </p>{" "}
                   </i>
                 </div>
-                <div className="flex text-gray-500  text-sm mb-2 ">
-                  <div>Email:</div>
-                  <div>{service.service && service.service.email}</div>
-                  <div className=" ml-4">Phone:</div>
-                  <div>{service.service && service.service.phone}</div>
+                <div className="flex text-gray-500  text-sm mb-2  justify-between">
+                  <div>Email:{service.service && service.service.email}</div>
+                  <div className=" ml-4">
+                    Phone:{service.service && service.service.phone}
+                  </div>
+                  <button
+                    className=" bg-red-400 p-2 rounded-sm text-white"
+                    onClick={() => {
+                      handleDelete(service.service._id);
+                    }}
+                  >
+                    Delete Service
+                  </button>
                 </div>
               </div>
             </div>
@@ -225,66 +279,6 @@ export default function CompanyProfile() {
           <br />
           <br />
           <hr />
-          {/* <h3 className="text-2xl text-center mt-10">PREVIOUS CLIENTS </h3> */}
-          {/* <div className="previous-clients">
-            <br />
-            <br />
-            <br />
-            <br />
-            <table className=" sm:text-xs">
-              <thead>
-                <tr>
-                  <th>User</th>
-                  <th>Email</th>
-                  <th>Project</th>
-                  <th>Price</th>
-                  <th>Rating</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Ali</td>
-                  <td>..@gmail.com</td>
-                  <td>Alpha</td>
-                  <td>350JD</td>
-                  <td>
-                    {" "}
-                    <Rating name="read-only" value="5" readOnly />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Jamal</td>
-                  <td>..@gmail.com</td>
-                  <td>DBS</td>
-                  <td>150JD</td>
-                  <td>
-                    {" "}
-                    <Rating name="read-only" value="4" readOnly />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Steve</td>
-                  <td>..@gmail.com</td>
-                  <td>ASDF</td>
-                  <td>100JD</td>
-                  <td>
-                    {" "}
-                    <Rating name="read-only" value="5" readOnly />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Mahmoud</td>
-                  <td>..@gmail.com</td>
-                  <td>ABC</td>
-                  <td>250JD</td>
-                  <td>
-                    {" "}
-                    <Rating name="read-only" value="3" readOnly />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div> */}
         </div>
       </div>
     </>

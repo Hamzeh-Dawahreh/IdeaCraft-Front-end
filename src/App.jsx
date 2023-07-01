@@ -22,6 +22,7 @@ import RequiredAuth from "./customHooks/RequiredAuth";
 import NotFound from "./Pages/NotFound404";
 import jwtDecode from "jwt-decode";
 import CompanyForm from "./Components/Profile/CompanyForm";
+import axios from "axios";
 export const AuthContext = createContext();
 
 export default function App() {
@@ -29,19 +30,57 @@ export default function App() {
   const [username, setUsername] = useState("");
   const [companyname, setCompanyName] = useState();
   const [role, setRole] = useState();
+  const [isUpdated, setIsUpdated] = useState(true);
 
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     // Decode the token to extract user information
+  //     const decodedToken = jwtDecode(token);
+  //     if (decodedToken) {
+  //       setUsername(decodedToken.username);
+  //       setCompanyName(decodedToken.companyname);
+  //       setRole(decodedToken.role);
+  //     }
+  //   }
+  // }, [!isLoggedIn]);
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       // Decode the token to extract user information
       const decodedToken = jwtDecode(token);
-      if (decodedToken) {
-        setUsername(decodedToken.username);
-        setCompanyName(decodedToken.companyname);
-        setRole(decodedToken.role);
-      }
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const fetchData = async () => {
+        try {
+          let response;
+          if (decodedToken.role === "user") {
+            response = await axios.get(
+              `http://localhost:3500/users/getuser`,
+              config
+            );
+            setUsername(response.data.username);
+            setRole(decodedToken.role);
+          } else if (decodedToken.role === "company") {
+            response = await axios.get(
+              `http://localhost:3500/users/getCompany`,
+              config
+            );
+          }
+          setCompanyName(response.data.companyname);
+          setRole(decodedToken.role);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      fetchData();
     }
-  }, [!isLoggedIn]);
+  }, [isUpdated, !isLoggedIn]);
   const ScrollToTop = () => {
     const { pathname } = useLocation();
 
@@ -64,6 +103,8 @@ export default function App() {
           setUsername,
           companyname,
           role,
+          isUpdated,
+          setIsUpdated,
         }}
       >
         <Router>

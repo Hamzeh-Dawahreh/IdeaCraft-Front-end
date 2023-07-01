@@ -3,8 +3,6 @@ import { NavLink, Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../Assets/Styles/navbar.css";
 import { AuthContext } from "../App";
-import { Login } from "@mui/icons-material";
-import jwtDecode from "jwt-decode";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -17,8 +15,10 @@ export default function Navbar() {
     role,
     setCompanyName,
     setUsername,
+    isUpdated,
   } = useContext(AuthContext);
 
+  useEffect(() => {}, [isUpdated]);
   const activeLink =
     "block py-2 pl-3 pr-4 text-blue-700	 bg-[#867070] rounded md:bg-transparent md:text-blue md:p-0 md:dark:text-blue-700	";
   const normalLink =

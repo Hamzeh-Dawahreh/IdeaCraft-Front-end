@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState, useEffect, useContext } from "react";
 import {
   Button,
   Dialog,
@@ -8,7 +8,11 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 import Swal from "sweetalert2";
-export default function Edit({ setIsUpdated, isUpdated }) {
+import { AuthContext } from "../../App";
+
+export default function Edit() {
+  const { isUpdated, setIsUpdated } = useContext(AuthContext);
+
   const [isFirstFormActive, setFirstFormActive] = useState(true);
   const [open, setOpen] = useState(false);
   const [passData, setPassData] = useState({
@@ -175,7 +179,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
       },
     };
     // Check if there are any errors
-    if (Object.keys(passErrors).length > 0) {
+    if (Object.keys(passErrors).length !== 0) {
       setPassErrors(passErrors);
       return;
     }
@@ -211,7 +215,13 @@ export default function Edit({ setIsUpdated, isUpdated }) {
 
     return passwordRegex.test(password);
   };
-  const handleOpen = () => setOpen(!open);
+  const handleOpen = () => {
+    setOpen(!open);
+    setFormData("");
+    setPassData("");
+    setErrors("");
+    setPassErrors("");
+  };
 
   return (
     <Fragment>

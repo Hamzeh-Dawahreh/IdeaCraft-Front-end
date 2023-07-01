@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   Button,
   Dialog,
@@ -8,7 +8,9 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 import Swal from "sweetalert2";
-export default function Edit({ setIsUpdated, isUpdated }) {
+import { AuthContext } from "../../App";
+
+export default function Edit() {
   const [isFirstFormActive, setFirstFormActive] = useState(true);
   const [open, setOpen] = useState(false);
   const [passData, setPassData] = useState({
@@ -25,6 +27,8 @@ export default function Edit({ setIsUpdated, isUpdated }) {
     username: "",
     email: "",
   });
+  const { isUpdated, setIsUpdated } = useContext(AuthContext);
+
   const handlePassBlur = (e) => {
     const { name, value } = e.target;
     let newPassErrors = { ...passErrors };
@@ -171,8 +175,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
       );
       setIsUpdated(!isUpdated);
       console.log("User details updated successfully");
-
-      // You can add any additional logic here, such as updating the UI with the new data
+      Swal.fire("Done!", "Your details has been changed.", "success");
     } catch (error) {
       console.error("Error updating user details:", error.response.data);
       Swal.fire(
@@ -180,8 +183,6 @@ export default function Edit({ setIsUpdated, isUpdated }) {
         `${error.response.data.Emessage || error.response.data.Umessage}`,
         "error"
       );
-
-      // Handle the error here, such as showing an error message to the user
     }
     setOpen(!open);
   };
@@ -197,7 +198,7 @@ export default function Edit({ setIsUpdated, isUpdated }) {
     };
 
     // Check if there are any errors
-    if ((Object.keys(passErrors).length = 0)) {
+    if (Object.keys(passErrors).length !== 0) {
       setPassErrors(passErrors);
       return;
     }
@@ -234,7 +235,13 @@ export default function Edit({ setIsUpdated, isUpdated }) {
 
     return passwordRegex.test(password);
   };
-  const handleOpen = () => setOpen(!open);
+  const handleOpen = () => {
+    setOpen(!open);
+    setFormData("");
+    setPassData("");
+    setErrors("");
+    setPassErrors("");
+  };
 
   return (
     <>

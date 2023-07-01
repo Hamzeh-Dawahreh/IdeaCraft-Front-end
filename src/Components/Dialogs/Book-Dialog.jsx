@@ -45,6 +45,11 @@ export default function BookingDialog({ service_id, company_id, role }) {
       );
 
       console.log("Data sent successfully");
+      Swal.fire(
+        "Done!",
+        `You can see the company's response in your profile page`,
+        "success"
+      );
     } catch (error) {
       console.log(error.response.data.message);
       Swal.fire(
