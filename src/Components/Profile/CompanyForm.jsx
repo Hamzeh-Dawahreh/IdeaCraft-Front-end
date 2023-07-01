@@ -133,7 +133,7 @@ function companyForm() {
                 Phone Number
               </label>
               <input
-                type="tel"
+                type="number"
                 id="number"
                 name="phone"
                 placeholder="Phone Number"
