@@ -73,7 +73,7 @@
 .current-clients table,
 .previous-clients table {
   background-color: rgb(249, 249, 255);
-  width: 100%;
+  width: 90%;
   border-collapse: collapse;
   margin-top: 2rem;
 }

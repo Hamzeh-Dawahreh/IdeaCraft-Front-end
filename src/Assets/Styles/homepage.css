@@ -165,16 +165,13 @@
   margin-bottom: 5rem;
 }
 
-/* asdasdasd */
-.card-container {
-  width: 350px;
-  height: 27rem;
+/* .card-container {
   border-radius: 8px;
-  padding: 16px;
-  background: linear-gradient(45deg, white, grey);
+  background-color: #1f2937;
+  color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
-}
+} */
 
 .card-container:hover {
   box-shadow: 0 0 15px 10px rgb(28, 29, 38); /* Glowing border effect */
@@ -185,21 +182,13 @@
   width: 100%;
   height: auto;
   border-radius: 8px;
-  transition: transform 0.3s ease-in-out; /* Added transition property */
-}
-
-.card-container:hover img {
-  transform: scale(0.8); /* Scale the image smaller on hover */
+  transition: transform 0.3s ease-in-out;
 }
 
 .company-description {
   margin-top: 8px;
   line-height: 1.5;
-  transition: transform 0.3s ease-in-out; /* Added transition property */
-}
-
-.card-container:hover .company-description {
-  transform: scale(1.08); /* Scale the text bigger on hover */
+  transition: transform 0.3s ease-in-out;
 }
 
 .rating-category {
@@ -209,17 +198,9 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-.rating-category p {
-  margin-left: 8px;
-  opacity: 0;
-}
-
-.card-container:hover .rating-category p {
-  opacity: 1;
-}
-
 .rating-category .MuiRating-root {
-  font-size: 16px;
+  font-size: 20px;
+  color: goldenrod;
   transition: transform 0.3s ease-in-out;
 }
 

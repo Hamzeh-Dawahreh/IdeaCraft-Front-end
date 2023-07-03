@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Rating } from "@mui/material";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
+import axios from "axios";
 // Default theme
 import "@splidejs/splide/css";
 
@@ -11,155 +12,115 @@ import "@splidejs/splide/css/sea-green";
 // or only core styles
 import "@splidejs/splide/css/core";
 export default function Second() {
+  const [data, setData] = useState([]);
   // new Splide(".splide").mount();
+  const options = {
+    type: "loop",
+    gap: "1rem",
+    autoplay: true,
+    pauseOnHover: false,
+    resetProgress: false,
+  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3500/form/getTopRatedCompanies"
+        );
 
+        setData(response.data);
+      } catch (error) {
+        console.log("Error retrieving data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  console.log(data);
   return (
     <div className="welcome-section">
       <h2 className="home-title text-3xl mt-20">MOST RATED COMPANIES</h2>
       <br />
       <div className="line-2"></div>
-      <Splide
-        aria-label="My Favorite Images"
-        className="most-companies-carousel"
-      >
-        <SplideSlide>
-          <div className="cards">
-            <div className="card-container">
-              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
-              <p className="company-description mt-2">
-                CBRE Group, Inc. is an American commercial real estate services
-                and investment firm. The abbreviation CBRE stands for Coldwell
-                Banker Richard Ellis. It is the world's largest commercial real
-                estate services and investment firm.
-              </p>
-              <div className="rating-category mt-4">
-                <Rating name="read-only" value="3" readOnly />
+      <Splide hasTrack={false} options={options}>
+        <SplideTrack>
+          {data.reduce((slides, item, index) => {
+            if (index % 3 === 0) {
+              const slideData = data.slice(index, index + 3);
+              slides.push(
+                <SplideSlide key={index}>
+                  <div className="cards">
+                    {slideData.map((subItem, subIndex) => (
+                      <div
+                        key={subIndex}
+                        className="card-container max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+                      >
+                        <img
+                          className="rounded-t-lg"
+                          src="/src/Assets/Images/CBRE.png"
+                          alt=""
+                        />
+                        <div className="p-5">
+                          <a href="#">
+                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                              {subItem.companyname}
+                            </h5>
+                          </a>
+                          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                            {subItem.applicationForm.description}
+                          </p>
+                          <div className="rating-category mt-4 text-white">
+                            <Rating
+                              name="read-only"
+                              value={`${subItem.rating}`}
+                              readOnly
+                            />
+                            <p>({subItem.rating})</p>
+                          </div>
+                          <br />
+                          <div className="flex justify-between">
+                            <div className="text-white font-semibold text-sm">
+                              Category - {subItem.industry}
+                            </div>
+                            <a
+                              href="#"
+                              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            >
+                              Book now
+                              <svg
+                                aria-hidden="true"
+                                className="w-4 h-4 ml-2 -mr-1"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                  clipRule="evenodd"
+                                ></path>
+                              </svg>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </SplideSlide>
+              );
+            }
+            return slides;
+          }, [])}
+        </SplideTrack>
 
-                <p>Category - Real Estate</p>
-              </div>
-            </div>{" "}
-            <div className="card-container">
-              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
-              <p className="company-description mt-2">
-                CBRE Group, Inc. is an American commercial real estate services
-                and investment firm. The abbreviation CBRE stands for Coldwell
-                Banker Richard Ellis. It is the world's largest commercial real
-                estate services and investment firm.
-              </p>
-              <div className="rating-category mt-4">
-                <Rating name="read-only" value="3" readOnly />
+        <div className="splide__progress">
+          <div className="splide__progress__bar" />
+        </div>
 
-                <p>Category - Real Estate</p>
-              </div>
-            </div>{" "}
-            <div className="card-container">
-              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
-              <p className="company-description mt-2">
-                CBRE Group, Inc. is an American commercial real estate services
-                and investment firm. The abbreviation CBRE stands for Coldwell
-                Banker Richard Ellis. It is the world's largest commercial real
-                estate services and investment firm.
-              </p>
-              <div className="rating-category mt-4">
-                <Rating name="read-only" value="3" readOnly />
-
-                <p>Category - Real Estate</p>
-              </div>
-            </div>{" "}
-          </div>
-        </SplideSlide>
-        <SplideSlide>
-          <div className="cards">
-            <div className="card-container">
-              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
-              <p className="company-description mt-2">
-                CBRE Group, Inc. is an American commercial real estate services
-                and investment firm. The abbreviation CBRE stands for Coldwell
-                Banker Richard Ellis. It is the world's largest commercial real
-                estate services and investment firm.
-              </p>
-              <div className="rating-category mt-4">
-                <Rating name="read-only" value="3" readOnly />
-
-                <p>Category - Real Estate</p>
-              </div>
-            </div>{" "}
-            <div className="card-container">
-              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
-              <p className="company-description mt-2">
-                CBRE Group, Inc. is an American commercial real estate services
-                and investment firm. The abbreviation CBRE stands for Coldwell
-                Banker Richard Ellis. It is the world's largest commercial real
-                estate services and investment firm.
-              </p>
-              <div className="rating-category mt-4">
-                <Rating name="read-only" value="3" readOnly />
-
-                <p>Category - Real Estate</p>
-              </div>
-            </div>{" "}
-            <div className="card-container">
-              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
-              <p className="company-description mt-2">
-                CBRE Group, Inc. is an American commercial real estate services
-                and investment firm. The abbreviation CBRE stands for Coldwell
-                Banker Richard Ellis. It is the world's largest commercial real
-                estate services and investment firm.
-              </p>
-              <div className="rating-category mt-4">
-                <Rating name="read-only" value="3" readOnly />
-
-                <p>Category - Real Estate</p>
-              </div>
-            </div>{" "}
-          </div>
-        </SplideSlide>
-        <SplideSlide>
-          <div className="cards">
-            <div className="card-container">
-              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
-              <p className="company-description mt-2">
-                CBRE Group, Inc. is an American commercial real estate services
-                and investment firm. The abbreviation CBRE stands for Coldwell
-                Banker Richard Ellis. It is the world's largest commercial real
-                estate services and investment firm.
-              </p>
-              <div className="rating-category mt-4">
-                <Rating name="read-only" value="3" readOnly />
-
-                <p>Category - Real Estate</p>
-              </div>
-            </div>{" "}
-            <div className="card-container">
-              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
-              <p className="company-description mt-2">
-                CBRE Group, Inc. is an American commercial real estate services
-                and investment firm. The abbreviation CBRE stands for Coldwell
-                Banker Richard Ellis. It is the world's largest commercial real
-                estate services and investment firm.
-              </p>
-              <div className="rating-category mt-4">
-                <Rating name="read-only" value="3" readOnly />
-
-                <p>Category - Real Estate</p>
-              </div>
-            </div>{" "}
-            <div className="card-container">
-              <img src="/src/Assets/Images/CBRE.png" alt="image" width={350} />
-              <p className="company-description mt-2">
-                CBRE Group, Inc. is an American commercial real estate services
-                and investment firm. The abbreviation CBRE stands for Coldwell
-                Banker Richard Ellis. It is the world's largest commercial real
-                estate services and investment firm.
-              </p>
-              <div className="rating-category mt-4">
-                <Rating name="read-only" value="3" readOnly />
-
-                <p>Category - Real Estate</p>
-              </div>
-            </div>{" "}
-          </div>
-        </SplideSlide>
+        <button className="splide__toggle" type="button">
+          <span className="splide__toggle__play">Play</span>
+          <span className="splide__toggle__pause">Pause</span>
+        </button>
       </Splide>
 
       <br />

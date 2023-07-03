@@ -130,7 +130,7 @@ export default function Navbar() {
                     </Link>
                   </div>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink
                     to="/subscription"
                     className={({ isActive }) =>
@@ -139,7 +139,7 @@ export default function Navbar() {
                   >
                     Subscription
                   </NavLink>
-                </li>
+                </li> */}
                 <li>
                   <NavLink
                     to="/aboutus"

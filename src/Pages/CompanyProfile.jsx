@@ -150,19 +150,14 @@ export default function CompanyProfile() {
               <span>Company Name</span>
               <span>Category/Industry</span>
               <span>Email Address</span>
-              <span>Subscription</span>
             </div>
             <div className="user-info">
               <span>{userData && userData.companyname}</span>
               <span>{userData && userData.industry}</span>
               <span>{userData && userData.email}</span>
-              <span>Jan- June 2023</span>
             </div>
             <div className="info-line">
-              <p>
-                4.5 <br />
-                Your rating
-              </p>
+              <p>Your information</p>
             </div>
             <Edit userData={userData} />
           </div>
@@ -170,6 +165,13 @@ export default function CompanyProfile() {
         {service && service.service !== null && (
           <div>
             <h1 className=" text-2xl text-center mb-3">Your Service</h1> <hr />
+            <br />
+            <div className=" text-center font-bold underline">
+              {" "}
+              {service.service && service.service.isApproved
+                ? "Congratualtions ! Your application has been approved"
+                : "We are sorry. Your application has been denied, please contact us for more info"}
+            </div>
             <div className="company-card">
               {service &&
                 service.service?.Images.slice(0, 1).map((image, index) => (
@@ -182,7 +184,7 @@ export default function CompanyProfile() {
                 ))}
               <div className="info">
                 <h1 className=" text-2xl mb-3">
-                  {service.service && service.service.companyname}
+                  {service.service && service.service.company_id.companyname}
                 </h1>
 
                 <div>
@@ -198,7 +200,9 @@ export default function CompanyProfile() {
                   </i>
                 </div>
                 <div className="flex text-gray-500  text-sm mb-2  justify-between">
-                  <div>Email:{service.service && service.service.email}</div>
+                  <div>
+                    Email:{service.service && service.service.company_id.email}
+                  </div>
                   <div className=" ml-4">
                     Phone:{service.service && service.service.phone}
                   </div>

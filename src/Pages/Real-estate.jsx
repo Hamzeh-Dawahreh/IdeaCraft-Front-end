@@ -166,7 +166,7 @@ export default function RealEstate() {
                     <div className=" flex">
                       <Rating
                         name="half-rating-read"
-                        defaultValue={data.company_id.rating}
+                        value={data.company_id.rating}
                         precision={0.5}
                         readOnly
                       />

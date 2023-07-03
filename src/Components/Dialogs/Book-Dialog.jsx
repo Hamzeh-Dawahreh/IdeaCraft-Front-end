@@ -31,6 +31,11 @@ export default function BookingDialog({ service_id, company_id, role }) {
   }
   const handleClick = async () => {
     try {
+      if (!message.userReq) {
+        Swal.fire(" Error", "Please enter a your request.", "error");
+        return;
+      }
+
       const token = localStorage.getItem("token");
       const config = {
         headers: {
@@ -81,7 +86,7 @@ export default function BookingDialog({ service_id, company_id, role }) {
           <div className="grid gap-6">
             <Input label="Username" value={username} />
             <Textarea
-              label="Message"
+              label="Send your request to the company "
               name="userReq"
               onChange={(e) => {
                 setMessage({ [e.target.name]: e.target.value });
