@@ -28,8 +28,8 @@ export const AuthContext = createContext();
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
-  const [companyname, setCompanyName] = useState();
-  const [role, setRole] = useState();
+  const [companyname, setCompanyName] = useState("");
+  const [role, setRole] = useState("");
   const [isUpdated, setIsUpdated] = useState(true);
 
   // useEffect(() => {

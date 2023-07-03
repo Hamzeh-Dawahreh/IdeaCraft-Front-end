@@ -1,10 +1,10 @@
-/* eslint-disable no-unused-vars */
 import axios from "axios";
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 function companyForm() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     phone: "",
     country: "",
@@ -13,10 +13,39 @@ function companyForm() {
   });
   const [images, setImages] = useState([]);
   const [companyData, setCompanyData] = useState("");
+  const [service, setService] = useState([]);
+  const [errors, setErrors] = useState("");
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [e.target.name]: e.target.value,
+    }));
   };
+  const handleBlur = (e) => {
+    const validationErrors = {};
+    if (!formData.phone) {
+      validationErrors.phone = "Phone number is required";
+    } else if (!formData.phone.match(/^07\d{8}$/)) {
+      validationErrors.phone = "Please enter a valid 10-digit phone number";
+    }
+    if (!formData.country) {
+      validationErrors.country = "Country is required";
+    } else if (!formData.country.match(/^[a-zA-Z]+$/)) {
+      validationErrors.country = "Please enter a valid country name";
+    }
 
+    if (!formData.city) {
+      validationErrors.city = "City is required";
+    } else if (!formData.city.match(/^[a-zA-Z]+$/)) {
+      validationErrors.city = "Please enter a valid city name";
+    }
+    if (!formData.description) {
+      validationErrors.description = "description is required";
+    }
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+    }
+  };
   const handleImagesChange = (event) => {
     setImages([...event.target.files]);
   };
@@ -28,10 +57,8 @@ function companyForm() {
         Authorization: `Bearer ${token}`,
       },
     };
-    console.log(formData);
     try {
       const formDataWithFiles = new FormData();
-      formDataWithFiles.append("companyId", formData.companyId);
       formDataWithFiles.append("phone", formData.phone);
       formDataWithFiles.append("country", formData.country);
       formDataWithFiles.append("city", formData.city);
@@ -47,6 +74,8 @@ function companyForm() {
         config
       );
       console.log("Data sent successfully");
+      navigate("/companyprofile");
+      showSuccessAlert();
     } catch (error) {
       console.log("Error:", error.message);
     }
@@ -79,10 +108,41 @@ function companyForm() {
         console.error(error);
       }
     };
+    const getData = async () => {
+      const token = localStorage.getItem("token");
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.get(
+        `http://localhost:3500/form/getService/`,
+        config
+      );
+      setService(response.data);
+      if (
+        response.data &&
+        response.data.service &&
+        response.data.service.phone &&
+        response.data.service.country &&
+        response.data.service.city &&
+        response.data.service.description
+      ) {
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          phone: response.data.service.phone,
+          country: response.data.service.country,
+          city: response.data.service.city,
+          description: response.data.service.description,
+        }));
+      }
+    };
+    getData();
 
     fetchData();
   }, []);
-  console.log(companyData);
+  console.log(formData);
   return (
     <div className=" mt-40">
       <h1 className="text-center pb-8 font-bold text-cyan-400 text-3xl ">
@@ -113,6 +173,7 @@ function companyForm() {
                 Company Name
               </label>
               <input
+                required
                 type="text"
                 id="name"
                 name="companyname"
@@ -123,7 +184,6 @@ function companyForm() {
                       outline-none"
               />
             </div>
-
             <div class="flex items-center mb-5">
               <label
                 for="number"
@@ -131,17 +191,25 @@ function companyForm() {
                                  font-bold text-gray-600"
               >
                 Phone Number
-              </label>
+              </label>{" "}
               <input
-                type="number"
+                required
+                defaultValue={service.service && service.service.phone}
+                type="text"
                 id="number"
                 name="phone"
-                placeholder="Phone Number"
+                placeholder="0712345678"
                 class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
-                      text-gray-600 placeholder-gray-400
+                      text-gray-600 placeholder-gray-400 w-full
                       outline-none"
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
+              {errors.phone && (
+                <div className=" flex justify-center">
+                  <small className="text-red-500 ml-2">{errors.phone}</small>
+                </div>
+              )}
             </div>
             <div class="flex items-center mb-5">
               <label
@@ -152,6 +220,7 @@ function companyForm() {
                 Email Address
               </label>
               <input
+                required
                 value={companyData && companyData.email}
                 type="tel"
                 id="number"
@@ -162,7 +231,6 @@ function companyForm() {
                       outline-none"
               />
             </div>
-
             <div class="flex items-center mb-5">
               <input
                 type="text"
@@ -184,6 +252,8 @@ function companyForm() {
                 Country
               </label>
               <input
+                required
+                defaultValue={service.service && service.service.country}
                 type="text"
                 id="number"
                 name="country"
@@ -192,8 +262,15 @@ function companyForm() {
                       text-gray-600 placeholder-gray-400
                       outline-none"
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
+              {errors.country && (
+                <div className=" flex justify-center">
+                  <small className="text-red-500 ml-3">{errors.country}</small>
+                </div>
+              )}
             </div>
+
             <div class="flex items-center mb-5">
               <label
                 for="number"
@@ -204,6 +281,8 @@ function companyForm() {
                 City{" "}
               </label>
               <input
+                required
+                defaultValue={service.service && service.service.city}
                 type="text"
                 id="number"
                 name="city"
@@ -212,9 +291,14 @@ function companyForm() {
                       text-gray-600 placeholder-gray-400
                       outline-none"
                 onChange={handleChange}
-              />
+                onBlur={handleBlur}
+              />{" "}
+              {errors.city && (
+                <div className=" flex justify-center">
+                  <small className="text-red-500 ml-3">{errors.city}</small>
+                </div>
+              )}
             </div>
-
             <div class="flex items-center mb-5">
               <input
                 type="text"
@@ -227,7 +311,6 @@ function companyForm() {
                 disabled
               />
             </div>
-
             <div class="flex items-center mb-5">
               <label
                 for="number"
@@ -238,6 +321,8 @@ function companyForm() {
                 Description{" "}
               </label>
               <textarea
+                required
+                defaultValue={service.service && service.service.description}
                 id="number"
                 name="description"
                 placeholder="Description"
@@ -245,7 +330,15 @@ function companyForm() {
                       text-gray-600 placeholder-gray-400
                       outline-none h-40 border-2  overflow-visible"
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
+              {errors.description && (
+                <div className=" flex justify-center">
+                  <small className="text-red-500 ml-3">
+                    {errors.description}
+                  </small>
+                </div>
+              )}
             </div>
             <div class="flex items-center mb-5">
               <input
@@ -259,7 +352,6 @@ function companyForm() {
                 disabled
               />
             </div>
-
             <div class="flex items-center mb-5">
               <label
                 for="number"
@@ -276,19 +368,17 @@ function companyForm() {
                 class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
                       text-gray-600 placeholder-gray-400
                       outline-none"
-                multiple
+                single
                 onChange={handleImagesChange}
                 style={{ padding: "10px 20px" }}
+                required
               />
             </div>
-
             <div className="flex justify-center">
-              {" "}
               <div class="text-right ">
                 <button
                   type="submit"
                   class="py-3 px-8 bg-green-400 text-white font-bold"
-                  onClick={showSuccessAlert}
                 >
                   Add Service{" "}
                 </button>

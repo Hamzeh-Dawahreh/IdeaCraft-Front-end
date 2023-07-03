@@ -170,7 +170,9 @@ export default function CompanyProfile() {
               {" "}
               {service.service && service.service.isApproved
                 ? "Congratualtions ! Your application has been approved"
-                : "We are sorry. Your application has been denied, please contact us for more info"}
+                : service.service.isApproved == false
+                ? "We are sorry. Your application has been denied, please contact us for more info"
+                : "Thank you for your patience as we review your application"}
             </div>
             <div className="company-card">
               {service &&

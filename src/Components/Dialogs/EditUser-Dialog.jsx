@@ -39,7 +39,7 @@ export default function Edit() {
         if (!value) {
           newPassErrors.oldPassword = "Old Password is required";
         } else {
-          delete newPassErrors.oldPassword; // Clear the error if it was previously set
+          delete newPassErrors.oldPassword;
         }
         break;
       case "newPassword":
@@ -49,7 +49,7 @@ export default function Edit() {
           newPassErrors.newPassword =
             "Password must contain at least one uppercase letter, one non-alphanumeric character, and be at least 8 characters long";
         } else {
-          delete newPassErrors.newPassword; // Clear the error if it was previously set
+          delete newPassErrors.newPassword;
         }
         break;
       case "confirmPassword":
@@ -58,7 +58,7 @@ export default function Edit() {
         } else if (value !== passData.newPassword) {
           newPassErrors.confirmPassword = "Passwords do not match";
         } else {
-          delete newPassErrors.confirmPassword; // Clear the error if it was previously set
+          delete newPassErrors.confirmPassword;
         }
         break;
       default:
@@ -93,7 +93,7 @@ export default function Edit() {
           newErrors.firstname =
             "First Name shouldn't start with a number, and shouldn't contain special characters or spaces.";
         } else {
-          delete newErrors.firstname; // Clear the error if it was previously set
+          delete newErrors.firstname;
         }
         break;
       case "lastname":
@@ -103,7 +103,7 @@ export default function Edit() {
           newErrors.lastname =
             "Last Name shouldn't start with a number, and shouldn't contain special characters or spaces.";
         } else {
-          delete newErrors.lastname; // Clear the error if it was previously set
+          delete newErrors.lastname;
         }
         break;
       case "username":
@@ -113,7 +113,7 @@ export default function Edit() {
           newErrors.username =
             "Username shouldn't start with a number, and shouldn't contain special characters or spaces.";
         } else {
-          delete newErrors.username; // Clear the error if it was previously set
+          delete newErrors.username;
         }
         break;
       case "email":
@@ -122,7 +122,7 @@ export default function Edit() {
         } else if (!isValidEmail(value)) {
           newErrors.email = "Invalid email format";
         } else {
-          delete newErrors.email; // Clear the error if it was previously set
+          delete newErrors.email;
         }
         break;
       default:

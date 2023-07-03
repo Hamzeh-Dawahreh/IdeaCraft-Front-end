@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Rating } from "@mui/material";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import axios from "axios";
+import Dialog from "../Dialogs/Book-Dialog";
+import { AuthContext } from "../../App";
+
 // Default theme
 import "@splidejs/splide/css";
 
@@ -13,7 +16,8 @@ import "@splidejs/splide/css/sea-green";
 import "@splidejs/splide/css/core";
 export default function Second() {
   const [data, setData] = useState([]);
-  // new Splide(".splide").mount();
+  const { role } = useContext(AuthContext);
+
   const options = {
     type: "loop",
     gap: "1rem",
@@ -36,7 +40,7 @@ export default function Second() {
 
     fetchData();
   }, []);
-  console.log(data);
+
   return (
     <div className="welcome-section">
       <h2 className="home-title text-3xl mt-20">MOST RATED COMPANIES</h2>
@@ -55,11 +59,17 @@ export default function Second() {
                         key={subIndex}
                         className="card-container max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
                       >
-                        <img
-                          className="rounded-t-lg"
-                          src="/src/Assets/Images/CBRE.png"
-                          alt=""
-                        />
+                        {subItem?.applicationForm?.Images?.slice(0, 1).map(
+                          (image, index) => (
+                            <img
+                              alt="image"
+                              src={`http://localhost:3500/${image}`}
+                              className=" max-h-80 rounded-xl object-fit shadow-lg"
+                              key={index}
+                            />
+                          )
+                        )}
+
                         <div className="p-5">
                           <a href="#">
                             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -81,8 +91,13 @@ export default function Second() {
                           <div className="flex justify-between">
                             <div className="text-white font-semibold text-sm">
                               Category - {subItem.industry}
-                            </div>
-                            <a
+                            </div>{" "}
+                            <Dialog
+                              company_id={subItem._id}
+                              service_id={subItem.applicationForm._id}
+                              role={role}
+                            />
+                            {/* <a
                               href="#"
                               className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             >
@@ -100,7 +115,7 @@ export default function Second() {
                                   clipRule="evenodd"
                                 ></path>
                               </svg>
-                            </a>
+                            </a> */}
                           </div>
                         </div>
                       </div>

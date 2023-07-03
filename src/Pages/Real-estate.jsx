@@ -9,13 +9,8 @@ export default function RealEstate() {
   const [companyData, setCompanyData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
-  const {
-    isLoggedIn,
+  const { role } = useContext(AuthContext);
 
-    role,
-  } = useContext(AuthContext);
-
-  console.log(role);
   const companiesPerPage = 3;
 
   useEffect(() => {
@@ -44,6 +39,7 @@ export default function RealEstate() {
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
   };
+  console.log(currentCompanies);
   return (
     <>
       <br />
