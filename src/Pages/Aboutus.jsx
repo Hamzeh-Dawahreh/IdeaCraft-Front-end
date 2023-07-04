@@ -54,18 +54,18 @@ const AboutUs = () => {
             <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 lg:gap-4 shadow-lg rounded-md ">
               <div className="p-4 pb-6 flex justify-center flex-col items-center">
                 <img
-                  className="md:block hidden w-40 h-40  "
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIslvinS5jD5gVj9PhW8zoVyAh7nwKV7aGUtUqQDih&s  "
+                  className="md:block hidden w-40 "
+                  src="../src/assets/images/Dawahreh.png"
                   alt="Alexa featured Img"
                 />
                 <p className="font-medium text-xl leading-5 text-gray-800 mt-4">
-                  John Doe
+                  Dawahreh
                 </p>
               </div>
               <div className="p-4 pb-6 flex justify-center flex-col items-center">
                 <img
                   className="md:block hidden"
-                  src="https://i.ibb.co/fGmxhVy/Rectangle-119.png"
+                  src="../src/assets/images/JohnDoe.png"
                   alt="Olivia featured Img"
                 />
                 <p className="font-medium text-xl leading-5 text-gray-800 mt-4">
@@ -75,21 +75,21 @@ const AboutUs = () => {
               <div className="p-4 pb-6 flex justify-center flex-col items-center">
                 <img
                   className="md:block hidden"
-                  src="https://i.ibb.co/Pc6XVVC/Rectangle-120.png"
+                  src="../src/assets/images/Natalia.png"
                   alt="Liam featued Img"
                 />
                 <p className="font-medium text-xl leading-5 text-gray-800 mt-4">
-                  John Doe
+                  Natalia
                 </p>
               </div>
               <div className="p-4 pb-6 flex justify-center flex-col items-center">
                 <img
                   className="md:block hidden"
-                  src="https://i.ibb.co/7nSJPXQ/Rectangle-121.png"
+                  src="../src/assets/images/Rami.png"
                   alt="Elijah featured img"
                 />
                 <p className="font-medium text-xl leading-5 text-gray-800 mt-4">
-                  John Doe
+                  Rami
                 </p>
               </div>
             </div>

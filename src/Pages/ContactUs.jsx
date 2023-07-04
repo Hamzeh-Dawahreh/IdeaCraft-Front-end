@@ -1,15 +1,24 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import emailjs from "emailjs-com";
-
+import axios from "axios";
 import "../Assets/Styles/contactus.css";
 export default function ContactUs() {
   const [email, setEmail] = useState("");
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [message, setMessage] = useState("");
-
+  const [data, setData] = useState({});
+  useEffect(() => {
+    const getData = async (req, res) => {
+      const response = await axios.get(
+        "http://localhost:3500/dashboard/getContact"
+      );
+      setData(response.data[0]);
+    };
+    getData();
+  }, []);
   const handleSubmit = (e) => {
     emailjs
       .sendForm(
@@ -27,7 +36,6 @@ export default function ContactUs() {
         }
       );
   };
-
   return (
     <>
       <div className="contact-us-body">
@@ -39,26 +47,28 @@ export default function ContactUs() {
           <div className="get-in-touch-info">
             <div className="location">
               <img src="./src/Assets/Images/location.png" />
-              <h5>ADDRESS</h5>
-              IdeaCraft for consultant <br /> Amman,Jordan road
+              <h5>ADDRESS</h5>{" "}
+              <p className=" text-center">
+                IdeaCraft for consultant <br /> {data.location}
+              </p>
             </div>
             <div className="phone">
               <img src="./src/Assets/Images/phone.png" />
               <h5>PHONE</h5>
-              <p>
-                IdeaCraft for consultant <br /> +962 712345678
+              <p className=" text-center">
+                IdeaCraft for consultant <br /> {data.phone}
               </p>
             </div>
             <div className="email">
               <img src="./src/Assets/Images/email.png" />
               <h5>EMAIL</h5>
-              <p>
-                Request for Proposal <br /> hmzhdawahreh@gmai.com
+              <p className=" text-center">
+                Request for Proposal <br /> {data.email}
               </p>
             </div>
           </div>
         </div>
-        <div className="message-form">
+        <div className="message-form flex flex-wrap">
           <div className="message-us">
             <h1>
               {" "}
@@ -121,6 +131,12 @@ export default function ContactUs() {
           </div>
         </div>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </>
   );
 }

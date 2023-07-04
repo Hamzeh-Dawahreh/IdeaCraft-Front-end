@@ -66,7 +66,7 @@ export default function RealEstate() {
         <br />
         <br />
         {id === "Real Estates" ? (
-          <div className="hero-solution">
+          <div className="hero-solution flex flex-wrap">
             <div className="intro">
               <h6>For Real estates</h6>
               <br />
@@ -80,6 +80,8 @@ export default function RealEstate() {
               <button className="book-now first animate__animated animate__pulse animate__infinite">
                 <a href="#booking">Book now</a>
               </button>
+              <br />
+              <br />
             </div>
             <img src="../src/Assets/Images/real-estatePage.png" />
           </div>
@@ -182,7 +184,7 @@ export default function RealEstate() {
           </div>
           {currentCompanies?.map((data, index) => {
             return (
-              <div className="company-card" key={index}>
+              <div className="company-card flex flex-wrap" key={index}>
                 {data.Images?.slice(0, 1).map((image, index) => (
                   <img
                     alt="image"
@@ -191,6 +193,8 @@ export default function RealEstate() {
                     key={index}
                   />
                 ))}
+                <br />
+                <br />
                 <div className="info">
                   <h1 className=" text-2xl mb-3">
                     {data.company_id.companyname}
