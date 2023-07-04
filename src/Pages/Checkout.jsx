@@ -5,7 +5,97 @@ import Swal from "sweetalert2";
 
 const Checkout = () => {
   const [data, setData] = useState([]);
+  const [formData, setFormData] = useState({
+    cardHolder: "",
+    cardNo: "",
+    creditExpiry: "",
+    creditCvc: "",
+    billingAddress: "",
+    billingState: "",
+    billingZip: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const handleBlur = (e) => {
+    const fieldName = e.target.name;
+    const fieldValue = e.target.value.trim();
+
+    let validationErrors = { ...errors };
+
+    // Validate field based on its name
+    switch (fieldName) {
+      case "card-holder":
+        if (fieldValue === "") {
+          validationErrors.cardHolder = "Card Holder name is required";
+        } else if (!/^[a-zA-Z]+(?: [a-zA-Z]+)*$/.test(fieldValue)) {
+          validationErrors.cardHolder = "Invalid Card Holder name format";
+        } else {
+          validationErrors.cardHolder = "";
+        }
+        break;
+      case "cardNo":
+        if (fieldValue === "") {
+          validationErrors.cardNo = "Card Number is required";
+        } else if (!/^\d{4}-\d{4}-\d{4}-\d{4}$/.test(fieldValue)) {
+          validationErrors.cardNo = "Invalid Card Number format";
+        } else {
+          validationErrors.cardNo = "";
+        }
+        break;
+      case "creditExpiry":
+        if (fieldValue === "") {
+          validationErrors.creditExpiry = "Credit Expiry is required";
+        } else if (!/^\d{2}\/\d{2}$/.test(fieldValue)) {
+          validationErrors.creditExpiry = "Invalid Credit Expiry format";
+        } else {
+          validationErrors.creditExpiry = "";
+        }
+        break;
+      case "creditCvc":
+        if (fieldValue === "") {
+          validationErrors.creditCvc = "CVC is required";
+        } else if (!/^\d{3}$/.test(fieldValue)) {
+          validationErrors.creditCvc = "Invalid CVC format";
+        } else {
+          validationErrors.creditCvc = "";
+        }
+        break;
+      case "billingAddress":
+        if (fieldValue === "") {
+          validationErrors.billingAddress = "Billing Address is required";
+        } else {
+          validationErrors.billingAddress = "";
+        }
+        break;
+      case "billingState":
+        if (fieldValue === "") {
+          validationErrors.billingState = "Province is required";
+        } else {
+          validationErrors.billingState = "";
+        }
+        break;
+      case "billingZip":
+        if (fieldValue === "") {
+          validationErrors.billingZip = "ZIP is required";
+        } else if (!/^\d{5}$/.test(fieldValue)) {
+          validationErrors.billingZip = "Invalid ZIP format";
+        } else {
+          validationErrors.billingZip = "";
+        }
+        break;
+      default:
+        break;
+    }
+
+    setErrors(validationErrors);
+  };
+  console.log(errors);
   const handleClick = async () => {
+    if (Object.values(errors).some((error) => error !== "")) {
+      console.log("Please fix the form errors before proceeding.");
+      return;
+    }
+
     try {
       const token = localStorage.getItem("token");
       const config = {
@@ -23,7 +113,6 @@ const Checkout = () => {
         },
         config
       );
-      console.log(response);
       console.log("Data sent successfully");
     } catch (error) {
       console.error(error);
@@ -55,7 +144,6 @@ const Checkout = () => {
 
     getData();
   }, []);
-  console.log(data);
   return (
     <>
       <br />
@@ -103,12 +191,21 @@ const Checkout = () => {
               </label>
               <div className="relative">
                 <input
+                  onChange={(e) =>
+                    setFormData({ ...formData, cardHolder: e.target.value })
+                  }
+                  onBlur={handleBlur}
                   type="text"
                   id="card-holder"
                   name="card-holder"
                   className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                   placeholder="Your full name here"
                 />
+                {errors.cardHolder && (
+                  <small className=" text-red-600 text-xs">
+                    {errors.cardHolder}
+                  </small>
+                )}
                 <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -135,13 +232,20 @@ const Checkout = () => {
               <div className="flex">
                 <div className="relative w-7/12 flex-shrink-0">
                   <input
+                    onChange={(e) =>
+                      setFormData({ ...formData, cardNo: e.target.value })
+                    }
+                    onBlur={handleBlur}
                     type="text"
                     id="card-no"
-                    name="card-no"
+                    name="cardNo"
                     className="w-full rounded-md border border-gray-200 px-2 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder="xxxx-xxxx-xxxx-xxxx"
                   />
-                  <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                  {errors.cardNo && (
+                    <small className=" text-red-600">{errors.cardNo}</small>
+                  )}
+                  <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center  px-3">
                     <svg
                       className="h-4 w-4 text-gray-400"
                       xmlns="http://www.w3.org/2000/svg"
@@ -155,18 +259,38 @@ const Checkout = () => {
                     </svg>
                   </div>
                 </div>
-                <input
-                  type="text"
-                  name="credit-expiry"
-                  className="w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                  placeholder="MM/YY"
-                />
-                <input
-                  type="text"
-                  name="credit-cvc"
-                  className="w-1/6 flex-shrink-0 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                  placeholder="CVC"
-                />
+                <div className=" flex flex-col">
+                  <input
+                    onChange={(e) =>
+                      setFormData({ ...formData, creditExpiry: e.target.value })
+                    }
+                    onBlur={handleBlur}
+                    type="text"
+                    name="creditExpiry"
+                    className="w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="MM/YY"
+                  />{" "}
+                  {errors.creditExpiry && (
+                    <small className=" text-red-600">
+                      {errors.creditExpiry}
+                    </small>
+                  )}
+                </div>{" "}
+                <div className=" flex flex-col">
+                  <input
+                    onChange={(e) =>
+                      setFormData({ ...formData, creditCvc: e.target.value })
+                    }
+                    onBlur={handleBlur}
+                    type="text"
+                    name="creditCvc"
+                    className="w-full flex-shrink-0 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="CVC"
+                  />
+                  {errors.creditCvc && (
+                    <small className=" text-red-600">{errors.creditCvc}</small>
+                  )}
+                </div>
               </div>
               <label
                 htmlFor="billing-address"
@@ -177,12 +301,24 @@ const Checkout = () => {
               <div className="flex flex-col sm:flex-row">
                 <div className="relative flex-shrink-0 sm:w-7/12">
                   <input
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        billingAddress: e.target.value,
+                      })
+                    }
+                    onBlur={handleBlur}
                     type="text"
                     id="billing-address"
-                    name="billing-address"
+                    name="billingAddress"
                     className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder="Street Address"
-                  />
+                  />{" "}
+                  {errors.billingAddress && (
+                    <small className=" text-red-600 text-xs">
+                      {errors.billingAddress}
+                    </small>
+                  )}
                   <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                     <img
                       className="h-4 w-4 object-contain"
@@ -190,19 +326,39 @@ const Checkout = () => {
                       alt=""
                     />
                   </div>
+                </div>{" "}
+                <div className=" flex flex-col">
+                  <input
+                    onChange={(e) =>
+                      setFormData({ ...formData, billingState: e.target.value })
+                    }
+                    onBlur={handleBlur}
+                    placeholder="Province"
+                    type="text"
+                    name="billingState"
+                    className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                  />
+                  {errors.billingState && (
+                    <small className=" text-red-600">
+                      {errors.billingState}
+                    </small>
+                  )}
                 </div>
-                <input
-                  placeholder="Province"
-                  type="text"
-                  name="billing-state"
-                  className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                ></input>
-                <input
-                  type="text"
-                  name="billing-zip"
-                  className="flex-shrink-0 rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none sm:w-1/6 focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                  placeholder="ZIP"
-                />
+                <div className=" flex flex-col">
+                  <input
+                    onChange={(e) =>
+                      setFormData({ ...formData, billingZip: e.target.value })
+                    }
+                    onBlur={handleBlur}
+                    type="text"
+                    name="billingZip"
+                    className="  w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none  focus:z-10 focus:border-blue-500 focus:ring-blue-500 "
+                    placeholder="ZIP"
+                  />{" "}
+                  {errors.billingZip && (
+                    <small className=" text-red-600">{errors.billingZip}</small>
+                  )}{" "}
+                </div>
               </div>
 
               <div className="mt-6 border-t border-b py-2">

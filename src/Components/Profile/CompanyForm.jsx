@@ -41,6 +41,8 @@ function companyForm() {
     }
     if (!formData.description) {
       validationErrors.description = "description is required";
+    } else {
+      validationErrors.description = "";
     }
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);

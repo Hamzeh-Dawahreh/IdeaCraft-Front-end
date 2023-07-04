@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { Carousel } from "@material-tailwind/react";
 
 export default function Hero() {
+  const realestate = "Real Estates";
+  const technology = "Technology";
+  const manufacturing = "Manufacturing";
+
   return (
     <>
       <br />
@@ -42,7 +46,7 @@ export default function Hero() {
                 <div className=" first animate__animated animate__headShake animate__infinite">
                   {" "}
                   <Link
-                    to="/realestate"
+                    to={`/solution/${realestate}`}
                     className="relative inline-flex items-center px-3 py-2 overflow-hidden text-lg font-medium text-indigo-600 border-2 border-white hover:text-white group hover:bg-gray-50"
                   >
                     <span className="absolute left-0 block w-full h-0 transition-all bg-red-400 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
@@ -88,7 +92,7 @@ export default function Hero() {
                 <div className=" first animate__animated animate__headShake animate__infinite">
                   {" "}
                   <Link
-                    to="/realestate"
+                    to={`/solution/${technology}`}
                     className="relative inline-flex items-center px-3 py-2 overflow-hidden text-lg font-medium text-indigo-600 border-2 border-white hover:text-white group hover:bg-gray-50"
                   >
                     <span className="absolute left-0 block w-full h-0 transition-all bg-red-400 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
@@ -134,7 +138,7 @@ export default function Hero() {
                 <div className=" first animate__animated animate__headShake animate__infinite">
                   {" "}
                   <Link
-                    to="/realestate"
+                    to={`/solution/${manufacturing}`}
                     className="relative inline-flex items-center px-3 py-2 overflow-hidden text-lg font-medium text-indigo-600 border-2 border-white hover:text-white group hover:bg-gray-50"
                   >
                     <span className="absolute left-0 block w-full h-0 transition-all bg-red-400 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>

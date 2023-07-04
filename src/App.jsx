@@ -9,9 +9,7 @@ import Layout from "./Layout/Layout";
 import HomePage from "./Pages/HomePage";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
-import RealEstate from "./Pages/Real-estate";
-import Technology from "./Pages/Technology";
-import Manufacturing from "./Pages/Manufacturing";
+import Solutions from "./Pages/Solutions";
 import CompanyProfile from "./Pages/CompanyProfile";
 import UserProfile from "./Pages/UserProfile";
 import Subscription from "./Pages/Subscription";
@@ -116,11 +114,8 @@ export default function App() {
 
               <Route path="/signup" element={<Signup />} />
 
-              <Route path="/realestate" element={<RealEstate />} />
-              <Route path="/technology" element={<Technology />} />
-              <Route path="/manufacturing" element={<Manufacturing />} />
+              <Route path="/solution/:id" element={<Solutions />} />
               <Route path="/subscription" element={<Subscription />} />
-              {/* <Route path="/payment" element={<Payment />} /> */}
               <Route path="/contactus" element={<ContactUs />} />
               <Route path="/aboutus" element={<Aboutus />} />
               <Route path="/checkout/:id" element={<Checkout />} />

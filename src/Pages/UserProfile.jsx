@@ -161,8 +161,7 @@ export default function UserProfile() {
                           {data.price || "---"} JOD
                         </td>
                         <td>
-                          {data.userConsent !== undefined &&
-                          data.rating == 0 ? (
+                          {data.userConsent == true && data.rating == 0 ? (
                             <form
                               onSubmit={(e) => {
                                 handleSubmit(

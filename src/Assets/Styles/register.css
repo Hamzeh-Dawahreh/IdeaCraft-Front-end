@@ -173,7 +173,7 @@ input:checked + .slider:before {
 .invalid {
   font-size: 10px;
   color: red;
-  width: 9rem;
+  /* width: 9rem; */
 }
 .invalid-1 {
   width: 20rem;

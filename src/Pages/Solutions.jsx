@@ -5,19 +5,44 @@ import Pagination from "@mui/material/Pagination";
 import { AuthContext } from "../App";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+
 export default function RealEstate() {
   const [companyData, setCompanyData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
   const { role } = useContext(AuthContext);
+  const [filteredCompanies, setFilteredCompanies] = useState(companyData);
 
   const companiesPerPage = 3;
+  const { id } = useParams();
 
+  // Pagination
+  const indexOfLastCompany = currentPage * companiesPerPage;
+  const indexOfFirstCompany = indexOfLastCompany - companiesPerPage;
+  const currentCompanies = filteredCompanies?.slice(
+    indexOfFirstCompany,
+    indexOfLastCompany
+  );
+
+  //Search
+  const handleSearch = (e) => {
+    const searchValue = e.target.value.toLowerCase();
+    const filteredData = companyData.filter((data) =>
+      data.company_id.companyname.toLowerCase().includes(searchValue)
+    );
+    setFilteredCompanies(filteredData);
+    setSearch(searchValue);
+  };
+  // Change page
+  const handlePageChange = (value) => {
+    setCurrentPage(value);
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3500/form/getRealEstate"
+          `http://localhost:3500/form/getSolution/${id}`
         );
         setCompanyData(response.data);
       } catch (error) {
@@ -26,20 +51,12 @@ export default function RealEstate() {
     };
 
     fetchData();
-  }, []);
-  //Search
-  //Pagination
-  const indexOfLastCompany = currentPage * companiesPerPage;
-  const indexOfFirstCompany = indexOfLastCompany - companiesPerPage;
-  const currentCompanies = companyData?.slice(
-    indexOfFirstCompany,
-    indexOfLastCompany
-  );
-  // Change page
-  const handlePageChange = (event, value) => {
-    setCurrentPage(value);
-  };
-  console.log(currentCompanies);
+  }, [id]);
+  useEffect(() => {
+    setFilteredCompanies(companyData);
+  }, [companyData]);
+
+  console.log(filteredCompanies);
   return (
     <>
       <br />
@@ -48,26 +65,63 @@ export default function RealEstate() {
         <br />
         <br />
         <br />
-        <div className="hero-solution">
-          <div className="intro">
-            <h6>For Real estates</h6>
-            <br />
-
-            <h4>
-              {" "}
-              Feasibility studies for real estate projects involve analyzing the
-              potential profitability of a property development. This includes
-              assessing factors such as location, market demand, construction
-              costs, and projected revenue.
-            </h4>
-            <br />
-
-            <button className="book-now first animate__animated animate__pulse animate__infinite">
-              <a href="#booking"> Book now</a>
-            </button>
+        {id === "Real Estates" ? (
+          <div className="hero-solution">
+            <div className="intro">
+              <h6>For Real estates</h6>
+              <br />
+              <h4>
+                Feasibility studies for real estate projects involve analyzing
+                the potential profitability of a property development. This
+                includes assessing factors such as location, market demand,
+                construction costs, and projected revenue.
+              </h4>
+              <br />
+              <button className="book-now first animate__animated animate__pulse animate__infinite">
+                <a href="#booking">Book now</a>
+              </button>
+            </div>
+            <img src="../src/Assets/Images/real-estatePage.png" />
           </div>
-          <img src="./src/Assets/Images/real-estatePage.png" />
-        </div>
+        ) : id === "Manufacturing" ? (
+          <div className="hero-solution">
+            <div className="intro">
+              <h6>For Manufacturing</h6>
+              <br />
+              <h4>
+                Feasibility studies for manufacturing projects involve analyzing
+                the feasibility of producing a new product or expanding
+                production capacity. This includes assessing factors such as
+                production costs, market demand, supply chain logistics, and
+                potential profitability.
+              </h4>
+              <br />
+              <button className="book-now first animate__animated animate__pulse animate__infinite">
+                <a href="#booking">Book now</a>
+              </button>
+            </div>
+            <img src="../src/Assets/Images/bg3.png" width="693" height="414" />
+          </div>
+        ) : (
+          <div className="hero-solution">
+            <div className="intro">
+              <h6>For Technology</h6>
+              <br />
+              <h4>
+                Feasibility studies for technology projects involve analyzing
+                the potential profitability and market demand of a proposed
+                technology product or service. This includes assessing factors
+                such as development costs, intellectual property protection,
+                potential markets, and projected revenue.
+              </h4>
+              <br />
+              <button className="book-now first animate__animated animate__pulse animate__infinite">
+                <a href="#booking">Book now</a>
+              </button>
+            </div>
+            <img src="../src/Assets/Images/Technology-cover.png" />
+          </div>
+        )}
         <br />
         <br />
         <div className="our-companies">
@@ -101,7 +155,7 @@ export default function RealEstate() {
                   className="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#1c1d26]  block w-20vw pl-10 p-2.5  dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-[#1c1d26] dark:focus:border-[#1c1d26]"
                   placeholder="Search by company name"
                   value={search}
-                  onChange={(e) => setSearch(e.target.value)}
+                  onChange={handleSearch}
                 />
               </div>
               <button
@@ -185,7 +239,7 @@ export default function RealEstate() {
       <div className=" flex justify-center">
         <Pagination
           className=" mt-20"
-          count={Math.ceil(companyData?.length / companiesPerPage)}
+          count={Math.ceil(filteredCompanies?.length / companiesPerPage)}
           color="primary"
           onChange={handlePageChange}
         />

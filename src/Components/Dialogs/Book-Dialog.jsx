@@ -32,7 +32,7 @@ export default function BookingDialog({ service_id, company_id, role }) {
   const handleClick = async () => {
     try {
       if (!message.userReq) {
-        Swal.fire(" Error", "Please enter a your request.", "error");
+        Swal.fire(" Error", "Please enter  your request.", "error");
         return;
       }
 
@@ -86,6 +86,7 @@ export default function BookingDialog({ service_id, company_id, role }) {
           <div className="grid gap-6">
             <Input label="Username" value={username} />
             <Textarea
+              required
               label="Send your request to the company "
               name="userReq"
               onChange={(e) => {

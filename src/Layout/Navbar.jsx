@@ -17,7 +17,9 @@ export default function Navbar() {
     setUsername,
     isUpdated,
   } = useContext(AuthContext);
-
+  const realestate = "Real Estates";
+  const technology = "Technology";
+  const manufacturing = "Manufacturing";
   useEffect(() => {}, [isUpdated]);
   const activeLink =
     "block py-2 pl-3 pr-4 text-blue-700	 bg-[#867070] rounded md:bg-transparent md:text-blue md:p-0 md:dark:text-blue-700	";
@@ -119,13 +121,13 @@ export default function Navbar() {
                 <li className="dropdown">
                   <a className="dropbtn">Solutions⮛</a>
                   <div className="dropdown-content">
-                    <Link to="/realestate" className="mt-2">
+                    <Link to={`/solution/${realestate}`} className="mt-2">
                       Real-estate
                     </Link>
-                    <Link to="/technology" className="mt-2">
+                    <Link to={`/solution/${technology}`} className="mt-2">
                       Technology
                     </Link>
-                    <Link to="/manufacturing" className="mt-2">
+                    <Link to={`/solution/${manufacturing}`} className="mt-2">
                       Manufacturing
                     </Link>
                   </div>

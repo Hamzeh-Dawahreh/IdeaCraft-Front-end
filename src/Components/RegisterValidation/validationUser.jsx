@@ -8,20 +8,17 @@ export default function validationUser(data) {
   if (!data.firstname) {
     errors.firstname = "First Name is required";
   } else if (!nameRegex.test(data.firstname)) {
-    errors.firstname =
-      "First Name shouldn't start with a number, and shouldn't contain special characters or spaces. ";
+    errors.firstname = "Please Enter A Valid Name ";
   }
   if (!data.lastname) {
     errors.lastname = "Last Name is required";
   } else if (!nameRegex.test(data.lastname)) {
-    errors.lastname =
-      "Last Name shouldn't start with a number, and shouldn't contain special characters or spaces. ";
+    errors.lastname = "Please Enter A Valid name";
   }
   if (!data.username) {
     errors.username = "Username is required";
   } else if (!nameRegex.test(data.username)) {
-    errors.username =
-      "Username shouldn't start with a number, and shouldn't contain special characters or spaces. ";
+    errors.username = "Please Enter A Valid username";
   }
   if (!data.password) {
     errors.password = "Password Field is required";
