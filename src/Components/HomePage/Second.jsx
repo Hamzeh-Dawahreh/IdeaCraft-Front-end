@@ -46,7 +46,7 @@ export default function Second() {
       <h2 className="home-title text-3xl mt-20">MOST RATED COMPANIES</h2>
       <br />
       <div className="line-2"></div>
-      <Splide hasTrack={false} options={options}>
+      <Splide hasTrack={false} options={options} className="spplide">
         <SplideTrack>
           {data.reduce((slides, item, index) => {
             if (index % 3 === 0) {
@@ -57,7 +57,7 @@ export default function Second() {
                     {slideData.map((subItem, subIndex) => (
                       <div
                         key={subIndex}
-                        className="card-container max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+                        className="card-container h-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
                       >
                         {subItem?.applicationForm?.Images?.slice(0, 1).map(
                           (image, index) => (
@@ -70,9 +70,9 @@ export default function Second() {
                           )
                         )}
 
-                        <div className="p-5">
+                        <div className="p-5 caard">
                           <a href="#">
-                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            <h5 className=" card-header mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                               {subItem.companyname}
                             </h5>
                           </a>
@@ -82,14 +82,14 @@ export default function Second() {
                           <div className="rating-category mt-4 text-white">
                             <Rating
                               name="read-only"
-                              value={`${subItem.rating}`}
+                              value={subItem.rating}
                               readOnly
                             />
                             <p>({subItem.rating})</p>
                           </div>
                           <br />
                           <div className="flex justify-between">
-                            <div className="text-white font-semibold text-sm">
+                            <div className="text-white font-semibold text-sm categ">
                               Category - {subItem.industry}
                             </div>{" "}
                             <Dialog
@@ -97,25 +97,6 @@ export default function Second() {
                               service_id={subItem.applicationForm._id}
                               role={role}
                             />
-                            {/* <a
-                              href="#"
-                              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                            >
-                              Book now
-                              <svg
-                                aria-hidden="true"
-                                className="w-4 h-4 ml-2 -mr-1"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                  clipRule="evenodd"
-                                ></path>
-                              </svg>
-                            </a> */}
                           </div>
                         </div>
                       </div>

@@ -94,9 +94,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-
   justify-items: center;
-  gap: 100px 0px;
 }
 
 .company-description {
@@ -224,7 +222,6 @@
   animation: glow 1.5s infinite;
 }
 
-/* Add more styles and animations as needed */
 .cards {
   display: flex;
   gap: 5rem;
@@ -273,5 +270,88 @@
   .importance-container p {
     width: 45%;
     font-size: smaller;
+  }
+}
+@media (max-width: 1000px) {
+  .cards {
+    gap: 2rem;
+    font-size: small;
+  }
+  .company-book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: smaller;
+    width: 4rem;
+  }
+  .rating-category {
+    font-weight: smaller;
+  }
+  .card-header {
+    font-size: medium;
+  }
+  .categ {
+    font-size: smaller;
+  }
+}
+@media (max-width: 700px) {
+  .cards {
+    gap: 1rem;
+    font-size: smaller;
+  }
+  .cards img {
+    display: none;
+  }
+  .spplide {
+    padding: 0;
+    margin: 0;
+  }
+}
+@media (max-width: 590px) {
+  .cards {
+    gap: 0.5rem;
+    font-size: smaller;
+  }
+  .company-book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: smaller;
+    width: 3rem;
+    height: 2rem;
+  }
+  .rating-category {
+    font-weight: smaller;
+  }
+  .card-header {
+    font-size: small;
+  }
+  .categ {
+    font-size: smaller;
+  }
+  .caard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20rem;
+    padding: 2px;
+  }
+}
+@media (max-width: 430px) {
+  .cards {
+    gap: 0.1rem;
+    font-size: 10px;
+  }
+  .company-book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    width: 1.5rem;
+    height: 1rem;
+  }
+  .card-container {
+    width: 35%;
   }
 }
