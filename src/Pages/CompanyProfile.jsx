@@ -117,7 +117,6 @@ export default function CompanyProfile() {
       });
     });
   };
-  console.log(service);
   return (
     <>
       <br />
@@ -174,7 +173,7 @@ export default function CompanyProfile() {
                 ? "We are sorry. Your application has been denied, please contact us for more info"
                 : "Thank you for your patience as we review your application"}
             </div>
-            <div className="company-card">
+            <div className="company-card flex-wrap">
               {service &&
                 service.service?.Images.slice(0, 1).map((image, index) => (
                   <img

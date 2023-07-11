@@ -120,9 +120,9 @@ export default function UserProfile() {
         <div className="clients">
           {" "}
           <h3 className="text-2xl text-center">REQUESTED SERVICES</h3>
-          <div className="current-clients">
+          <div className="current-clients requested-services">
             <br />
-            <table className=" relative">
+            <table className=" sm:text-xs">
               <thead>
                 <tr>
                   <th>Company</th>
@@ -189,7 +189,7 @@ export default function UserProfile() {
                             />
                           )}
                         </td>
-                        <td className=" flex flex-col text-red-600 text-xs ">
+                        <td>
                           <ConsentDialog
                             companyRes={data.companyRes}
                             id={data._id}
@@ -203,9 +203,11 @@ export default function UserProfile() {
                             setService={setService}
                             setCompanyId={setCompanyId}
                           />{" "}
-                          {data.service_id.isDeleted
-                            ? "This Service is no longer available"
-                            : ""}
+                          <small className=" flex flex-col text-red-600 text-xs ">
+                            {data.service_id.isDeleted
+                              ? "This Service is no longer available"
+                              : ""}
+                          </small>
                         </td>{" "}
                       </tr>
                     </>

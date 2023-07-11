@@ -12,7 +12,7 @@
   height: 100vh;
 }
 .login-container {
-  width: 1100px;
+  max-width: 1100px;
   height: 600px;
   background-color: white;
   border-radius: 20px;
@@ -86,7 +86,6 @@
   color: white;
 }
 .square {
-  width: 32rem;
   background-color: rgb(28, 29, 38);
   height: 100%;
   color: white;
@@ -177,4 +176,40 @@ input:checked + .slider:before {
 }
 .invalid-1 {
   width: 20rem;
+}
+@media (max-width: 1100px) {
+  .login-container {
+    max-width: 800px;
+  }
+  .square {
+    width: 70%;
+  }
+  .left-side {
+  }
+  .left-side img {
+    /* max-width: 50%; */
+  }
+  .signup-input {
+    width: 80%;
+  }
+}
+@media (max-width: 800px) {
+  .login-container {
+    max-width: 500px;
+  }
+  .left-side img {
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+  .left-side img,
+  .left-side {
+    display: none;
+  }
+  .circle {
+    display: none;
+  }
+  .login-container {
+    max-width: 375px;
+  }
 }

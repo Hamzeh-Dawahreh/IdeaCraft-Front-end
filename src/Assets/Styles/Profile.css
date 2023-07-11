@@ -73,7 +73,7 @@
 .current-clients table,
 .previous-clients table {
   background-color: rgb(249, 249, 255);
-  width: 90%;
+  width: 80%;
   border-collapse: collapse;
   margin-top: 2rem;
 }
@@ -94,11 +94,31 @@ tr {
 .clients h3 {
   color: black;
 }
+@media (max-width: 875px) {
+  .view-request {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 7px;
+    width: 70%;
+  }
+  .requested-services table th,
+  td {
+    padding: 5px;
+  }
+  td .MuiRating-root {
+    font-size: 15px;
+  }
+}
 @media (max-width: 640px) {
   .current-clients,
   .previous-clients {
     font-size: 10px;
   }
+  td .MuiRating-root {
+    font-size: 12px;
+  }
+
   .view-request {
     display: flex;
     justify-content: center;
@@ -120,12 +140,32 @@ tr {
   tr {
     padding: 10px;
   }
+  .requested-services table th,
+  td {
+    padding: 3px;
+  }
 }
-@media (max-width: 386) {
+td .MuiRating-root {
+  font-size: 10px;
+}
+
+@media (max-width: 386px) {
   .current-clients table th,
   .previous-clients table th,
   td,
   tr {
     padding: 5px;
+  }
+  .requested-services .view-request {
+    width: 50%;
+    height: 70%;
+    font-size: 5px;
+  }
+  .requested-services table th,
+  td {
+    padding: 1px;
+  }
+  td .MuiRating-root {
+    font-size: 8px;
   }
 }

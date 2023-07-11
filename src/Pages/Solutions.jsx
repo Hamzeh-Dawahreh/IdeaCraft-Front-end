@@ -160,26 +160,6 @@ export default function RealEstate() {
                   onChange={handleSearch}
                 />
               </div>
-              <button
-                type="submit"
-                className="p-2.5 ml-1 text-sm font-medium text-white bg-[#1c1d26] rounded-lg border border-gray-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-[#1c1d26] dark:hover:bg-[grey] dark:focus:ring-[white]"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-                <span className="sr-only">Search</span>
-              </button>
             </div>
           </div>
           {currentCompanies?.map((data, index) => {

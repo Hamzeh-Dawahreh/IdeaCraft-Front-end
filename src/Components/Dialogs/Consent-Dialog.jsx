@@ -90,11 +90,21 @@ export default function ConsentDialog({
   return (
     <Fragment>
       {isDeleted ? (
-        <Button variant="gradient" color="cyan" disabled>
+        <Button
+          variant="gradient"
+          color="cyan"
+          disabled
+          className="view-request"
+        >
           View Response
         </Button>
       ) : (
-        <Button onClick={handleOpen} variant="gradient" color="cyan">
+        <Button
+          onClick={handleOpen}
+          variant="gradient"
+          color="cyan"
+          className="view-request"
+        >
           View Response
         </Button>
       )}

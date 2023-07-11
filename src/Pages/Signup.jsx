@@ -81,12 +81,17 @@ export default function Signup() {
       <br />
       <div className="register-body">
         <div className="login-container">
-          <div className="left-side">
+          {/* <div className="left-side">
             <img src="./src/Assets/Images/signup-cover.png" />
 
             <div className="square">
               <h3>Join us and let's succeed together !</h3>
             </div>
+          </div> */}
+          <div className="left-side">
+            <img src="./src/Assets/Images/login-cover.png" />
+
+            <div className="circle"></div>
           </div>
           <div className="userInfo-register">
             <label className="switch">
