@@ -13,7 +13,6 @@ export default function RealEstate() {
   const [search, setSearch] = useState("");
   const { role } = useContext(AuthContext);
   const [filteredCompanies, setFilteredCompanies] = useState(companyData);
-
   const companiesPerPage = 3;
   const { id } = useParams();
 
@@ -35,7 +34,8 @@ export default function RealEstate() {
     setSearch(searchValue);
   };
   // Change page
-  const handlePageChange = (value) => {
+  const handlePageChange = (event, value) => {
+    //event is Necissary!
     setCurrentPage(value);
   };
   useEffect(() => {
@@ -55,8 +55,6 @@ export default function RealEstate() {
   useEffect(() => {
     setFilteredCompanies(companyData);
   }, [companyData]);
-
-  console.log(filteredCompanies);
   return (
     <>
       <br />
