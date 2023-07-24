@@ -15,7 +15,6 @@ export default function UserProfile() {
   const [companyId, setCompanyId] = useState();
   const [rating, setRating] = useState(true);
   const { isUpdated, setIsUpdated } = useContext(AuthContext);
-
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -99,8 +98,8 @@ export default function UserProfile() {
         <div className="profile-info-container">
           <div className="profile-info">
             <div className="user-titles">
-              <span>First Name</span>
-              <span>Last Name</span>
+              {userData?.firstname && <span>First Name</span>}
+              {userData?.firstname && <span>Last Name</span>}
               <span>Username</span>
               <span>Email Address</span>
             </div>
@@ -113,7 +112,7 @@ export default function UserProfile() {
             <div className="info-line">
               <p>YOUR INFORMATION</p>
             </div>
-            <Edit />
+            {userData?.firstname && <Edit />}
           </div>
         </div>
         <hr />

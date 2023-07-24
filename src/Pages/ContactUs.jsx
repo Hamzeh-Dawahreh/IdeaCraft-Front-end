@@ -20,6 +20,7 @@ export default function ContactUs() {
     getData();
   }, []);
   const handleSubmit = (e) => {
+    e.preventDefault();
     emailjs
       .sendForm(
         "service_kb1ss47",
@@ -35,6 +36,10 @@ export default function ContactUs() {
           console.log(error.text);
         }
       );
+    setEmail("");
+    setFirst("");
+    setLast("");
+    setMessage("");
   };
   return (
     <>
@@ -91,6 +96,7 @@ export default function ContactUs() {
                 <label htmlFor="First Name" className="message-lable">
                   First Name
                   <input
+                    required
                     type="text"
                     value={first}
                     onChange={(e) => setFirst(e.target.value)}
@@ -99,6 +105,7 @@ export default function ContactUs() {
                 <label htmlFor="Last Name" className="message-lable">
                   Last Name
                   <input
+                    required
                     type="text"
                     value={last}
                     onChange={(e) => setLast(e.target.value)}
@@ -108,6 +115,7 @@ export default function ContactUs() {
               <label htmlFor="Email" className="message-lable">
                 Email
                 <input
+                  required
                   type="text"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -116,6 +124,7 @@ export default function ContactUs() {
               <label htmlFor="Comments" className="message-lable">
                 Comments
                 <textarea
+                  required
                   name=""
                   id=""
                   cols="30"

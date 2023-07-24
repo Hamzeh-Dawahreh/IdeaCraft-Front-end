@@ -184,11 +184,7 @@ input:checked + .slider:before {
   .square {
     width: 70%;
   }
-  .left-side {
-  }
-  .left-side img {
-    /* max-width: 50%; */
-  }
+
   .signup-input {
     width: 80%;
   }
