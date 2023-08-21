@@ -30,6 +30,7 @@ export default function ConsentDialog({
     setService(service_id);
     setCompanyId(company_id);
   }, []);
+
   const handleReject = () => {
     Swal.fire({
       title: "Are you sure?",

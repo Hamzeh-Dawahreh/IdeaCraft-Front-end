@@ -1,14 +1,16 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import {
   Button,
   Dialog,
   DialogHeader,
   DialogBody,
   DialogFooter,
+  Textarea,
 } from "@material-tailwind/react";
 import Swal from "sweetalert2";
 
 import axios from "axios";
+import { Input } from "@mui/material";
 export default function RequestDialog({
   userReq,
   user_id,
@@ -17,12 +19,20 @@ export default function RequestDialog({
   price,
   companyConsent,
   setStatus,
-  setId,
 }) {
   const [open, setOpen] = useState(false);
-  const [message, setMessage] = useState();
+  const [message, setMessage] = useState({});
   const [error, setError] = useState();
+  console.log(message);
   const handleClick = async () => {
+    if (!message.companyRes || !message.price) {
+      Swal.fire(
+        " Error",
+        "Please enter  your response and the price.",
+        "error"
+      );
+      return;
+    }
     try {
       const token = localStorage.getItem("token");
       const config = {
@@ -31,7 +41,7 @@ export default function RequestDialog({
         },
       };
 
-      const response = await axios.post(
+      await axios.post(
         "http://localhost:3500/books/companyRes",
         {
           ...message,
@@ -118,7 +128,7 @@ export default function RequestDialog({
         className="view-request"
       >
         view request
-      </Button>
+      </Button>{" "}
       <Dialog
         open={open}
         handler={handleOpen}
@@ -132,8 +142,9 @@ export default function RequestDialog({
           {userReq} <br />
           <br />
           <label htmlFor="">Your Response:</label>
-          <textarea
-            value={companyRes}
+          <Textarea
+            required
+            value={message.companyRes}
             placeholder="Write Your response to the Client"
             className="w-full text-start"
             name="companyRes"
@@ -142,9 +153,10 @@ export default function RequestDialog({
             }}
           />
           <label htmlFor="">Price:</label>
-          <input
+          <Input
+            required
             className="w-full text-start"
-            value={price}
+            value={message.price}
             type="number"
             name="price"
             placeholder="Enter the price in JOD"
@@ -176,11 +188,12 @@ export default function RequestDialog({
                 }}
               >
                 <span className="text-white	">Approve</span>
-              </Button>
+              </Button>{" "}
             </>
           )}
         </DialogFooter>
-      </Dialog>
+      </Dialog>{" "}
+      <form />
     </Fragment>
   );
 }

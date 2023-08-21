@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Rating } from "@mui/material";
 import ConsentDialog from "../Components/Dialogs/Consent-Dialog";
 import Edit from "../Components/Dialogs/EditUser-Dialog";
@@ -14,7 +14,7 @@ export default function UserProfile() {
   const [service, setService] = useState();
   const [companyId, setCompanyId] = useState();
   const [rating, setRating] = useState(true);
-  const { isUpdated, setIsUpdated } = useContext(AuthContext);
+  const { isUpdated } = useContext(AuthContext);
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -70,7 +70,7 @@ export default function UserProfile() {
         },
       };
 
-      const response = await axios.post(
+      await axios.post(
         "http://localhost:3500/books/userRating",
         {
           rating: parseInt(value),
@@ -121,7 +121,7 @@ export default function UserProfile() {
           <h3 className="text-2xl text-center">REQUESTED SERVICES</h3>
           <div className="current-clients requested-services">
             <br />
-            <table className=" sm:text-xs">
+            <table className=" sm:text-[15px] text-xs">
               <thead>
                 <tr>
                   <th>Company</th>

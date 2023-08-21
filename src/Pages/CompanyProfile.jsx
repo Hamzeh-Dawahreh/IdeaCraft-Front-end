@@ -226,7 +226,7 @@ export default function CompanyProfile() {
           <h3 className="text-2xl text-center">CURRENT CLIENTS</h3>
           <div className="current-clients">
             <br />
-            <table className=" sm:text-xs">
+            <table className=" text-xs sm:text-[15px]">
               <thead>
                 <tr>
                   <th>User</th>

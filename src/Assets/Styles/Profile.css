@@ -94,6 +94,10 @@ tr {
 .clients h3 {
   color: black;
 }
+td .MuiRating-root {
+  font-size: 20px;
+}
+
 @media (max-width: 875px) {
   .view-request {
     display: flex;
@@ -144,9 +148,6 @@ tr {
   td {
     padding: 3px;
   }
-}
-td .MuiRating-root {
-  font-size: 10px;
 }
 
 @media (max-width: 386px) {
