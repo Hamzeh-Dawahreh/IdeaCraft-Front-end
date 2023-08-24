@@ -46,7 +46,11 @@ export default function Second() {
       <h2 className="home-title text-3xl mt-20">MOST RATED COMPANIES</h2>
       <br />
       <div className="line-2"></div>
-      <Splide hasTrack={false} options={options} className="spplide">
+      <Splide
+        hasTrack={false}
+        options={options}
+        className="spplide cursor-grab"
+      >
         <SplideTrack>
           {data.reduce((slides, item, index) => {
             if (index % 3 === 0) {
