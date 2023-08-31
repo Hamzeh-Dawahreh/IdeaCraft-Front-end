@@ -144,7 +144,7 @@ export default function RequestDialog({
           <label htmlFor="">Your Response:</label>
           <Textarea
             required
-            value={message.companyRes}
+            value={companyRes ?companyRes:  message.companyRes}
             placeholder="Write Your response to the Client"
             className="w-full text-start"
             name="companyRes"
@@ -156,7 +156,7 @@ export default function RequestDialog({
           <Input
             required
             className="w-full text-start"
-            value={message.price}
+            value={price ? price : message.price}
             type="number"
             name="price"
             placeholder="Enter the price in JOD"

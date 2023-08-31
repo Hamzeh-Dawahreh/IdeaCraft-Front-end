@@ -13,6 +13,7 @@ export default function Hero() {
       <br />
 
       <Carousel
+      autoplay
         transition={{ duration: 1.5 }}
         className="rounded-xl"
         navigation={({ setActiveIndex, activeIndex, length }) => (

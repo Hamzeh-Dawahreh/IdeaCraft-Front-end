@@ -42,7 +42,6 @@ export default function ConsentDialog({
       confirmButtonText: "Yes, decline it!",
     })
       .then(async (result) => {
-        // Convert the .then() callback into an async function
         if (result.isConfirmed) {
           try {
             const token = localStorage.getItem("token");
@@ -87,7 +86,6 @@ export default function ConsentDialog({
         console.error(error);
       });
   };
-  console.log(companyRes);
   return (
     <Fragment>
       {isDeleted ? (

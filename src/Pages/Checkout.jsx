@@ -19,18 +19,18 @@ const Checkout = () => {
   const handleBlur = (e) => {
     const fieldName = e.target.name;
     const fieldValue = e.target.value.trim();
-
+  
     let validationErrors = { ...errors };
-
+  
     // Validate field based on its name
     switch (fieldName) {
       case "card-holder":
         if (fieldValue === "") {
           validationErrors.cardHolder = "Card Holder name is required";
-        } else if (!/^[a-zA-Z]+(?: [a-zA-Z]+)*$/.test(fieldValue)) {
+        } else if (!/^[a-zA-ZÀ-ÿ]+(?: [a-zA-ZÀ-ÿ]+)*$/.test(fieldValue)) {
           validationErrors.cardHolder = "Invalid Card Holder name format";
         } else {
-          validationErrors.cardHolder = "";
+          validationErrors.cardHolder = ""; // Clear the error
         }
         break;
       case "cardNo":
@@ -39,7 +39,7 @@ const Checkout = () => {
         } else if (!/^\d{4}-\d{4}-\d{4}-\d{4}$/.test(fieldValue)) {
           validationErrors.cardNo = "Invalid Card Number format";
         } else {
-          validationErrors.cardNo = "";
+          validationErrors.cardNo = ""; // Clear the error
         }
         break;
       case "creditExpiry":
@@ -48,7 +48,7 @@ const Checkout = () => {
         } else if (!/^\d{2}\/\d{2}$/.test(fieldValue)) {
           validationErrors.creditExpiry = "Invalid Credit Expiry format";
         } else {
-          validationErrors.creditExpiry = "";
+          validationErrors.creditExpiry = ""; // Clear the error
         }
         break;
       case "creditCvc":
@@ -57,21 +57,21 @@ const Checkout = () => {
         } else if (!/^\d{3}$/.test(fieldValue)) {
           validationErrors.creditCvc = "Invalid CVC format";
         } else {
-          validationErrors.creditCvc = "";
+          validationErrors.creditCvc = ""; // Clear the error
         }
         break;
       case "billingAddress":
         if (fieldValue === "") {
           validationErrors.billingAddress = "Billing Address is required";
         } else {
-          validationErrors.billingAddress = "";
+          validationErrors.billingAddress = ""; // Clear the error
         }
         break;
       case "billingState":
         if (fieldValue === "") {
           validationErrors.billingState = "Province is required";
         } else {
-          validationErrors.billingState = "";
+          validationErrors.billingState = ""; // Clear the error
         }
         break;
       case "billingZip":
@@ -80,22 +80,28 @@ const Checkout = () => {
         } else if (!/^\d{5}$/.test(fieldValue)) {
           validationErrors.billingZip = "Invalid ZIP format";
         } else {
-          validationErrors.billingZip = "";
+          validationErrors.billingZip = ""; // Clear the error
         }
         break;
       default:
         break;
     }
-
+  
     setErrors(validationErrors);
   };
   console.log(errors);
-  const handleClick = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (Object.values(errors).some((error) => error !== "")) {
-      console.log("Please fix the form errors before proceeding.");
+
+      Swal.fire(
+        " Error",
+        "Please fill the form data.",
+        "error"
+      );
       return;
     }
-
+  
     try {
       const token = localStorage.getItem("token");
       const config = {
@@ -182,7 +188,8 @@ const Checkout = () => {
             <p className="text-gray-400">
               Complete your order by providing your payment details.
             </p>
-            <div className="">
+            <form                onSubmit={handleSubmit}
+>
               <label
                 htmlFor="card-holder"
                 className="mt-4 mb-2 block text-sm font-medium"
@@ -190,7 +197,8 @@ const Checkout = () => {
                 Card Holder
               </label>
               <div className="relative">
-                <input
+                <input 
+                required
                   onChange={(e) =>
                     setFormData({ ...formData, cardHolder: e.target.value })
                   }
@@ -235,6 +243,7 @@ const Checkout = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, cardNo: e.target.value })
                     }
+                    required
                     onBlur={handleBlur}
                     type="text"
                     id="card-no"
@@ -264,6 +273,7 @@ const Checkout = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, creditExpiry: e.target.value })
                     }
+                    required
                     onBlur={handleBlur}
                     type="text"
                     name="creditExpiry"
@@ -281,6 +291,7 @@ const Checkout = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, creditCvc: e.target.value })
                     }
+                    required
                     onBlur={handleBlur}
                     type="text"
                     name="creditCvc"
@@ -307,6 +318,7 @@ const Checkout = () => {
                         billingAddress: e.target.value,
                       })
                     }
+                    required
                     onBlur={handleBlur}
                     type="text"
                     id="billing-address"
@@ -332,6 +344,7 @@ const Checkout = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, billingState: e.target.value })
                     }
+                    required
                     onBlur={handleBlur}
                     placeholder="Province"
                     type="text"
@@ -349,6 +362,7 @@ const Checkout = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, billingZip: e.target.value })
                     }
+                    required
                     onBlur={handleBlur}
                     type="text"
                     name="billingZip"
@@ -377,13 +391,13 @@ const Checkout = () => {
                   JOD
                 </p>
               </div>
-            </div>
             <button
-              onClick={handleClick}
+            type="submit"
               className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white"
             >
               Submit Payment
             </button>
+            </form>
           </div>
         </div>
       </div>
